@@ -9,70 +9,68 @@
     rel="stylesheet"
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
     crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+  </head>
 
 </head>
-<body>
+  <body class="main-body">
 
-<!-- *Container for navbar and header -->
+  <!-- *Container for navbar and header -->
         
-            <!-- Top Nav bar section -->      
-            <nav class="navbar navbar-expand-xxl p-3" >
-                <div class="d-inline-flex justify-content-between">
-                    <a class="navbar-brand" href="#">
-                      <img src="/img/logo.png" alt="Logo" width="10%" height="auto" class="flex-column align-text-center">
-                      KampongShare </a>
-                      <div class="collapse navbar-collapse" id="navbarNav">
-                                <ul class="nav justify-content-center p-2 border-3">
-                                    <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="#">Active</a>
-                                    </li>
-                                    <li class="nav-item">
-                                    <a class="nav-link" href="#">Link</a>
-                                    </li>
-                                    <li class="nav-item">
-                                    <a class="nav-link" href="#">Link</a>
-                                    </li>
-                                 </ul>
-                                    <div class="d-flex justify-content-end p-1">
-                                         <img src="icon/free-notifications-bell-outline-icon-png-701751694974381h7wblk6fpx.png" href="#" width="3% rounded-2"  alt="">
-                                    </div>
-                                         <div  class="d-inline-block">
-                                        <button type="button" class="btn btn-outline-success" href="#">Sign-up</button>
-                                        <button type="button" class="btn btn-outline-secondary" href="">Login</button>
-                                    </div>
-                         </div>    
-                </div>
+            <!-- Top Nav bar section -->
+            <nav class="navbar navbar-expand-xxl top-nav"> <!--"top-nav" is locally assigned to CSS -->
+              <div class="container-fluid">
+                  <a class="navbar-brand" href="#">
+                    <img src="/img/logo.png" alt="Logo" width="10%" height="auto" class="flex-column align-text-center">
+                    KampongShare </a>
+                    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                              <ul class="navbar-nav">
+                                  <li class="nav-item">
+                                  <a class="nav-link active" aria-current="page" href="#">About Us</a></li>
+                                  <li class="nav-item"><a class="nav-link" href="#">Listing</a></li>
+                                  <li class="nav-item"><a class="nav-link" href="#">Contact Us</a>
+                                  </li>
+                               </ul>
+                                  <div class="d-flex align-items-center p-2">
+                                       <img src="icon/bell.png" href="#" width="3%"  alt="Notification Icon" style="width: 30px" >
+                                  </div>
+                                    <div>
+                                      <button type="button" class="btn btn-outline-success">Sign-up</button>
+                                      <button type="button" class="btn btn-outline-secondary">Login</button>
+                                  </div>
+                       </div>    
+              </div>
         </nav>
         <!-- End Nav bar sectionn -->
-
-        
-
+      
     <!-- * Hero Banner Start -->
-    <header>
-        <div class="d-flex justify-content-center p-5">
-                <h1>Social Come Together:</h1>
+    <header class="hero-ban">
+      <section class="d-flex">
+        <div class="d-flex justify-content-center">
+                <h1 class="d-flex justify-content-center">Social Come Together:</h1>
                 <h3>Donating Unused Items with Your neighbor to Reduce Waste.</h3> 
+          </div>
             <div class="d-inline-block p-3">
                 <button type="button" class="btn btn-outline-success" href="#">Donate Now!</button>
             </div>
-              <div class="d-flex justify-content-lg-end p-3">
-                <img src="img/02.a-heartwarming-lifestyle.jpeg" class="rounded-5 p-3" width="80%"  alt="">
+              <div class="d-flex justify-content-evenly">
+                <img src="img/02.a-heartwarming-lifestyle.jpeg" class="rounded-5 p-3" width="60%"  alt="">
               </div>
         </div>
+      </section>
     </header>
     <!-- End of header -->
 
-
-
-<!-- *Footer -->
-   <!-- Footer - Copyright -->
-   <footer class="text-black fw-light text-lg-start">
-    <div class="text-center p-3">
-      &copy: 2025 Copyrigh: <a href="" class="text-success-emphasis text-decoration-none">KampongShare &#8482; All rights reserved.</a>
-    </div>        
-  </footer>
-
-<!-- End of Footer -->
-    
-</body>
+        <!-- *Footer -->
+          <!-- Footer - Copyright -->
+         <section class="d-sm-flex justify-content-center fixed-bottom footer">         
+          <footer>
+            <div class="footer-text">
+              &copy2025 Copyrigh: <a href="" class="text-success-emphasis text-decoration-none">KampongShare &#8482; All rights reserved.</a>
+            </div>        
+          </footer>
+        </section>
+        <!-- End of Footer -->
+            
+  </body>
 </html>
