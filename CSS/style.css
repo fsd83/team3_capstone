@@ -86,3 +86,35 @@ padding: 2rem;
 
 }
 
+.regFormH1 {
+    margin-left: 3rem !important;
+}
+
+.regFormDiv {
+    margin-left: 8rem !important;
+    margin-right: 8rem !important;
+}
+
+.regFormBtn {
+    
+    float:right !important;
+    margin-right: 15rem !important;
+}
+.regFormBtn1 {
+    margin-right: 1rem !important;
+    float:right !important;
+    
+    
+}
+
+.regFormInput {
+    width: 75% !important;
+    
+}
+
+.regForm {
+    padding-bottom: 3rem;
+    /* margin-bottom: 2rem; */
+    border:black 2px solid;
+}
+
