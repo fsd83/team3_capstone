@@ -73,11 +73,12 @@ padding: 2rem;
 
 
 .footer{
+ position: fixed;
+ bottom: 0;
  display: flex;
  padding: 1rem 1rem;
+ width: 100%;
  background-color:#beb9b5;   
- border-top: 1px solid #02ec89;
-
 }
 
 .footer-text{
