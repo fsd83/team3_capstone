@@ -24,7 +24,7 @@ html, body{
 
 
 .btn:hover{
-    background-color: #ff7311!important;
+    background-color: #ff7311 !important;
     color:#fff;
    
   }
@@ -50,7 +50,6 @@ html, body{
     width: 100%;
     z-index: 1;
     
-     
 }
 
 
