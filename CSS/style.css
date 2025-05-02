@@ -17,17 +17,13 @@ html, body{
  border-color: #eb9008;
  border-width: 2px;
  border-radius: 1.5rem;
- 
-/* color: hsl(0, 59%, 12%); */
-/* see whether need to change the name to btn-primary */
 }
 
 
 .btn:hover{
     background-color: #ff7311 !important;
-    color:#fff;
-   
-  }
+    color:#fff; 
+}
 
 
 .banner{
@@ -45,23 +41,19 @@ html, body{
     color: #fff !important;
     text-shadow: 1px 0 #ff9219;
     position: sticky;
-    /* fixed, but need to move banner down -cannot */
     top: 0;
     width: 100%;
-    z-index: 1;
-    
+    z-index: 1;   
 }
 
 
 .navbar-brand{
-    text-shadow: 1px 0 #ff9219;
-  
+    text-shadow: 1px 0 #ff9219;  
 }
 
 
 .card-bg{
     background-color: #8be7c6 !important;
-
 }
 
 
@@ -74,13 +66,8 @@ html, body{
 
 .card-img-top{
     border-top-right-radius: 1rem;
-    border-top-left-radius: 1rem;
-    
- 
+    border-top-left-radius: 1rem;  
 }
-
-
-
 
 .container h3{
     color: #1F7066;
@@ -101,14 +88,11 @@ html, body{
     padding: 1rem 1rem;
     width: 100%;
     background-color:#beb9b5;
-    border-top: 1px solid #02EC89;
 }
 
 
 .footer-text{
     font-size: x-small;
     font-family: 'Courier New', Courier, monospace;
-
-
 }
 
