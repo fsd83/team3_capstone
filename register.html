@@ -71,44 +71,42 @@
       </div>
     </div>
   </nav>
-  <!-- End Nav bar sectionn -->
+  <!-- End Nav bar section -->
+    
+    <!-- Registration form  --> 
 
-    <!-- Display the cards container -->
-    <div class="container px-4 py-5" id="custom-cards">
-      <h2 class="pb-2 border-bottom">About Us</h2>
-  
-      <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
-        <div class="col">
-          <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg" style="background-image: url('./img/KSlogoFinal2.png');">
-            <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
-              <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">For the Community</h3>
-            </div>
-          </div>
-        </div>
-  
-        <div class="col2">
-          <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg" style="background-image: url('./img/Earth.png');">
-            <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
-              <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">For Mother Earth</h3>
-      
-            </div>
-          </div>
-        </div>
-  
-        <div class="col">
-          <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg" style="background-image: url('unsplash-photo-3.jpg');">
-            <div class="d-flex flex-column h-100 p-5 pb-3 text-shadow-1">
-              <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">For us</h3>
-            </div>
-          </div>
+    <form class="regForm">
+      <h1>Register with us</h1>
+      <div class="row mb-3">
+        <label for="userName3" class="col-sm-4 col-form-label">User Name</label>
+        <div class="col-sm-8">
+          <input type="userName" class="form-control regFormInput" id="inputEmail3" placeholder="*" required>
         </div>
       </div>
-    </div>
-  <!-- End the cards container -->
- 
-   
-    
-    
+      <div class="row mb-3">
+        <label for="userId3" class="col-sm-4 col-form-label">User ID</label>
+        <div class="col-sm-8">
+          <input type="userId" class="form-control regFormInput" id="inputPassword3">
+        </div>
+      </div>
+      <div class="row mb-3">
+        <label for="inputEmail3" class="col-sm-4 col-form-label">Email</label>
+        <div class="col-sm-8">
+          <input type="email" class="form-control regFormInput" id="inputEmail3" placeholder="* name@email.com" required>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <label for="inputPassword3" class="col-sm-4 col-form-label">Password</label>
+        <div class="col-sm-8">
+          <input type="password" class="form-control regFormInput" id="inputPassword3" placeholder="*" required>
+        </div>
+      </div>
+      
+      <button type="submit" class="btn btn-primary">Sign in</button>
+      <button type="button" class="btn btn-primary">Cancel</button>
+      
+    </form>
+    <!-- End Registration form -->
      
     <!-- *Footer -->
     <!-- Footer - Copyright -->

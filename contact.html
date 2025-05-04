@@ -71,45 +71,58 @@
       </div>
     </div>
   </nav>
-  <!-- End Nav bar sectionn -->
+  <!-- End Nav bar section -->
 
-    <!-- Display the cards container -->
-    <div class="container px-4 py-5" id="custom-cards">
-      <h2 class="pb-2 border-bottom">About Us</h2>
-  
-      <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
-        <div class="col">
-          <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg" style="background-image: url('./img/KSlogoFinal2.png');">
-            <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
-              <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">For the Community</h3>
-            </div>
-          </div>
-        </div>
-  
-        <div class="col2">
-          <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg" style="background-image: url('./img/Earth.png');">
-            <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
-              <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">For Mother Earth</h3>
-      
-            </div>
-          </div>
-        </div>
-  
-        <div class="col">
-          <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg" style="background-image: url('unsplash-photo-3.jpg');">
-            <div class="d-flex flex-column h-100 p-5 pb-3 text-shadow-1">
-              <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">For us</h3>
-            </div>
-          </div>
-        </div>
+         
+       <!--* Hero Banner  -->      
+       
+    <!-- <hr class="featurette-divider"> -->
+    <div class="row featurette p-3">
+      <div class="col-md-7 align-content-center text-end">
+        <h2 class="featurette-heading fw-normal lh-1">First featurette heading. <span class="text-body-secondary">It’ll blow your mind.</span></h2>
+        <p class="lead">Some great placeholder content for the first featurette here. Imagine some exciting prose here.</p>
+        <button type="button" class="btn btn-outline-warning">Donate Now!</button>
+      </div>
+      <div class="col-md-5">
+        <img src="img/img-dummy.png" class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice"><title>Placeholder</title><rect width="100%" height="100%" fill="var(--bs-secondary-bg)"/><text x="50%" y="50%" fill="var(--bs-secondary-color)" dy=".3em">
       </div>
     </div>
-  <!-- End the cards container -->
- 
-   
+    <!-- End Hero Banner -->
     
+    <!--* Hero Banner  -->      
+        
+        <!-- Container for contact form -->
+
+        <div class="container w-75 mt-4 text-white">
+
+          <!-- title -->
+           <div>
+            <h1 class="display-4 text-white fw-lighter">Contact Us</h1>
+           </div>
     
-     
+           <!-- Contact Form -->
+           <form action="" method="post" novalidate class="needs-validation" onsubmit="submitForm();">
+            <div class="mb-3">
+              <label for="txtEmail" class="form-label">Email:</label>
+              <input type="email" class="form-control" id="txtEmail" placeholder="name@email.com" required>
+              <div class="invalid-feedback text-white">
+                Please enter your email.
+              </div>
+            </div>
+                <!-- Message input -->
+                <div class="mb-4">
+                  <label class="form-label text-white fw-lighter" for="txtMessage">Message</label>
+                  <textarea class="form-control" id="txtMessage" rows="4" required></textarea>
+                  <div class="invalid-feedback text-white">
+                      Please enter a valid text message.
+                  </div>
+              </div>
+              <button type="submit" class="btn btn-primary">Submit</button>
+              <button type="submit" class="btn btn-primary">Cancel</button>
+           </form>
+      
+          </div>
+    
     <!-- *Footer -->
     <!-- Footer - Copyright -->
     <section class="footer">         
