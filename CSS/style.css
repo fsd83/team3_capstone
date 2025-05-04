@@ -81,6 +81,29 @@ html, body{
     padding: 1rem !important;
 }
 
+/* Start item-details */
+.item-main-img {
+    margin-top: 3rem;
+}
+
+.item-container {
+    margin-bottom: 4rem;
+    /* border:black 1px solid; */
+}
+
+.item-btn-group-top {
+    text-align: center;
+    padding-top: 1rem;
+    margin-bottom: 1rem;
+    /* border:black 1px solid; */
+}
+
+.item-btn-group-bottom {
+    text-align: center;
+    /* border:black 1px solid; */
+}
+/* End item-details */
+
 .footer{
     position: fixed;
     bottom: 0;
@@ -95,4 +118,8 @@ html, body{
     font-size: x-small;
     font-family: 'Courier New', Courier, monospace;
 }
+
+
+
+
 
