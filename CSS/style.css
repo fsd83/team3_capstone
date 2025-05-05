@@ -81,6 +81,29 @@ html, body{
     padding: 1rem !important;
 }
 
+/* Start item-details */
+.item-main-img {
+    margin-top: 3rem;
+}
+
+.item-container {
+    margin-bottom: 4rem;
+    /* border:black 1px solid; */
+}
+
+.item-btn-group-top {
+    text-align: center;
+    padding-top: 1rem;
+    margin-bottom: 1rem;
+    /* border:black 1px solid; */
+}
+
+.item-btn-group-bottom {
+    text-align: center;
+    /* border:black 1px solid; */
+}
+/* End item-details */
+
 .footer{
     position: fixed;
     bottom: 0;
@@ -96,6 +119,7 @@ html, body{
     font-family: 'Courier New', Courier, monospace;
 }
 
+<<<<<<< HEAD
 .regForm {
     padding-bottom: 3rem;
     margin-left: 8rem !important;
@@ -107,3 +131,9 @@ html, body{
     width: 75% !important;
     
 }
+=======
+
+
+
+
+>>>>>>> 9fbb59a547e60410d7389900c244473b8013bfd4
