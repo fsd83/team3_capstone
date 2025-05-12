@@ -8,12 +8,12 @@ class NavigationBar {
     // Create the entire navigation bar
     createNavBar() {
         // Create the main navbar container
-        this.navbarContainer = document.createElement('nav');
-        this.navbarContainer.className = 'navbar navbar-dark navbar-expand-lg bg-body-tertiary top-nav';
+        this.navbarContainer = document.createElement("nav");
+        this.navbarContainer.className = "navbar navbar-dark navbar-expand-lg bg-body-tertiary top-nav";
 
         // Create the container-fluid div
-        const containerFluid = document.createElement('div');
-        containerFluid.className = 'container-fluid align-content-center';
+        const containerFluid = document.createElement("div");
+        containerFluid.className = "container-fluid align-content-center";
 
         // Logo and Brand
         const navbarBrand = this.createNavbarBrand();
@@ -36,36 +36,36 @@ class NavigationBar {
     // Navbar Brand (Logo and Company Name)
     createNavbarBrand() {
         const brandContainer = document.createElement("a");
-        brandContainer.className = 'navbar-brand';
-        brandContainer.href = 'index.html';
+        brandContainer.className = "navbar-brand";
+        brandContainer.href = "index.html";
 
 
-       const logoImg = document.createElement('img');
+       const logoImg = document.createElement("img");
         logoImg.src ="../img/weblogo_cus.png";
         logoImg.alt = "Company Logo";
         logoImg.width = "150";
-        logoImg.className = 'fix-column align-text-center';     
+        logoImg.className = "fix-column align-text-center";     
   
 
         brandContainer.appendChild(logoImg);
-        brandContainer.appendChild(document.createTextNode('KampongShare'));
+        brandContainer.appendChild(document.createTextNode("KampongShare"));
 
         return brandContainer;
     }
 
     // Navbar Toggler for Mobile View
     createNavbarToggler() {
-        const toggler = document.createElement('button');
-        toggler.className = 'navbar-toggler';
-        toggler.type = 'button';
-        toggler.setAttribute('data-bs-toggle', 'collapse');
-        toggler.setAttribute('data-bs-target', '#navbarSupportedContent');
-        toggler.setAttribute('aria-controls', 'navbarSupportedContent');
-        toggler.setAttribute('aria-expanded', 'false');
-        toggler.setAttribute('aria-label', 'Toggle navigation');
+        const toggler = document.createElement("button");
+        toggler.className = "navbar-toggler";
+        toggler.type = "button";
+        toggler.setAttribute("data-bs-toggle", "collapse");
+        toggler.setAttribute("data-bs-target", "#navbarSupportedContent");
+        toggler.setAttribute("aria-controls", "navbarSupportedContent");
+        toggler.setAttribute("aria-expanded", "false");
+        toggler.setAttribute("aria-label", "Toggle navigation");
 
-        const togglerIcon = document.createElement('span');
-        togglerIcon.className = 'navbar-toggler-icon';
+        const togglerIcon = document.createElement("span");
+        togglerIcon.className = "navbar-toggler-icon";
         toggler.appendChild(togglerIcon);
 
         return toggler;
@@ -73,9 +73,9 @@ class NavigationBar {
 
     // Collapsible Navbar Content
     createNavbarCollapse() {
-        const collapseContainer = document.createElement('div');
-        collapseContainer.className = 'collapse navbar-collapse';
-        collapseContainer.id = 'navbarSupportedContent';
+        const collapseContainer = document.createElement("div");
+        collapseContainer.className = "collapse navbar-collapse";
+        collapseContainer.id = "navbarSupportedContent";
 
         // Navigation Menu Items
         const navMenu = this.createNavMenu();
@@ -95,22 +95,22 @@ class NavigationBar {
 
     // Navigation Menu Items
     createNavMenu() {
-        const navList = document.createElement('ul');
-        navList.className = 'navbar-nav me-auto mb-2 mb-lg-0';
+        const navList = document.createElement("ul");
+        navList.className = "navbar-nav me-auto mb-2 mb-lg-0";
 
         // About Us
-        const aboutItem = this.createNavItem('About Us', 'about.html', true);
+        const aboutItem = this.createNavItem("About Us", "about.html", true);
         
         // Contact Us
-        const contactItem = this.createNavItem('Contact Us', 'contact.html');
+        const contactItem = this.createNavItem("Contact Us", "contact.html");
         
         // Catalogues Dropdown
-        const cataloguesItem = this.createDropdownNavItem('Catalogues', [
-            { text: 'Appliances', href: 'appliance.html#' },
-            { text: 'Fashion', href: 'fashinon.html' },
-            { text: 'Others', href: 'others.html' },
+        const cataloguesItem = this.createDropdownNavItem("Catalogues", [
+            { text: "Appliances", href: "appliance.html#" },
+            { text: "Fashion", href: "fashinon.html" },
+            { text: "Others", href: "others.html"},
             { isDivider: true },
-            { text: 'Something else here', href: '#' }
+            { text: "Something else here", href: "#" }
         ]);
 
         navList.append(aboutItem, contactItem, cataloguesItem);
@@ -120,13 +120,13 @@ class NavigationBar {
 
     // Helper method to create individual nav items
     createNavItem(text, href, isActive = false) {
-        const listItem = document.createElement('li');
-        listItem.className = 'nav-item';
+        const listItem = document.createElement("li");
+        listItem.className = "nav-item";
 
-        const link = document.createElement('a');
+        const link = document.createElement("a");
         link.className = `nav-link${isActive ? ' active' : ''}`;
         link.href = href;
-        if (isActive) link.setAttribute('aria-current', 'page');
+        if (isActive) link.setAttribute("aria-current", "page");
         link.textContent = text;
 
         listItem.appendChild(link);
@@ -135,31 +135,31 @@ class NavigationBar {
 
     // Helper method to create dropdown nav items
     createDropdownNavItem(text, dropdownItems) {
-        const listItem = document.createElement('li');
-        listItem.className = 'nav-item dropdown';
+        const listItem = document.createElement("li");
+        listItem.className = "nav-item dropdown";
 
-        const dropdownToggle = document.createElement('a');
-        dropdownToggle.className = 'nav-link dropdown-toggle';
-        dropdownToggle.href = '#';
-        dropdownToggle.role = 'button';
-        dropdownToggle.setAttribute('data-bs-toggle', 'dropdown');
-        dropdownToggle.setAttribute('aria-expanded', 'false');
+        const dropdownToggle = document.createElement("a");
+        dropdownToggle.className = "nav-link dropdown-toggle";
+        dropdownToggle.href = "#";
+        dropdownToggle.role = "button";
+        dropdownToggle.setAttribute("data-bs-toggle", "dropdown");
+        dropdownToggle.setAttribute("aria-expanded", "false");
         dropdownToggle.textContent = text;
 
-        const dropdownMenu = document.createElement('ul');
-        dropdownMenu.className = 'dropdown-menu';
+        const dropdownMenu = document.createElement("ul");
+        dropdownMenu.className = "dropdown-menu";
 
         dropdownItems.forEach(item => {
             if (item.isDivider) {
-                const divider = document.createElement('li');
-                const hr = document.createElement('hr');
-                hr.className = 'dropdown-divider';
+                const divider = document.createElement("li");
+                const hr = document.createElement("hr");
+                hr.className = "dropdown-divider";
                 divider.appendChild(hr);
                 dropdownMenu.appendChild(divider);
             } else {
-                const dropdownItem = document.createElement('li');
-                const link = document.createElement('a');
-                link.className = 'dropdown-item';
+                const dropdownItem = document.createElement("li");
+                const link = document.createElement("a");
+                link.className = "dropdown-item";
                 link.href = item.href;
                 link.textContent = item.text;
                 dropdownItem.appendChild(link);
@@ -175,20 +175,20 @@ class NavigationBar {
 
     // Search Form
     createSearchForm() {
-        const formContainer = document.createElement('form');
-        formContainer.className = 'd-flex align-content-center';
-        formContainer.role = 'search';
+        const formContainer = document.createElement("form");
+        formContainer.className = "d-flex align-content-center";
+        formContainer.role = "search";
 
-        const searchInput = document.createElement('input');
-        searchInput.className = 'form-control me-2';
-        searchInput.type = 'search';
-        searchInput.placeholder = 'Search';
-        searchInput.setAttribute('aria-label', 'Search');
+        const searchInput = document.createElement("input");
+        searchInput.className = "form-control me-2";
+        searchInput.type = "search";
+        searchInput.placeholder = "Search";
+        searchInput.setAttribute("aria-label", "Search");
 
-        const searchButton = document.createElement('button');
-        searchButton.className = 'btn';
-        searchButton.type = 'submit';
-        searchButton.textContent = 'Search';
+        const searchButton = document.createElement("button");
+        searchButton.className = "btn";
+        searchButton.type = "submit";
+        searchButton.textContent = "Search";
 
         formContainer.appendChild(searchInput);
         formContainer.appendChild(searchButton);
@@ -198,7 +198,7 @@ class NavigationBar {
 
     // Create Right Side Navigation (Icons and Buttons)
     createRightNavigation() {
-        const rightNavContainer = document.createElement('div');
+        const rightNavContainer = document.createElement("div");
 
         // Notification Bell Icon
         const bellIcon = this.createSVGIcon(
@@ -218,10 +218,10 @@ class NavigationBar {
         );
 
         // Sign Up Button
-        const signupButton = this.createButton('Sign-up', 'register.html');
+        const signupButton = this.createButton("Sign-up", "register.html");
 
         // Login Button
-        const loginButton = this.createButton('Login', 'login.html');
+        const loginButton = this.createButton("Login", "login.html");
 
         // Append all elements
         rightNavContainer.append(bellIcon, userIcon, signupButton, loginButton);
@@ -231,17 +231,17 @@ class NavigationBar {
 
     // Helper method to create SVG Icons
     createSVGIcon(xmlns, viewBox, pathData, width = 25, height = 25, additionalPaths = []) {
-        const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-        svg.setAttribute('xmlns', xmlns);
-        svg.setAttribute('width', width.toString());
-        svg.setAttribute('height', height.toString());
-        svg.setAttribute('fill', 'currentColor');
-        svg.setAttribute('viewBox', viewBox);
-        svg.classList.add('bi');
+        const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+        svg.setAttribute("xmlns", xmlns);
+        svg.setAttribute("width", width.toString());
+        svg.setAttribute("height", height.toString());
+        svg.setAttribute("fill", "currentColor");
+        svg.setAttribute("viewBox", viewBox);
+        svg.classList.add("bi");
 
         // Create path(s)
         const createPath = (d) => {
-            const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+            const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
             path.setAttribute('d', d);
             return path;
         };
@@ -260,12 +260,12 @@ class NavigationBar {
 
     // Helper method to create buttons
     createButton(text, href) {
-        const buttonLink = document.createElement('a');
+        const buttonLink = document.createElement("a");
         buttonLink.href = href;
 
-        const button = document.createElement('button');
-        button.type = 'button';
-        button.className = 'btn';
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "btn";
         button.textContent = text;
 
         buttonLink.appendChild(button);
@@ -273,19 +273,19 @@ class NavigationBar {
     }
 
     // Method to inject the navbar into a specific container
-    injectNavbar(containerId = 'navbar-container') {
+    injectNavbar(containerId = "navbar-container") {
         const container = document.getElementById(containerId);
         if (container) {
-            container.innerHTML = ''; // Clear any existing content
+            container.innerHTML = ""; // Clear any existing content
             container.appendChild(this.createNavBar());
         } else {
-            console.error(`Container with id ${containerId} not found`);
+            console.error("Container with id ${containerId} not found");
         }
     }
 }
 
 // Usage Example
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("DOMContentLoaded", () => {
     const navbarManager = new NavigationBar();
     navbarManager.injectNavbar();
 });
@@ -293,18 +293,18 @@ document.addEventListener('DOMContentLoaded', () => {
 // Optional: Highlight current page in navigation
 function highlightCurrentPage() {
     const currentLocation = location.pathname.split('/').pop();
-    const navLinks = document.querySelectorAll('.nav-link');
+    const navLinks = document.querySelectorAll(".nav-link");
     
     navLinks.forEach(link => {
-        if (link.getAttribute('href') === currentLocation) {
-            link.classList.add('active');
-            link.setAttribute('aria-current', 'page');
+        if (link.getAttribute("href") === currentLocation) {
+            link.classList.add("active");
+            link.setAttribute("aria-current", "page");
         } else {
-            link.classList.remove('active');
-            link.removeAttribute('aria-current');
+            link.classList.remove("active");
+            link.removeAttribute("aria-current");
         }
     });
 }
 
 // Call this function after navbar injection
-document.addEventListener('DOMContentLoaded', highlightCurrentPage);
+document.addEventListener("DOMContentLoaded", highlightCurrentPage);
