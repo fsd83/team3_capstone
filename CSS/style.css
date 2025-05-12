@@ -87,7 +87,7 @@ html, body{
 }
 
 .item-container {
-    margin-bottom: 4rem;
+    margin-bottom: 4rem !important;
     /* border:black 1px solid; */
 }
 
@@ -103,6 +103,25 @@ html, body{
     /* border:black 1px solid; */
 }
 /* End item-details */
+
+/* Start catalog */
+
+.catalog-btn-group-top {
+    /* text-align: center; */
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+    border-top: black 1px solid !important;
+    border-bottom:black 1px solid !important;
+}
+
+.catalog-btn-group-bottom {
+    padding-top: 1rem !important;
+    padding-bottom: 3rem !important;
+    /* border:black 1px solid; */
+}
+
+/* End catalog */
 
 .footer{
     position: fixed;
