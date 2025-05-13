@@ -3,6 +3,16 @@
 class NavigationBar {
     constructor() {
         this.navbarContainer = null;
+        
+        // create an array of links used on the site
+        this.siteURLs = [
+            {name: "Home", url: "index.html", isActive: true},
+            {name: "About us", url: "about.html", isActive: true},
+            {name: "Contact us", url: "contact.html", isActive: true},
+            {name: "Work with us", url: "partnership.html", isActive: false},
+            
+            
+        ];
     }
 
     // Create the entire navigation bar
@@ -96,24 +106,27 @@ class NavigationBar {
     // Navigation Menu Items
     createNavMenu() {
         const navList = document.createElement("ul");
-        navList.className = "navbar-nav me-auto mb-2 mb-lg-0";
+        navList.className = "navbar-nav me-auto mb-2 mb-lg-0";    
 
-        // About Us
-        const aboutItem = this.createNavItem("About Us", "about.html", true);
-        
-        // Contact Us
-        const contactItem = this.createNavItem("Contact Us", "contact.html");
-        
+        const navArr = [];  // create an array to store each item created by function createNavItem()
+
+        this.siteURLs.forEach((item) => {
+            navArr.push(this.createNavItem(item.name, item.url, item.isActive)); // push each item into navArr returned by createNavItem()
+        });   
+
+
         // Catalogues Dropdown
         const cataloguesItem = this.createDropdownNavItem("Catalogues", [
             { text: "Appliances", href: "appliance.html#" },
-            { text: "Fashion", href: "fashinon.html" },
+            { text: "Fashion", href: "fashion.html" },
             { text: "Others", href: "others.html"},
+            { text: "Misc.", href: "misc.html"},
             { isDivider: true },
             { text: "Something else here", href: "#" }
         ]);
 
-        navList.append(aboutItem, contactItem, cataloguesItem);
+        navList.append(...navArr, cataloguesItem); // unwrap the elements to be used by navList
+
 
         return navList;
     }
@@ -126,7 +139,8 @@ class NavigationBar {
         const link = document.createElement("a");
         link.className = `nav-link${isActive ? ' active' : ''}`;
         link.href = href;
-        if (isActive) link.setAttribute("aria-current", "page");
+        //if (isActive) link.setAttribute("aria-current", "page");
+        if (!isActive) link.style.display = "none";
         link.textContent = text;
 
         listItem.appendChild(link);
