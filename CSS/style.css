@@ -3,70 +3,78 @@
 
 
 
-/* html, body{
+html, body{
     box-sizing: border-box;
     font-family: "Lato", sans-serif;
     font-size: 16px;
     text-emphasis-color: #e90707;
-} */
-
+}
 
 .btn{
- background-color: #ee962a;
- color: #0f0f0f;
-  
+ background-color: #ff9219;
+ color:#fff;
+ border-color: #eb9008;
+ border-width: 2px;
+ border-radius: 1.5rem;
 }
 
-
-.main-body, .card{
-    background-color: #a8c1bd;
+.btn:hover{
+    background-color: #ff7311 !important;
+    color:#fff; 
 }
 
+.banner{
+    background-color: #30d0b5;
+}
 
-/* .logo{
-    display: flex;
-    width: 20%;
-    height: auto;
+.main-body{
+    background-color: #fff;
+}
 
+.navbar-container{
+    position: sticky !important;
+}
 
-} */
-
+.navbar{
+     position: sticky !important;
+}
 
 .top-nav{
-    background-color: #00606d !important; 
+    background-color: #2ab69f !important;
     color: #fff !important;
-      
+    text-shadow: 1px 0 #fffefd;
+    position: sticky !important;
+    top: 0;
+    width: 100%;
+    z-index: 1;   
 }
 
-/* .top-nav-text{
-   color: #ee962a !important;
-} */
+.navbar-brand{
+    text-shadow: 1px 0 #ff9219;  
+}
 
+.card-bg{
+    background-color: #8be7c6 !important;
+}
 
+.card{
+    background-color: #fff;
+    border-radius: 1rem;
+    color: #138682;
+}
 
-/* .m1-top{
-display: inline-block;
-align-content: center;
-border: 3px solid black;
+.card-img-top{
+    border-top-right-radius: 1rem;
+    border-top-left-radius: 1rem;  
+}
 
-} */
+.container h3{
+    color: #1F7066;
+    text-shadow: 1px 0 #fbfbfa;
+}
 
-/* .div-1 img{
-    display: block;
-    align-content: end;
-    border: 1px solid black;
-}    */
-
-
-
-/* .img-pic{
-width: 35%;
-margin-right: 1% ;
-padding: 2rem;
-} */
-     
 .mb{
-    
+   
     margin-bottom: 1% !important;
     padding: 1rem !important;
 }
@@ -178,11 +186,32 @@ padding: 2rem;
  padding: 1rem 1rem;
  background-color:#beb9b5;   
  border-top: 1px solid #02ec89;
+
 }
 
 .footer-text{
     font-size: x-small;
     font-family: 'Courier New', Courier, monospace;
+}
 
+.regForm {
+    padding-bottom: 3rem;
+    margin-left: 8rem !important;
+    margin-right: 8rem !important;
+}
+
+.regFormInput {
+   width: 75% !important;  
+}
+.regForm {
+    padding-bottom: 3rem;
+    margin-left: 8rem !important;
+    margin-right: 8rem !important;
+    /* border:black 2px solid; */
+}
+
+.regFormInput {
+    width: 75% !important;
+    
 }
 
