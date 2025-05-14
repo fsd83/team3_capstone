@@ -10,7 +10,6 @@ html, body{
     text-emphasis-color: #e90707;
 }
 
-
 .btn{
  background-color: #ff9219;
  color:#fff;
@@ -19,50 +18,50 @@ html, body{
  border-radius: 1.5rem;
 }
 
-
 .btn:hover{
     background-color: #ff7311 !important;
     color:#fff; 
 }
 
-
 .banner{
     background-color: #30d0b5;
 }
-
 
 .main-body{
     background-color: #fff;
 }
 
+.navbar-container{
+    position: sticky !important;
+}
+
+.navbar{
+     position: sticky !important;
+}
 
 .top-nav{
     background-color: #2ab69f !important;
     color: #fff !important;
-    text-shadow: 1px 0 #ff9219;
-    position: sticky;
+    text-shadow: 1px 0 #fffefd;
+    position: sticky !important;
     top: 0;
     width: 100%;
     z-index: 1;   
 }
 
-
 .navbar-brand{
     text-shadow: 1px 0 #ff9219;  
 }
 
-
 .card-bg{
     background-color: #8be7c6 !important;
 }
-
 
 .card{
     background-color: #fff;
     border-radius: 1rem;
     color: #138682;
 }
-
 
 .card-img-top{
     border-top-right-radius: 1rem;
@@ -74,7 +73,6 @@ html, body{
     text-shadow: 1px 0 #fbfbfa;
 }
 
-     
 .mb{
    
     margin-bottom: 1% !important;
@@ -87,7 +85,7 @@ html, body{
 }
 
 .item-container {
-    margin-bottom: 4rem !important;
+    margin-bottom: 4rem;
     /* border:black 1px solid; */
 }
 
@@ -95,19 +93,17 @@ html, body{
     text-align: center;
     padding-top: 1rem;
     margin-bottom: 1rem;
-    /* border:black 1px solid; */
 }
 
 .item-btn-group-bottom {
     text-align: center;
-    /* border:black 1px solid; */
+   
 }
 /* End item-details */
 
 /* Start catalog */
 
 .catalog-btn-group-top {
-    /* text-align: center; */
     padding-top: 1rem;
     padding-bottom: 1rem;
     margin-bottom: 1rem;
@@ -118,7 +114,6 @@ html, body{
 .catalog-btn-group-bottom {
     padding-top: 1rem !important;
     padding-bottom: 3rem !important;
-    /* border:black 1px solid; */
 }
 
 /* End catalog */
@@ -132,12 +127,20 @@ html, body{
     background-color:#beb9b5;
 }
 
-
 .footer-text{
     font-size: x-small;
     font-family: 'Courier New', Courier, monospace;
 }
 
+.regForm {
+    padding-bottom: 3rem;
+    margin-left: 8rem !important;
+    margin-right: 8rem !important;
+}
+
+.regFormInput {
+   width: 75% !important;  
+}
 .regForm {
     padding-bottom: 3rem;
     margin-left: 8rem !important;
