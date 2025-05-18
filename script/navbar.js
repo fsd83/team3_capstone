@@ -10,8 +10,7 @@ class NavigationBar {
             {name: "About us", url: "about.html", isActive: true},
             {name: "Contact us", url: "contact.html", isActive: true},
             {name: "Work with us", url: "partnership.html", isActive: false},
-            
-            
+                        
         ];
     }
 
@@ -19,7 +18,7 @@ class NavigationBar {
     createNavBar() {
         // Create the main navbar container
         this.navbarContainer = document.createElement("nav");
-        this.navbarContainer.className = "navbar navbar-dark navbar-expand-lg bg-body-tertiary top-nav";
+        this.navbarContainer.className = "navbar navbar-dark navbar-expand-lg bg-body-tertiary top-nav fixed-top";
 
         // Create the container-fluid div
         const containerFluid = document.createElement("div");
@@ -125,7 +124,8 @@ class NavigationBar {
             { text: "Something else here", href: "#" }
         ]);
 
-        navList.append(...navArr, cataloguesItem); // unwrap the elements to be used by navList
+        // unwrap the elements to be used by navList
+        navList.append(...navArr, cataloguesItem); 
 
 
         return navList;
@@ -300,9 +300,274 @@ class NavigationBar {
 
 // Usage Example
 document.addEventListener("DOMContentLoaded", () => {
+
+    // Initialze and inject navbar
     const navbarManager = new NavigationBar();
     navbarManager.injectNavbar();
+
+  // Initialize and inject footer
+    const footerManager = new Footer();
+    footerManager.injectFooter();
+    
+    // Add padding to body to prevent content from hiding behind fixed navbar
+    document.body.style.paddingTop = '110px'
 });
+
+// Add shadow to navbar on scroll
+window.addEventListener('scroll', () => {
+    const navbar = document.querySelector('.navbar');
+    if (window.scrollY > 10) {
+        navbar.classList.add('shadow');
+    } else {
+        navbar.classList.remove('shadow');
+    }
+});
+
+
+// Optional: Highlight current page in navigation
+function highlightCurrentPage() {
+    const currentLocation = location.pathname.split('/').pop();
+    const navLinks = document.querySelectorAll(".nav-link");
+    
+    navLinks.forEach(link => {
+        if (link.getAttribute("href") === currentLocation) {
+            link.classList.add("active");
+            link.setAttribute("aria-current", "page");
+        } else {
+            link.classList.remove("active");
+            link.removeAttribute("aria-current");
+        }
+    });
+}
+
+// Call this function after navbar injection
+document.addEventListener("DOMContentLoaded", highlightCurrentPage);
+
+
+// New Footer class for centralized footer management
+class Footer {
+    constructor() {
+        this.footerContainer = null;
+        this.footerLinks = {
+            company: [
+                { name: "About Us", url: "about.html" },
+                { name: "Our Services", url: "services.html" },
+                { name: "Privacy Policy", url: "privacy.html" },
+                { name: "Terms of Service", url: "terms.html" }
+            ],
+            quickLinks: [
+                { name: "Home", url: "index.html" },
+                { name: "Blog", url: "blog.html" },
+                { name: "FAQ", url: "faq.html" },
+                { name: "Contact", url: "contact.html" }
+            ],
+            socials: [
+                { name: "Facebook", url: "https://facebook.com", icon: "bi bi-facebook" },
+                { name: "Instagram", url: "https://instagram.com", icon: "bi bi-instagram" },
+                { name: "Twitter", url: "https://twitter.com", icon: "bi bi-twitter" },
+                { name: "LinkedIn", url: "https://linkedin.com", icon: "bi bi-linkedin" }
+            ]
+        };
+    }
+
+    // Create the entire footer
+    createFooter() {
+        this.footerContainer = document.createElement("footer");
+        this.footerContainer.className = "text-center text-lg-start bg-body-tertiary text-muted mt-5";
+
+        // Top section with links
+        const topSection = this.createFooterTopSection();
+        
+        // Bottom copyright section
+        const bottomSection = this.createFooterBottomSection();
+
+        this.footerContainer.appendChild(topSection);
+        this.footerContainer.appendChild(bottomSection);
+
+        return this.footerContainer;
+    }
+
+    // Create the top section of the footer with links
+    createFooterTopSection() {
+        const section = document.createElement("section");
+        section.className = "pt-5";
+
+        const container = document.createElement("div");
+        container.className = "container text-center text-md-start mt-5";
+
+        const row = document.createElement("div");
+        row.className = "row mt-3";
+
+        // Company info column
+        const companyCol = this.createCompanyInfoColumn();
+        
+        // Company links column
+        const companyLinksCol = this.createLinksColumn("Company", this.footerLinks.company);
+        
+        // Quick links column
+        const quickLinksCol = this.createLinksColumn("Quick Links", this.footerLinks.quickLinks);
+        
+        // Contact column
+        const contactCol = this.createContactColumn();
+
+        // Append all columns to the row
+        row.append(companyCol, companyLinksCol, quickLinksCol, contactCol);
+        container.appendChild(row);
+        section.appendChild(container);
+
+        return section;
+    }
+
+    // Create company info column
+    createCompanyInfoColumn() {
+        const col = document.createElement("div");
+        col.className = "col-md-3 col-lg-4 col-xl-3 mx-auto mb-4";
+
+        // Company name heading
+        const heading = document.createElement("h6");
+        heading.className = "text-uppercase fw-bold mb-4";
+        
+        // Logo icon
+        const icon = document.createElement("i");
+        icon.className = "fas fa-gem me-3";
+        heading.appendChild(icon);
+        heading.appendChild(document.createTextNode(" KampongShare"));
+
+        // Company description
+        const description = document.createElement("p");
+        description.textContent = "KampongShare is a community-driven platform for sharing resources, reducing waste, and building stronger local communities.";
+
+        col.append(heading, description);
+        return col;
+    }
+
+    // Create links column (reusable for different link sections)
+    createLinksColumn(title, links) {
+        const col = document.createElement("div");
+        col.className = "col-md-2 col-lg-2 col-xl-2 mx-auto mb-4";
+
+        // Column title
+        const heading = document.createElement("h6");
+        heading.className = "text-uppercase fw-bold mb-4";
+        heading.textContent = title;
+
+        col.appendChild(heading);
+
+        // Add all links
+        links.forEach(link => {
+            const p = document.createElement("p");
+            const a = document.createElement("a");
+            a.href = link.url;
+            a.className = "text-reset";
+            a.textContent = link.name;
+            p.appendChild(a);
+            col.appendChild(p);
+        });
+
+        return col;
+    }
+
+    // Create contact column
+    createContactColumn() {
+        const col = document.createElement("div");
+        col.className = "col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4";
+
+        // Contact heading
+        const heading = document.createElement("h6");
+        heading.className = "text-uppercase fw-bold mb-4";
+        heading.textContent = "Contact";
+        
+        col.appendChild(heading);
+
+        // Contact details
+        const contactDetails = [
+            { icon: "bi bi-house", text: "123 Kampong St, Singapore 123456" },
+            { icon: "bi bi-envelope", text: "info@kampongshare.com" },
+            { icon: "bi bi-phone", text: "+65 1234 5678" },
+            { icon: "bi bi-printer", text: "+65 8765 4321" }
+        ];
+
+        contactDetails.forEach(detail => {
+            const p = document.createElement("p");
+            
+            const icon = document.createElement("i");
+            icon.className = detail.icon + " me-3";
+            
+            p.appendChild(icon);
+            p.appendChild(document.createTextNode(detail.text));
+            
+            col.appendChild(p);
+        });
+
+        // Social media section
+        const socialSection = this.createSocialMediaSection();
+        col.appendChild(socialSection);
+
+        return col;
+    }
+
+    // Create social media links section
+    createSocialMediaSection() {
+        const socialDiv = document.createElement("div");
+        socialDiv.className = "mt-4";
+        
+        const socialHeading = document.createElement("p");
+        socialHeading.className = "mb-2";
+        socialHeading.textContent = "Follow us:";
+        
+        socialDiv.appendChild(socialHeading);
+        
+        const iconsDiv = document.createElement("div");
+        iconsDiv.className = "d-flex gap-3";
+        
+        this.footerLinks.socials.forEach(social => {
+            const link = document.createElement("a");
+            link.href = social.url;
+            link.className = "text-reset";
+            link.setAttribute("target", "_blank");
+            
+            const icon = document.createElement("i");
+            icon.className = social.icon + " fs-5";
+            
+            link.appendChild(icon);
+            iconsDiv.appendChild(link);
+        });
+        
+        socialDiv.appendChild(iconsDiv);
+        return socialDiv;
+    }
+
+    // Create the bottom copyright section
+    createFooterBottomSection() {
+        const section = document.createElement("div");
+        section.className = "text-center p-4 border-top";
+        
+        const copyright = document.createElement("span");
+        copyright.textContent = `© ${new Date().getFullYear()} Copyright: `;
+        
+        const link = document.createElement("a");
+        link.className = "text-reset fw-bold";
+        link.href = "index.html";
+        link.textContent = "KampongShare.com";
+        
+        section.appendChild(copyright);
+        section.appendChild(link);
+        
+        return section;
+    }
+
+    // Method to inject the footer into a specific container
+    injectFooter(containerId = "footer-container") {
+        const container = document.getElementById(containerId);
+        if (container) {
+            container.innerHTML = ""; // Clear any existing content
+            container.appendChild(this.createFooter());
+        } else {
+            console.error(`Container with id ${containerId} not found`);
+        }
+    }
+}
+
 
 // Optional: Highlight current page in navigation
 function highlightCurrentPage() {
