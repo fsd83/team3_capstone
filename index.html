@@ -14,246 +14,146 @@
 
 
   <body class="main-body">
-
-  <!-- *Container for navbar and header -->
        
   <!--* Top Nav bar section -->
-  <nav class="navbar navbar-dark navbar-expand-lg bg-body-tertiary top-nav">
-    <div class="container-fluid align-content-center">
-          <a class="navbar-brand" href="index.html"><img src="img/weblogo.png" alt="Company Logo" width="15%" height="auto" class="flex-column align-text-center">KampongShare</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item ">
-            <a class="nav-link active" aria-current="page" href="about.html">About Us</a>
-          </li>
-            <li class="nav-item">
-              <a class="nav-link" href="contact.html">Contact Us</a>
-            </li>
-          <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Catalogues
-              </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Appliances</a></li>
-              <li><a class="dropdown-item" href="#">Fashion</a></li>
-              <li><a class="dropdown-item" href="#">Others</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
-            </ul>
-          </li>
-                <!--* Top Search Bar  -->
-                <li class="nav-item p-3"></li>
-                  <form class="d-flex align-content-center" role="search">
-                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn" type="submit">Search</button>
-                    <!-- Changed the button -->
-                </form>
-              </li>
-          </li>
-        </ul>
-     
-        <!--* Top right side Nav  -->
-        <div>
-            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-bell" viewBox="0 0 16 16">
-              <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2M8 1.918l-.797.161A4 4 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4 4 0 0 0-3.203-3.92zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5 5 0 0 1 13 6c0 .88.32 4.2 1.22 6"/>
-            </svg>
-            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
-              <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
-              <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
-            </svg>
-            <a href="register.html"><button type="button" class="btn">Sign-up</button></a>
-            <a href="#"><button type="button" class="btn">Login</button></a>
-            <!-- Changed the buttons-->
-        </div>
-      </div>
-    </div>
-  </nav>
-  <!-- End Nav bar section -->
+    <!-- Navigation placeholder -->
+      <div id="navbar-container"></div>
 
-
-         
-   
-   
-    <!--* Hero Banner  -->      
-       
+      <!-- Load navbar script -->
+        <script src="script/navbar.js"></script>
+              
+      
+    <!--* Hero Banner  -->       
     <!-- <hr class="featurette-divider"> -->
-    <div class="row featurette p-3 banner">
-      <div class="col-md-7 align-content-center text-end">
-        <h2 class="featurette-heading fw-normal lh-1">Sharing, Recycling <span class="text-body-secondary">It’ll Slogan over</span></h2>
-        <p class="lead">EG. How about some caring and sharing </p>
-        <button type="button" class="btn btn-outline-warning">Donate Now!</button>
+    <div class="row featurette p-3 banner ">
+      <div class="col-md-7 align-content-center text-end text-wrap">
+        <h2 class="featurette-heading fw-normal lh-1 text-start">Welcome to Kampong Share,
+          <br> <span class="text-body-secondary">
+          minimize waste, and cultivate a thriving local community for everyone.</span></h2>
+           <p class="lead">Share More, Waste Less, Grow Together</p>
+            <button type="button" class="btn btn-outline-warning">Donate Now!</button>
       </div>
       <div class="col-md-5">
-        <img src="img/img-dummy.png" class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice"><title>Placeholder</title><rect width="100%" height="100%" fill="var(--bs-secondary-bg)"/><text x="50%" y="50%" fill="var(--bs-secondary-color)" dy=".3em">
+        <img src="img/10.a-heartwarming-lifestyle.jpeg" class="imgb bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto shadow" width="400" height="400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice"><title>Placeholder</title><rect width="100%" height="100%" fill="var(--bs-secondary-bg)"/><text x="50%" y="50%" fill="var(--bs-secondary-color)" dy=".3em">
       </div>
     </div>
+
+
+
     <!-- End Hero Banner -->
 
 
-    <!-- first row of cards -->
+    <!--* First Row Base Cards -->
     <div class="py-4 mt-5 card-bg">
       <!-- card-bg class for bg color -->
       <div class="container"><h3 class="= align-content-center">Appliances</h2>        
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-          <!-- First Col -->
+         
+          <!--* First Column -->
           <div class="col">
-            <div class="card shadow-sm">
-              <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+            <div class="card">
+              <img src="img_products/Appliances//cornell_wet_dry.jpg" class="card-img-top card-thumbnail"></img>
               <div class="card-body">
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                <div class="d-flex justify-content-between align-items-center">
-                  <small class="text-body-secondary">9 mins</small>
-                  <!-- To generate the timing that was being posted -->
-                  <div class="btn-group">
-                    <button type="button" class="btn btn-sm btn-outline-light">View</button>
-                    <button type="button" class="btn btn-sm btn-outline-light">Edit</button>
-                  </div>                
-                </div>
+                <p class="card-text">Moving house, giving away this 2 years portable wet and dry vacuum.</p>
+                <div></div>
               </div>
             </div>
           </div>
           <!-- Sec Col -->
           <div class="col">
-            <div class="card shadow-sm">
-              <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-              <div class="card-body">
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                <div class="d-flex justify-content-between align-items-center">
-                  <small class="text-body-secondary">9 mins</small>
-                  <div class="btn-group">
-                    <button type="button" class="btn btn-sm btn-outline-light">View</button>
-                    <button type="button" class="btn btn-sm btn-outline-light">Edit</button>
-                  </div>
-                </div>
+            <div class="card">
+             <img src="img_products/Appliances/miele_vacuum.jpg" class="card-img-top card-thumbnail"></img>
+              <div class="card-body g-3">
+                <p class="card-text">This Bought a new robotic vacuum, any taker of this vacuum. Low usage and still under warranty.</p>
+                
               </div>
             </div>
           </div>
-          <!-- Third Col -->
+
+          <!--* Third Col -->
           <div class="col">
-            <div class="card shadow-sm">
-              <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+            <div class="card">
+              <img src="img_products/Appliances/Fan two.jpg" class="card-img-top card-thumbnail"></img>
               <div class="card-body">
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                <div class="d-flex justify-content-between align-items-center">
-                  <small class="text-body-secondary">9 mins</small>
-                  <div class="btn-group">
-                    <button type="button" class="btn btn-sm btn-outline-light">View</button>
-                    <button type="button" class="btn btn-sm btn-outline-light">Edit</button>
-                  </div>
-                </div>
-              </div>
+                <div><p class="card-text">Bladeless fan, condition 30/100.</p>
+                <div></div>
+               
+             </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <!-- sec row of cards -->
+
+    <!--* Second row base cards -->
     <div class="py-4 bg-body-tertiary card-bg">
       <div class="container"><h3 class="= align-content-center">Fashion</h2>        
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-          <!-- First Col -->
+
+          <!--* First Col -->
           <div class="col">
-            <div class="card shadow-sm">
-              <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+            <div class="card">
+             <img src="img_products/Fashion/5_cotton_on_crop_tops_camisole.jpg" class="card-img-top card-thumbnail" alt="">
               <div class="card-body">
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                <div class="d-flex justify-content-between align-items-center">
-                  <small class="text-body-secondary">9 mins</small>
-                  <div class="btn-group">
-                    <button type="button" class="btn btn-sm btn-outline-light">View</button>
-                    <button type="button" class="btn btn-sm btn-outline-light">Edit</button>
-                  </div>
-                </div>
+                <p class="card-text">Giving away cotton crop tops.</p>
               </div>
             </div>
           </div>
-          <!-- Sec Col -->
+
+          <!--* Sec Col -->
           <div class="col">
-            <div class="card shadow-sm">
-              <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+            <div class="card">
+             <img src="img_products/Fashion/all_for_100_bulk.jpg" class="card-img-top card-thumbnail"></img>
               <div class="card-body">
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                <div class="d-flex justify-content-between align-items-center">
-                  <small class="text-body-secondary">9 mins</small>
-                  <div class="btn-group">
-                    <button type="button" class="btn btn-sm btn-outline-light">View</button>
-                    <button type="button" class="btn btn-sm btn-outline-light">Edit</button>
-                  </div>
-                </div>
+                <p class="card-text">Wardrobe overhaul, any takers of these bulk of crop tops and T-shirt?</p>
               </div>
             </div>
           </div>
-          <!-- Third Col -->
+
+          <!--* Third Col -->
           <div class="col">
-            <div class="card shadow-sm">
-              <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+            <div class="card">
+              <img src="img_products/Fashion/18mm_dark_brown_watch_strap.jpg" class="card-img-top card-thumbnail"></img>
               <div class="card-body">
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                <div class="d-flex justify-content-between align-items-center">
-                  <small class="text-body-secondary">9 mins</small>
-                  <div class="btn-group">
-                    <button type="button" class="btn btn-sm btn-outline-light">View</button>
-                    <button type="button" class="btn btn-sm btn-outline-light">Edit</button>
-                  </div>
-                </div>
+                <p class="card-text">18mm dark brow watch strap, anyone who want can ping me. Bought a wrong size of the watch strap online.</p>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <!-- third row of cards -->
-    <div class="py-4 mb-5 bg-body-tertiary card-bg">
+
+    <!-- * Third Row Cards -->
+    <div class="py-4 bg-body-tertiary card-bg">
       <div class="container"><h3 class="= align-content-center">Others</h2>        
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-          <!-- First Col -->
+          
+          <!--* First Col -->
           <div class="col">
-            <div class="card shadow-sm">
-              <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+            <div class="card">
+            <a href="#>"><img src="img_products/Others/clearance_sale_small_plastic_j_1746174011_0061e01a_progressive.jpg" class="card-img-top card-thumbnail"></img></a>
               <div class="card-body">
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                <div class="d-flex justify-content-between align-items-center">
-                  <small class="text-body-secondary">9 mins</small>
-                  <div class="btn-group">
-                    <button type="button" class="btn btn-sm btn-outline-light">View</button>
-                    <button type="button" class="btn btn-sm btn-outline-light">Edit</button>
-                  </div>
+                <p class="card-text">New plastic container with cover, 24 pieces </p>
+             </div>
+            </div>
+          </div>
+          
+          <!--* Sec Col -->
+          <div class="col">
+            <div class="card">
+             <img src="img_products/Others/wok_covers.jpg" class="card-img-top card-thumbnail"></img>
+              <div class="card-body">
+                <p class="card-text">Wok covers, various sizes, good condition  .</p>
                 </div>
               </div>
             </div>
-          </div>
-          <!-- Sec Col -->
+          
+          <!--* Third Col -->
           <div class="col">
-            <div class="card shadow-sm">
-              <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+            <div class="card">
+             <img src="img_products/Others/red_packet_hong_bao_ang_pao_1747550921_8093fc8e_progressive.jpg" class="card-img-top card-thumbnail"></img>
               <div class="card-body">
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                <div class="d-flex justify-content-between align-items-center">
-                  <small class="text-body-secondary">9 mins</small>
-                  <div class="btn-group">
-                    <button type="button" class="btn btn-sm btn-outline-light">View</button>
-                    <button type="button" class="btn btn-sm btn-outline-light">Edit</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- Third Col -->
-          <div class="col">
-            <div class="card shadow-sm">
-              <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-              <div class="card-body">
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                <div class="d-flex justify-content-between align-items-center">
-                  <small class="text-body-secondary">9 mins</small>
-                  <div class="btn-group">
-                    <button type="button" class="btn btn-sm btn-outline-light">View</button>
-                    <button type="button" class="btn btn-sm btn-outline-light">Edit</button>
-                  </div>
-                </div>
+                <p class="card-text">Any Ang Bao collectors here? Keen of this Ang Bao packer set collection?</p>
               </div>
             </div>
           </div>
@@ -261,28 +161,19 @@
       </div>
     </div>
      
-    <!-- *Footer -->
-    <!-- Footer - Copyrights -->
-    <section class="footer">        
-      <footer>
-        <div class="footer-text">
-          &copy2025 Copyrights: <a href="" class="text-success-emphasis text-decoration-none">KampongShare &#8482; All rights reserved.</a>
-        </div>        
-      </footer>
-    </section>
-    <!-- End of Footer -->
+     
+    <!-- Footer Container -->
+      <div id="footer-container"></div>
+    
+    <!-- Footer Management Script -->
+      <script src="script/footer.js"></script>
 
-
-    <script
+  <script
     src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-    crossorigin="anonymous"
-    ></script>
-       
-
-
-
-
+    crossorigin="anonymous">
+  </script>
+  
   </body>
 </html>
 
