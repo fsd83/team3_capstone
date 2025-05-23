@@ -25,7 +25,7 @@
 
       <!-- Left Column: Profile Summary -->
       <div class="col-md-4 text-center">
-        <img src="img/profile-placeholder.png" class="img-fluid rounded-circle mb-3" width="200" height="200" alt="User Image"/>
+        <img src="img/img-dummy.png" class="img-fluid rounded-circle mb-3" width="150" height="150" alt="User Image"/>
         <h3>John Doe</h3>
         <p class="text-muted">john@example.com</p>
         <button class="btn btn-warning mt-2">Edit Profile</button>
@@ -73,35 +73,35 @@
   <div class="border border-dark p-3 rounded mb-5">
     <div class="row g-3">
       <div class="col-md-3 text-center">
-        <img src="img/donation1.jpg" class="img-fluid rounded" alt="Donation 1" />
+        <img src="img/img-dummy.png" class="img-fluid rounded" alt="Donation 1" />
         <button class="btn btn-primary btn-sm mt-2">Edit</button>
       </div>
       <div class="col-md-3 text-center">
-        <img src="img/donation2.jpg" class="img-fluid rounded" alt="Donation 2" />
+        <img src="img/img-dummy.png" class="img-fluid rounded" alt="Donation 2" />
         <button class="btn btn-primary btn-sm mt-2">Edit</button>
       </div>
       <div class="col-md-3 text-center">
-        <img src="img/donation3.jpg" class="img-fluid rounded" alt="Donation 3" />
+        <img src="img/img-dummy.png" class="img-fluid rounded" alt="Donation 3" />
         <button class="btn btn-primary btn-sm mt-2">Edit</button>
       </div>
       <div class="col-md-3 text-center">
-        <img src="img/donation4.jpg" class="img-fluid rounded" alt="Donation 4" />
+        <img src="img/img-dummy.png" class="img-fluid rounded" alt="Donation 4" />
         <button class="btn btn-primary btn-sm mt-2" disabled>Donated</button>
       </div>
       <div class="col-md-3 text-center">
-        <img src="img/donation5.jpg" class="img-fluid rounded" alt="Donation 5" />
+        <img src="img/img-dummy.png" class="img-fluid rounded" alt="Donation 5" />
         <button class="btn btn-primary btn-sm mt-2">Edit</button>
       </div>
       <div class="col-md-3 text-center">
-        <img src="img/donation6.jpg" class="img-fluid rounded" alt="Donation 6" />
+        <img src="img/img-dummy.png" class="img-fluid rounded" alt="Donation 6" />
         <button class="btn btn-primary btn-sm mt-2" disabled>Donated</button>
       </div>
       <div class="col-md-3 text-center">
-        <img src="img/donation7.jpg" class="img-fluid rounded" alt="Donation 7" />
+        <img src="img/img-dummy.png" class="img-fluid rounded" alt="Donation 7" />
         <button class="btn btn-primary btn-sm mt-2">Edit</button>
       </div>
       <div class="col-md-3 text-center">
-        <img src="img/donation8.jpg" class="img-fluid rounded" alt="Donation 8" />
+        <img src="img/img-dummy.png" class="img-fluid rounded" alt="Donation 8" />
         <button class="btn btn-primary btn-sm mt-2">Edit</button>
       </div>
     </div>
@@ -119,19 +119,19 @@
     <!-- Row 1 -->
     <div class="row g-4 mb-3">
       <div class="col-md-3 text-center">
-        <img src="https://via.placeholder.com/150" class="img-fluid rounded" alt="Request 1" />
+        <img src="img/img-dummy.png" class="img-fluid rounded" alt="Request 1" />
         <button class="btn btn-warning btn-sm mt-2">Pending</button>
       </div>
       <div class="col-md-3 text-center">
-        <img src="https://via.placeholder.com/150" class="img-fluid rounded" alt="Request 2" />
+        <img src="img/img-dummy.png" class="img-fluid rounded" alt="Request 2" />
         <button class="btn btn-secondary btn-sm mt-2" disabled>Confirmed</button>
       </div>
       <div class="col-md-3 text-center">
-        <img src="https://via.placeholder.com/150" class="img-fluid rounded" alt="Request 3" />
+        <img src="img/img-dummy.png" class="img-fluid rounded" alt="Request 3" />
         <button class="btn btn-warning btn-sm mt-2">Pending</button>
       </div>
       <div class="col-md-3 text-center">
-        <img src="https://via.placeholder.com/150" class="img-fluid rounded" alt="Request 4" />
+        <img src="img/img-dummy.png" class="img-fluid rounded" alt="Request 4" />
         <button class="btn btn-secondary btn-sm mt-2" disabled>Confirmed</button>
       </div>
     </div>
@@ -139,19 +139,19 @@
     <!-- Row 2 -->
     <div class="row g-4">
       <div class="col-md-3 text-center">
-        <img src="https://via.placeholder.com/150" class="img-fluid rounded" alt="Request 5" />
+        <img src="img/img-dummy.png" class="img-fluid rounded" alt="Request 5" />
         <button class="btn btn-warning btn-sm mt-2">Pending</button>
       </div>
       <div class="col-md-3 text-center">
-        <img src="https://via.placeholder.com/150" class="img-fluid rounded" alt="Request 6" />
+        <img src="img/img-dummy.png" class="img-fluid rounded" alt="Request 6" />
         <button class="btn btn-secondary btn-sm mt-2" disabled>Confirmed</button>
       </div>
       <div class="col-md-3 text-center">
-        <img src="https://via.placeholder.com/150" class="img-fluid rounded" alt="Request 7" />
+        <img src="img/img-dummy.png" class="img-fluid rounded" alt="Request 7" />
         <button class="btn btn-warning btn-sm mt-2">Pending</button>
       </div>
       <div class="col-md-3 text-center">
-        <img src="https://via.placeholder.com/150" class="img-fluid rounded" alt="Request 8" />
+        <img src="img/img-dummy.png" class="img-fluid rounded" alt="Request 8" />
         <button class="btn btn-secondary btn-sm mt-2" disabled>Confirmed</button>
       </div>
     </div>
