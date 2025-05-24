@@ -6,10 +6,10 @@ class NavigationBar {
         
         // create an array of links used on the site
         this.siteURLs = [
-            {name: "Home", url: "index.html", isActive: true},
-            {name: "About us", url: "about.html", isActive: true},
-            {name: "Contact us", url: "contact.html", isActive: true},
-            {name: "Work with us", url: "partnership.html", isActive: false},
+            {name: _HOME_TITLE, url: _HOME_URL, isActive: true},
+            {name: _ABOUT_TITLE, url: _ABOUT_URL, isActive: true},
+            {name: _CONTACT_TITLE, url: _CONTACT_URL, isActive: true},
+            {name: _PARTNERSHIP_URL, url: _PARTNERSHIP_URL, isActive: false},
                         
         ];
     }
@@ -203,6 +203,7 @@ class NavigationBar {
         searchButton.className = "btn";
         searchButton.type = "submit";
         searchButton.textContent = "Search";
+        searchButton.style.marginRight = _RIGHT_NAV_BTN;
 
         formContainer.appendChild(searchInput);
         formContainer.appendChild(searchButton);
@@ -214,31 +215,60 @@ class NavigationBar {
     createRightNavigation() {
         const rightNavContainer = document.createElement("div");
 
-        // Notification Bell Icon
-        const bellIcon = this.createSVGIcon(
-            'http://www.w3.org/2000/svg', 
-            '0 0 16 16', 
-            'M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2M8 1.918l-.797.161A4 4 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4 4 0 0 0-3.203-3.92zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5 5 0 0 1 13 6c0 .88.32 4.2 1.22 6',
-            25, 25
-        );
+        
+        const token = isAuthenticated();    // isAuthenticated returns a token from browser localStorage
+        
+        if(token){                          // user is logged in
+            
+            // Notification Bell Icon
+            const bellIcon = this.createSVGIcon(
+                'http://www.w3.org/2000/svg', 
+                '0 0 16 16', 
+                'M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2M8 1.918l-.797.161A4 4 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4 4 0 0 0-3.203-3.92zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5 5 0 0 1 13 6c0 .88.32 4.2 1.22 6',
+                25, 25
+            );
+    
+            bellIcon.style.marginRight = _RIGHT_NAV_BTN;
+            
+            // User Profile Icon
+            const userIcon = this.createSVGIcon(
+                'http://www.w3.org/2000/svg', 
+                '0 0 16 16', 
+                'M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1',
+                30, 30, 
+                ['M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0', 'M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1']
+            );
+            userIcon.style.marginRight = _RIGHT_NAV_BTN;
+            
+            const anchorUserProfile = document.createElement("a");
+            anchorUserProfile.href = _PROFILE_URL;
+            anchorUserProfile.append(userIcon);
 
-        // User Profile Icon
-        const userIcon = this.createSVGIcon(
-            'http://www.w3.org/2000/svg', 
-            '0 0 16 16', 
-            'M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1',
-            30, 30, 
-            ['M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0', 'M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1']
-        );
+            // Logout button
+            const logoutButton = this.createButton(_LOGOUT_TITLE, _LOGOUT_URL);
+            logoutButton.style.marginRight = _RIGHT_NAV_BTN;
 
-        // Sign Up Button
-        const signupButton = this.createButton("Sign-up", "register.html");
+            // call the logout function from auth.js
+            logoutButton.addEventListener("click", () => {
+                // call logout function from auth.js
+                logout();
+            })
 
-        // Login Button
-        const loginButton = this.createButton("Login", "login.html");
+            // Append icons that user should see if logged in
+            rightNavContainer.append(bellIcon, anchorUserProfile, logoutButton);
+        }else{
 
-        // Append all elements
-        rightNavContainer.append(bellIcon, userIcon, signupButton, loginButton);
+            // Sign Up Button
+            const signupButton = this.createButton(_SIGNUP_TITLE, _SIGNUP_URL);
+            signupButton.style.marginRight = _RIGHT_NAV_BTN;
+    
+            // Login Button
+            const loginButton = this.createButton(_LOGIN_TITLE, _LOGIN_URL);
+            loginButton.style.marginRight = _RIGHT_NAV_BTN;
+
+            // Append icons that user should see if logged in
+            rightNavContainer.append(signupButton, loginButton);
+        }
 
         return rightNavContainer;
     }
@@ -547,7 +577,7 @@ class Footer {
         
         const link = document.createElement("a");
         link.className = "text-reset fw-bold";
-        link.href = "index.html";
+        link.href = _HOME_URL;
         link.textContent = "KampongShare.com";
         
         section.appendChild(copyright);
