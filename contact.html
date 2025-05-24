@@ -17,86 +17,63 @@
   <body class="main-body">
 
          
-  <!--* Top Nav bar section -->
-    <!-- Navigation placeholder -->
-     <div id="navbar-container"></div>
-
-    <!-- Load navbar script -->
-     <script src="script/navbar.js"></script>
- 
-         
-    <!--* Hero Banner  -->      
-    
-    <!-- <hr class="featurette-divider"> -->
-    <div class="row featurette p-3">
-      <div class="col-md-7 align-content-center text-end">
-        <h2 class="featurette-heading fw-normal lh-1">First featurette heading. <span class="text-body-secondary">It’ll blow your mind.</span></h2>
-        <p class="lead">Some great placeholder content for the first featurette here. Imagine some exciting prose here.</p>
-        <button type="button" class="btn btn-outline-warning">Donate Now!</button>
-      </div>
-      <div class="col-md-5">
-        <img src="img/img-dummy.png" class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice"><title>Placeholder</title><rect width="100%" height="100%" fill="var(--bs-secondary-bg)"/><text x="50%" y="50%" fill="var(--bs-secondary-color)" dy=".3em">
-      </div>
-    </div>
-    <!-- End Hero Banner -->
-    
-    <!--* Hero Banner  -->      
+<!--* Top Nav bar section -->
+<!-- Navigation placeholder -->
+<div id="navbar-container"></div>
+  
         
-        <!-- Container for contact form -->
+<!-- Container for contact form -->
 
-        <div class="container w-75 mt-4 text-white">
-          <div id="msg-toast" class="toast text-white" role="alert">
-            <div id="toast-body" class="toast-body"></div>
-          </div>
+  <div class="container w-75 mt-4 text-white">
+    <div id="msg-toast" class="toast text-white" role="alert">
+      <div id="toast-body" class="toast-body"></div>
+        </div>
 
-          <!-- title -->
-           <div>
-            <h1 class="display-4 text-white fw-lighter">Contact Us</h1>
-           </div>
-    
-           <!-- Contact Form -->
-            <form id="contactForm" onsubmit="submitForm(event)" novalidate>
-            <div class="mb-3">
-              <label for="txtEmail" class="form-label">Email:</label>
+        <!-- title -->
+        <div>
+          <h1 class="display-4 text-dark fw-lighter">Contact Us</h1>
+        </div>
+
+        <!-- Contact Form -->
+          <form id="contactForm" onsubmit="submitForm(event)" novalidate>
+          <div class="mb-3">
+            <label for="txtEmail" class="form-label text-dark">Email:</label>
               <input type="email" class="form-control" id="txtEmail" placeholder="name@email.com" required>
-              <div class="invalid-feedback text-white">
-                Please enter your email.
-              </div>
-            </div>
-                <!-- Message input -->
-                <div class="mb-4">
-                  <label class="form-label text-white fw-lighter" for="txtMessage">Message</label>
-                  <textarea class="form-control" id="txtMessage" rows="4" required></textarea>
-                  <div class="invalid-feedback text-white">
-                      Please enter a valid text message.
-                  </div>
-              </div>
-              <button type="submit" class="btn btn-primary">Submit</button>
-              <button type="button" class="btn btn-secondary" onclick="confirmCancel()">Cancel</button> 
-              <!-- 2 different kinds of buttons -->
-           </form>
-      
           </div>
-    
-    <!-- *Footer -->
-    <!-- Footer - Copyright -->
-    <section class="footer">         
-      <footer>
-        <div class="footer-text">
-          &copy2025 Copyrights: <a href="" class="text-success-emphasis text-decoration-none">KampongShare &#8482; All rights reserved.</a>
-        </div>        
-      </footer>
-    </section>
-    <!-- End of Footer -->
 
-    <script
+        <!-- Message input -->
+        <div class="mb-4">
+          <label class="form-label text-dark fw-lighter" for="txtMessage">Message:</label>
+            <textarea class="form-control" id="txtMessage" rows="4" required placeholder="Please enter a valid text message."></textarea>
+        </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+          <button type="button" class="btn btn-secondary" onclick="confirmCancel()">Cancel</button> 
+        <!-- 2 different kinds of buttons -->
+    </form>
+  </div>
+    
+    <!-- Footer Container -->
+<div id="footer-container"></div>
+
+  <script
     src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-    crossorigin="anonymous"
-    ></script>
+    crossorigin="anonymous">
+  </script>
+
+  <!-- Load navbar script -->
+  <script src="script/Mock.js"></script>  <!-- TODO: to remove in production env. --> 
+  <script src="script/const.js"></script>
+  <script src="script/auth.js"></script>
+  
+  <script src="script/navbar.js"></script>
+  <script src="script/footer.js"></script>
         
+    
     <!-- Import custom scripts -->
-    <script src="./scripts/util/util.js"></script>
+    <script src="./scripts/contact_util.js"></script>
+
+
 
 <script>
   function showToast({ toastElement, toastBodyElement, bgColor, msg }) {

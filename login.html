@@ -15,8 +15,6 @@
 </head>
   <body class="main-body">
 
-  <!-- *Container for navbar and header -->
-        
   <!--* Top Nav bar section -->
   <!-- Navigation placeholder -->
   <div id="navbar-container"></div>
@@ -29,47 +27,47 @@
 
           <!-- title -->
            <div>
-            <h1 class="display-4 text-white fw-lighter">Login</h1>
+            <h1 class="display-4 text-dark fw-lighter">Login</h1>
            </div>
     
            <!-- Contact Form -->
            <form action="" method="post" novalidate class="needs-validation" onsubmit="submitForm();">
             <div class="mb-3">
-              <label for="txtEmail" class="form-label">User ID/Email:</label>
+              <label for="txtEmail" class="form-label text-dark">User ID/Email:</label>
               <input type="email" class="form-control" id="txt" placeholder="" required>
               <div class="invalid-feedback text-white">
                 Please enter your user ID or email.
               </div>
             </div>
             <div class="mb-3">
-                <label for="txtEmail" class="form-label">Password:</label>
+                <label for="txtEmail" class="form-label text-dark">Password:</label>
                 <input type="email" class="form-control" id="txtPassword" placeholder="" required>
                 <div class="invalid-feedback text-white">
                   Invalid Password.
                 </div>
               </div>
-              <button type="submit" class="btn btn-primary">Submit</button>
+              <button type="submit" class="btn btn-primary">Login</button>
               <button type="submit" class="btn btn-primary">Cancel</button>
            </form>
-      
           </div>
     
-    <!-- *Footer -->
-    <!-- Footer - Copyright -->
-    <section class="footer">         
-      <footer>
-        <div class="footer-text">
-          &copy2025 Copyrigh: <a href="" class="text-success-emphasis text-decoration-none">KampongShare &#8482; All rights reserved.</a>
-        </div>        
-      </footer>
-    </section>
-    <!-- End of Footer -->
+    <!-- Footer Container -->
+<div id="footer-container"></div>
 
-    <script
+
+  <script
     src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-    crossorigin="anonymous"
-    ></script>
+    crossorigin="anonymous">
+  </script>
+
+  <!-- Load navbar script -->
+  <script src="script/Mock.js"></script>  <!-- TODO: to remove in production env. --> 
+  <script src="script/const.js"></script>
+  <script src="script/auth.js"></script>
+  
+  <script src="script/navbar.js"></script>
+  <script src="script/footer.js"></script>
         
 
 
