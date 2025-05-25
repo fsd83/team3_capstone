@@ -20,43 +20,46 @@
   <div id="navbar-container"></div>
       
 
-     <!-- Registration form  --> 
+<!-- Container for contact form -->
+
+  <div class="container w-75 mt-4 text-dark">
+    <div id="msg-toast" class="toast text-white" role="alert">
+      <div id="toast-body" class="toast-body"></div>
+        </div>
+
+    <!-- title -->
+    <div>
+      <h1 class="display-4 fw-lighter">Register with us</h1>
+    </div>
     
+    <!-- Registration form  --> 
     <form class="regForm" onsubmit="submitForm(event)" novalidate>
-      <div id="msg-toast" class="toast text-white" role="alert">
-        <div id="toast-body" class="toast-body"></div>
+       <div class="mb-3">
+      <label for="inputEmail3" class="form-label">Email</label>
+        <input type="email" class="form-control regFormInput" id="inputEmail3" placeholder="* name@email.com" required>
+       <!-- <div id="msg-toast" class="toast text-white" role="alert"> -->
+        <!-- <div id="toast-body" class="toast-body"></div> -->
       </div>
+       
+      <!-- Password input -->
+      <div class="mb-4">
+        <label for="inputPassword3" class="form-label">Password</label>
+           <input type="password" class="form-control regFormInput" id="inputPassword3" placeholder="*" required>
+       </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+          <button type="button" class="btn btn-primary" onclick="confirmCancel()">Cancel</button>
       
-      <h1>Register with us</h1>
-      <div class="row mb-3">
-        <label for="userName3" class="col-sm-4 col-form-label">User Name</label>
-        <div class="col-sm-8">
-          <input type="userName" class="form-control regFormInput" id="userName3" placeholder="*" required>
-        </div>
-      </div>
-      <div class="row mb-3">
-        <label for="userId3" class="col-sm-4 col-form-label">User ID</label>
-        <div class="col-sm-8">
-          <input type="userId" class="form-control regFormInput" id="userId3">
-        </div>
-      </div>
-      <div class="row mb-3">
-        <label for="inputEmail3" class="col-sm-4 col-form-label">Email</label>
-        <div class="col-sm-8">
-          <input type="email" class="form-control regFormInput" id="inputEmail3" placeholder="* name@email.com" required>
-        </div>
-      </div>
-      <div class="row mb-3">
-        <label for="inputPassword3" class="col-sm-4 col-form-label">Password</label>
-        <div class="col-sm-8">
-          <input type="password" class="form-control regFormInput" id="inputPassword3" placeholder="*" required>
-        </div>
-      </div>
+           <!-- <div class="col-sm-8">
+          
+        </div> -->
+     
+
+      <!-- <div class="row mb-3 col-sm-8"></div> -->
       
-      <button type="submit" class="btn btn-primary">Submit</button>
-      <button type="button" class="btn btn-primary" onclick="confirmCancel()">Cancel</button>
+    
       
     </form>
+    </div>
     <!-- End Registration form -->
 
      
@@ -95,22 +98,30 @@
 
     const toastMsgExample = document.getElementById('msg-toast');
     const toastBodyExample = document.getElementById('toast-body');
-    
-    const userName = document.getElementById("userName3");
-    const userId = document.getElementById("userId3");
-    
+   
     const email = document.getElementById("inputEmail3");
     const password = document.getElementById("inputPassword3");
 
-    if (userName.value.trim() === "" || userId.value.trim() === "" || email.value.trim() === "" || password.value.trim() === "") {
+    if (email.value.trim() === "") {
       showToast({
         toastElement: toastMsgExample,
         toastBodyElement: toastBodyExample,
         bgColor: "danger",
-        msg: "Please enter all inputs."
+        msg: "Please enter your email."
       });
       return;
     }
+
+    if (password.value.trim() === "") {
+      showToast({
+        toastElement: toastMsgExample,
+        toastBodyElement: toastBodyExample,
+        bgColor: "danger",
+        msg: "Please enter your new passwords."
+      });
+      return;
+    }
+
 
     /*
       A valid username should start with an alphabet so, [A-Za-z]. 
@@ -120,36 +131,7 @@
     
     const userNameRegex = /^[A-Za-z][A-Za-z0-9_]{7,29}$/;
     */
-    
-    /*
-      A valid username should be alphanumeric_, length {8,20}
-    */
-    const userNameRegex = /^[A-Za-z0-9_]{8,20}$/;
-    if (!userNameRegex.test(userName.value)) {
-      showToast({
-        toastElement: toastMsgExample,
-        toastBodyElement: toastBodyExample,
-        bgColor: "danger",
-        msg: "Invalid User name - alphanumeric_ 8-20"
-      });
-      return;
-    }
-    
-    
-    /*
-      A valid userId should be alphanumeric_, length {8,20}
-    */
-    const useridRegex = /^[A-Za-z0-9_]{8,20}$/;
-    if (!useridRegex.test(userId.value)) {
-      showToast({
-        toastElement: toastMsgExample,
-        toastBodyElement: toastBodyExample,
-        bgColor: "danger",
-        msg: "Invalid User ID - alphanumeric_ 8-20"
-      });
-      return;
-    }
-    
+       
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email.value)) {
       showToast({
@@ -171,7 +153,7 @@
         toastElement: toastMsgExample,
         toastBodyElement: toastBodyExample,
         bgColor: "danger",
-        msg: "Invalid Password - alphanumeric 8-16"
+        msg: "Invalid Password - Please enter alphanumeric 8-16"
       });
       return;
     }

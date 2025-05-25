@@ -71,8 +71,7 @@
         
     
     <!-- Import custom scripts -->
-    <script src="./scripts/contact_util.js"></script>
-
+    <!-- <script src="./scripts/contact_util.js"></script> -->
 
 
 <script>
@@ -91,12 +90,22 @@
     const email = document.getElementById("txtEmail");
     const message = document.getElementById("txtMessage");
 
-    if (email.value.trim() === "" || message.value.trim() === "") {
+     if (email.value.trim() === "") {
       showToast({
         toastElement: toastMsgExample,
         toastBodyElement: toastBodyExample,
         bgColor: "danger",
-        msg: "Please enter all inputs."
+        msg: "Please enter your email."
+      });
+      return;
+    }
+
+    if (message.value.trim() === "") {
+      showToast({
+        toastElement: toastMsgExample,
+        toastBodyElement: toastBodyExample,
+        bgColor: "danger",
+        msg: "Please enter your message."
       });
       return;
     }
