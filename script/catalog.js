@@ -60,6 +60,7 @@ function addItem(item) {
   cardText.className = "d-flex justify-content-between align-items-center";
   colCardBody.append(cardDiv);
 
+  /* Remove buttons from card
   const cardButtonGrp = document.createElement("div");
   cardButtonGrp.className = "btn-group";
   cardDiv.append(cardButtonGrp);
@@ -75,6 +76,7 @@ function addItem(item) {
   cardButton1.className = "btn btn-sm btn-outline-secondary";
   cardButton1.textContent = "Edit";
   cardButtonGrp.append(cardButton1);
+  */
 
   const cardSmall = document.createElement("small");
   cardSmall.className = "text-body-secondary";
