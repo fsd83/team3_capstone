@@ -1,7 +1,7 @@
 // site pages' titles
 const _HOME_TITLE = "Home";             
-const _ABOUT_TITLE = "About";
-const _CONTACT_TITLE = "Contact";
+const _ABOUT_TITLE = "About Us";
+const _CONTACT_TITLE = "Contact Us";
 const _SIGNUP_TITLE = "Register";
 const _LOGIN_TITLE = "Login";
 const _LOGOUT_TITLE = "logout";
