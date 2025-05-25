@@ -60,22 +60,6 @@ function addItem(item) {
   cardText.className = "d-flex justify-content-between align-items-center";
   colCardBody.append(cardDiv);
 
-  const cardButtonGrp = document.createElement("div");
-  cardButtonGrp.className = "btn-group";
-  cardDiv.append(cardButtonGrp);
-
-  const cardButton = document.createElement("button");
-  cardButton.type = "button";
-  cardButton.className = "btn btn-sm btn-outline-secondary";
-  cardButton.textContent = "View";
-  cardButtonGrp.append(cardButton);
-
-  const cardButton1 = document.createElement("button");
-  cardButton1.type = "button";
-  cardButton1.className = "btn btn-sm btn-outline-secondary";
-  cardButton1.textContent = "Edit";
-  cardButtonGrp.append(cardButton1);
-
   const cardSmall = document.createElement("small");
   cardSmall.className = "text-body-secondary";
   cardSmall.textContent = "9 mins"
