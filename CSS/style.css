@@ -151,3 +151,10 @@ html, body{
     
 }
 
+.toast {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 1055;
+  min-width: 250px;
+}
