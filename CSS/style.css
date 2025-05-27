@@ -158,3 +158,25 @@ text-emphasis-color: #e90707;
     
 }
 
+.btn-disabled {
+  background-color: #ccc !important;
+  border-color: #ccc !important;
+  color: #666 !important;
+  cursor: not-allowed;
+}
+
+.donation-listing .col-md-3 {
+  display: block !important;
+  text-align: center;
+}
+
+.donation-listing .col-md-3 img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.donation-listing .col-md-3 button {
+  margin-top: 0.5rem;
+  display: inline-block;
+}
