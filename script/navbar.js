@@ -116,17 +116,13 @@ class NavigationBar {
 
         // Catalogues Dropdown
         const cataloguesItem = this.createDropdownNavItem("Catalogues", [
-            { text: "Appliances", href: "appliance.html#" },
-            { text: "Fashion", href: "fashion.html" },
-            { text: "Others", href: "others.html"},
-            { text: "Misc.", href: "misc.html"},
-            { isDivider: true },
-            { text: "Something else here", href: "#" }
+            { text: _APPLIANCE_TITLE, href: _APPLIANCE_URL },
+            { text: _FASHION_TITLE, href: _FASHION_URL },
+            { text: _OTHERS_TITLE, href: _OTHERS_URL},
         ]);
 
         // unwrap the elements to be used by navList
         navList.append(...navArr, cataloguesItem); 
-
 
         return navList;
     }

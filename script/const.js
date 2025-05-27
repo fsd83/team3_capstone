@@ -7,6 +7,10 @@ const _LOGIN_TITLE = "Login";
 const _LOGOUT_TITLE = "logout";
 const _PROFILE_TITLE = "User profile";
 const _PARNERSHIP_TITLE = "Work with us";
+const _APPLIANCE_TITLE = "Appliance";
+const _FASHION_TITLE = "Fashion";
+const _OTHERS_TITLE = "Others";
+
 
 // correspononding site pages' links
 const _HOME_URL = "index.html";             
@@ -17,6 +21,9 @@ const _LOGIN_URL = "login.html";
 const _LOGOUT_URL = "#";
 const _PROFILE_URL = "profile.html";
 const _PARTNERSHIP_URL = "partnership.html";
+const _APPLIANCE_URL = "catalog.html";
+const _FASHION_URL = "catalog.html";    // Temporary 
+const _OTHERS_URL = "catalog.html";     // Temporary 
 
 // right navbuttons' right spacing
 const _RIGHT_NAV_BTN = "1.0rem";
