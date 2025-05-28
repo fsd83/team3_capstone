@@ -227,3 +227,22 @@ document.addEventListener("DOMContentLoaded", () => {
     //loadColorsFromStorage();
     loadData();
   })
+
+//-----------------------------------------------
+//Function to activate profile editing
+function btnFunction() {
+  //Enable buttons
+  document.getElementById("sButton").disabled = false;
+  document.getElementById("rButton").disabled = false;
+
+  //Enable input fields
+  // Get the element with the ID 'myInput'
+  const inputElement = document.getElementById('userName');
+  const inputElement1 = document.getElementById('email');
+  const inputElement2 = document.getElementById('password');
+  // Remove the readonly attribute
+  inputElement.removeAttribute('readonly'); 
+  inputElement1.removeAttribute('readonly'); 
+  inputElement2.removeAttribute('readonly'); 
+
+}
