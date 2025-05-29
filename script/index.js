@@ -236,7 +236,6 @@ function btnFunction() {
   document.getElementById("rButton").disabled = false;
 
   //Enable input fields
-  // Get the element with the ID 'myInput'
   const inputElement = document.getElementById('userName');
   const inputElement1 = document.getElementById('email');
   const inputElement2 = document.getElementById('password');
@@ -245,4 +244,20 @@ function btnFunction() {
   inputElement1.removeAttribute('readonly'); 
   inputElement2.removeAttribute('readonly'); 
 
+}
+
+//Function to modify displayed profile
+function sBtnFunction() {
+  
+  //Get text in input fields
+  const inputElement = document.getElementById('userName');
+  const inputElement1 = document.getElementById('email');
+  
+  // Get form input text content
+  const userNameValue = inputElement.value;
+  const emailValue = inputElement1.value;
+
+  document.getElementById("userNameDisplay").textContent = userNameValue;
+  document.getElementById("userEmailDisplay").textContent = emailValue;
+  
 }
