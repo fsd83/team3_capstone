@@ -227,3 +227,37 @@ document.addEventListener("DOMContentLoaded", () => {
     //loadColorsFromStorage();
     loadData();
   })
+
+//-----------------------------------------------
+//Function to activate profile editing
+function btnFunction() {
+  //Enable buttons
+  document.getElementById("sButton").disabled = false;
+  document.getElementById("rButton").disabled = false;
+
+  //Enable input fields
+  const inputElement = document.getElementById('userName');
+  const inputElement1 = document.getElementById('email');
+  const inputElement2 = document.getElementById('password');
+  // Remove the readonly attribute
+  inputElement.removeAttribute('readonly'); 
+  inputElement1.removeAttribute('readonly'); 
+  inputElement2.removeAttribute('readonly'); 
+
+}
+
+//Function to modify displayed profile
+function sBtnFunction() {
+  
+  //Get text in input fields
+  const inputElement = document.getElementById('userName');
+  const inputElement1 = document.getElementById('email');
+  
+  // Get form input text content
+  const userNameValue = inputElement.value;
+  const emailValue = inputElement1.value;
+
+  document.getElementById("userNameDisplay").textContent = userNameValue;
+  document.getElementById("userEmailDisplay").textContent = emailValue;
+  
+}
