@@ -11,18 +11,27 @@
 
 <body class="main-body">
 
+  
+  <!--* Top Nav bar section -->
   <!-- Navbar placeholder -->
   <div id="navbar-container"></div>
 
+
   <!-- Login Section -->
   <div class="container w-75 mt-4 text-white">
-    <div>
-      <h1 class="display-4 text-dark fw-lighter">Login</h1>
+
+  <!-- Toast Notification -->
+    <div id="msg-toast" class="toast position-fixed bottom-0 end-0 p-3 text-white" role="alert" aria-live="assertive"
+      aria-atomic="true" style="z-index: 1055;">
+      <div id="toast-body" class="toast-body"></div>
     </div>
+  <div>
+    <h1 class="display-4 text-dark fw-lighter">Login</h1>
+  </div>
 
     <form onsubmit="submitForm(event);" novalidate>
       <div class="mb-3">
-        <label for="txtEmail" class="form-label text-dark">User ID/Email:</label>
+        <label for="txtEmail" class="form-label text-dark">Email:</label>
         <input type="email" class="form-control" id="txtEmail" required>
         <div class="invalid-feedback text-white">Please enter your user ID or email.</div>
       </div>
@@ -38,11 +47,7 @@
     </form>
   </div>
 
-  <!-- Toast Notification -->
-  <div id="msg-toast" class="toast position-fixed bottom-0 end-0 p-3 text-white" role="alert" aria-live="assertive"
-    aria-atomic="true" style="z-index: 1055;">
-    <div id="toast-body" class="toast-body"></div>
-  </div>
+
 
   <!-- Footer placeholder -->
   <div id="footer-container"></div>
@@ -83,24 +88,34 @@
       const password = document.getElementById("txtPassword");
 
       // Basic empty check
-      if (email.value.trim() === "" || password.value.trim() === "") {
+      if (email.value.trim() === "") {
         showToast({
           toastElement: toastMsg,
           toastBodyElement: toastBody,
           bgColor: "danger",
-          msg: "Please enter both email and password."
+          msg: "Please enter your Email."
         });
         return;
       }
 
-      // Email format check
+      if (password.value.trim() === "") {
+        showToast({
+          toastElement: toastMsg,
+          toastBodyElement: toastBody,
+          bgColor: "danger",
+          msg: "Please enter your password."
+        });
+        return;
+      }
+
+      // Email ID format check
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!emailRegex.test(email.value)) {
         showToast({
           toastElement: toastMsg,
           toastBodyElement: toastBody,
           bgColor: "danger",
-          msg: "Invalid email format."
+          msg: "Invalid user Email format."
         });
         return;
       }
