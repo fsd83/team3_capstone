@@ -26,34 +26,33 @@
       <!-- Left Column: Profile Summary -->
       <div class="col-md-4 text-center">
         <img src="img/img-dummy.png" class="img-fluid rounded-circle mb-3" width="150" height="150" alt="User Image"/>
-        <h3>John Doe</h3>
-        <p class="text-muted">john@example.com</p>
-        <button class="btn btn-warning mt-2">Edit Profile</button>
+        <h3 id="userNameDisplay">John Doe</h3>
+        <p class="text-muted" id="userEmailDisplay">john@example.com</p>
+        <button class="btn btn-warning mt-2" onclick="btnFunction();">Edit Profile</button>
       </div>
 
       <!-- Right Column: Sign In Form -->
       <div class="col-md-8">
-        <form id="signInForm">
+        <!-- Form submission is made to fail, so that the HTML will not reload. -->
+        <form id="signInForm" method="post" action="#" onsubmit="return false"> 
           <div class="mb-3">
             <label for="userName" class="form-label">User Name</label>
-            <input type="text" class="form-control" id="userName" placeholder="Enter your name">
+            <input readonly type="text" class="form-control" id="userName" placeholder="Enter your name">
           </div>
-
-         
 
           <div class="mb-3">
             <label for="email" class="form-label">Email address</label>
-            <input type="email" class="form-control" id="email" placeholder="Enter your email">
+            <input readonly type="email" class="form-control" id="email" placeholder="Enter your email">
           </div>
 
           <div class="mb-3">
             <label for="password" class="form-label">Password</label>
-            <input type="password" class="form-control" id="password" placeholder="Enter your password">
+            <input readonly type="password" class="form-control" id="password" placeholder="Enter your password">
           </div>
 
           <div class="d-flex justify-content-between">
-            <button type="submit" class="btn btn-primary">Save</button>
-            <button type="reset" class="btn btn-secondary">Clear</button>
+            <button id="sButton" type="submit" class="btn btn-primary" onclick="sBtnFunction();" disabled="true">Save</button>
+            <button id="rButton" type="reset" class="btn btn-secondary" disabled="true">Clear</button>
           </div>
         </form>
       </div>
