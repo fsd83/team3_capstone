@@ -158,7 +158,6 @@ text-emphasis-color: #e90707;
     
 }
 
-<<<<<<< HEAD
 .btn-disabled {
   background-color: #ccc !important;
   border-color: #ccc !important;
@@ -180,12 +179,4 @@ text-emphasis-color: #e90707;
 .donation-listing .col-md-3 button {
   margin-top: 0.5rem;
   display: inline-block;
-=======
-.toast {
-  position: fixed;
-  top: 1rem;
-  right: 1rem;
-  z-index: 1055;
-  min-width: 250px;
->>>>>>> 2616ab6dc3c4f512522b2ce57233e429186baa1b
 }
