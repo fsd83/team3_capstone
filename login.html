@@ -1,75 +1,148 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>T-3 Capstone Project</title>
-    <link
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-    rel="stylesheet"
-    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
-    crossorigin="anonymous">
-    <link rel="stylesheet" href="css/style.css">
-  </head>
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>T-3 Capstone Project</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/style.css">
 </head>
-  <body class="main-body">
 
+<body class="main-body">
+
+  
   <!--* Top Nav bar section -->
-  <!-- Navigation placeholder -->
+  <!-- Navbar placeholder -->
   <div id="navbar-container"></div>
-    
-    <!--* Hero Banner  -->      
-        
-        <!-- Container for contact form -->
-
-        <div class="container w-75 mt-4 text-white">
-
-          <!-- title -->
-           <div>
-            <h1 class="display-4 text-dark fw-lighter">Login</h1>
-           </div>
-    
-           <!-- Contact Form -->
-           <form action="" method="post" novalidate class="needs-validation" onsubmit="submitForm();">
-            <div class="mb-3">
-              <label for="txtEmail" class="form-label text-dark">User ID/Email:</label>
-              <input type="email" class="form-control" id="txt" placeholder="" required>
-              <div class="invalid-feedback text-white">
-                Please enter your user ID or email.
-              </div>
-            </div>
-            <div class="mb-3">
-                <label for="txtEmail" class="form-label text-dark">Password:</label>
-                <input type="email" class="form-control" id="txtPassword" placeholder="" required>
-                <div class="invalid-feedback text-white">
-                  Invalid Password.
-                </div>
-              </div>
-              <button type="submit" class="btn btn-primary">Login</button>
-              <button type="submit" class="btn btn-primary">Cancel</button>
-           </form>
-          </div>
-    
-    <!-- Footer Container -->
-<div id="footer-container"></div>
 
 
-  <script
-    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+  <!-- Login Section -->
+  <div class="container w-75 mt-4 text-white">
+
+  <!-- Toast Notification -->
+    <div id="msg-toast" class="toast position-fixed bottom-0 end-0 p-3 text-white" role="alert" aria-live="assertive"
+      aria-atomic="true" style="z-index: 1055;">
+      <div id="toast-body" class="toast-body"></div>
+    </div>
+  <div>
+    <h1 class="display-4 text-dark fw-lighter">Login</h1>
+  </div>
+
+    <form onsubmit="submitForm(event);" novalidate>
+      <div class="mb-3">
+        <label for="txtEmail" class="form-label text-dark">Email:</label>
+        <input type="email" class="form-control" id="txtEmail" required>
+        <div class="invalid-feedback text-white">Please enter your user ID or email.</div>
+      </div>
+      <div class="mb-3">
+        <label for="txtPassword" class="form-label text-dark">Password:</label>
+        <input type="password" class="form-control" id="txtPassword" required>
+        <div class="invalid-feedback text-white">Invalid Password.</div>
+      </div>
+      <div class="d-grid gap-2 d-md-block">
+        <button type="submit" class="btn btn-primary">Login</button>
+        <button type="button" class="btn btn-secondary" onclick="confirmCancel()">Cancel</button>
+      </div>
+    </form>
+  </div>
+
+
+
+  <!-- Footer placeholder -->
+  <div id="footer-container"></div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-    crossorigin="anonymous">
-  </script>
+    crossorigin="anonymous"></script>
 
-  <!-- Load navbar script -->
-  <script src="script/Mock.js"></script>  <!-- TODO: to remove in production env. --> 
+  <!-- Load mock scripts -->
+  <script src="script/Mock.js"></script>  <!-- TODO: Remove in production -->
   <script src="script/const.js"></script>
   <script src="script/auth.js"></script>
-  
   <script src="script/navbar.js"></script>
   <script src="script/footer.js"></script>
-        
 
+  <!-- Form Logic -->
+  <script>
+    function showToast({ toastElement, toastBodyElement, bgColor, msg }) {
+      toastBodyElement.textContent = msg;
+      toastElement.className = `toast align-items-center text-white bg-${bgColor} border-0 show`;
+      const toast = new bootstrap.Toast(toastElement);
+      toast.show();
+    }
 
-  </body>
+    function confirmCancel() {
+      if (confirm("Are you sure you want to cancel?")) {
+        window.location.href = "index.html";
+      }
+    }
+
+    async function submitForm(event) {
+      event.preventDefault();
+
+      const toastMsg = document.getElementById('msg-toast');
+      const toastBody = document.getElementById('toast-body');
+      const email = document.getElementById("txtEmail");
+      const password = document.getElementById("txtPassword");
+
+      // Basic empty check
+      if (email.value.trim() === "") {
+        showToast({
+          toastElement: toastMsg,
+          toastBodyElement: toastBody,
+          bgColor: "danger",
+          msg: "Please enter your Email."
+        });
+        return;
+      }
+
+      if (password.value.trim() === "") {
+        showToast({
+          toastElement: toastMsg,
+          toastBodyElement: toastBody,
+          bgColor: "danger",
+          msg: "Please enter your password."
+        });
+        return;
+      }
+
+      // Email ID format check
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email.value)) {
+        showToast({
+          toastElement: toastMsg,
+          toastBodyElement: toastBody,
+          bgColor: "danger",
+          msg: "Invalid user Email format."
+        });
+        return;
+      }
+
+      // TODO: Replace this with real authentication later
+      const loginSuccess = true;
+
+      if (loginSuccess) {
+        showToast({
+          toastElement: toastMsg,
+          toastBodyElement: toastBody,
+          bgColor: "success",
+          msg: "Login successful! Redirecting..."
+        });
+
+        setTimeout(() => {
+          window.location.href = "index.html";
+        }, 2000);
+      } else {
+        showToast({
+          toastElement: toastMsg,
+          toastBodyElement: toastBody,
+          bgColor: "danger",
+          msg: "Login failed. Please try again."
+        });
+      }
+    }
+  </script>
+</body>
 </html>
