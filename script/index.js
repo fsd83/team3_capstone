@@ -22,7 +22,7 @@ function addItem(item, row) {
   const img = document.createElement('img');
     img.src = item.imgSrc;
     img.classList.add("card-img-top,card-thumbnail");
-    //img.width = 200;
+    //img.width = 500;
     img.height = 300;
 
   colCard.append(img);  
