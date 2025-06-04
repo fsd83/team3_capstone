@@ -89,7 +89,7 @@ text-emphasis-color: #e90707;
 
 
 .container h3{
-    color: #1F7066;
+    color: #020202;
     text-shadow: 1px 0 #fbfbfa;
 }
 
@@ -123,9 +123,9 @@ text-emphasis-color: #e90707;
 /* Start catalog */
 
 .catalog-btn-group-top {
-    padding-top: 1rem;
+    /* padding-top: 1rem;
     padding-bottom: 1rem;
-    margin-bottom: 1rem;
+    margin-bottom: 1rem; */
     border-top: black 1px solid !important;
     border-bottom:black 1px solid !important;
 }
@@ -136,6 +136,7 @@ text-emphasis-color: #e90707;
 }
 
 /* End catalog */
+
 
 .regForm {
     padding-bottom: 3rem;
