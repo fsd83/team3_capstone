@@ -1,0 +1,161 @@
+<!-- OK -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>T-3 Capstone Project</title>
+    <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+    crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style-yan.css">
+
+     <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+</head>
+
+  <body class="main-body">
+
+  <!-- *Container for navbar and header -->
+        
+  <!--* Top Nav bar section -->
+    <!-- Navigation placeholder -->
+      <div id="navbar-container"></div>
+    
+    <!-- Load navbar script -->
+    <script src="script/navbar.js"></script>
+  <!-- End Nav bar sectionn -->
+   
+    <!-- Load itemlisting script -->
+   <script src="script/itemlisting.js"></script>
+
+  <!-- Main Content -->
+  <div class="container my-4">
+      <button class="btn btn-outline-secondary mb-3">
+          <i class="bi bi-arrow-left"></i> Back
+      </button>
+      
+    <div class="row">
+      <!-- Images Section (Right side) -->
+      <div class="col-lg-6">
+        <div class="main-image rounded">
+          <span class="fs-3">Main Image</span>
+        </div>
+        
+        <!-- Upload Button -->
+        <div class="mb-3 d-flex justify-content-center">
+         <input type="file" id="imageUpload" accept="image/*" multiple style="display:none;">
+         <button class="btn" id="uploadButton" onclick="document.getElementById('imageUpload').click()">Upload Image</button>
+         <div id="imagePreviews" class="d-flex gap-2 mb-3"></div>
+        </div>
+      </div>
+      
+      <!-- Item Details Form (Left side)-->
+        <div class="col-lg-6 mt-4 mt-lg-0">
+          <h2 class="mb-4">List Your Item</h2>
+                
+        <!-- Title -->
+          <form>
+          <div class="row mb-3">
+            <label for="inputTitle" class="col-sm-2 col-form-label"><strong>Title: </strong></label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" placeholder="eg. Shoes" id="inputTitle">
+            </div>
+          </div>
+          
+        <!-- Category -->
+          <fieldset class="row mb-3">
+            <legend class="col-form-label col-sm-2 pt-0"><strong>Category:</strong> </legend>
+            <div class="col-sm-10">
+              
+              <!-- Should inlineRadio1 change to the specific category?-->
+              <!-- changed name="inlineRadioOptions" to Category -->
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="itemCategory" id="inlineRadio1" value="option1">
+                <label class="form-check-label" for="inlineRadio1">Appliances</label>
+              </div>
+              
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="itemCategory" id="inlineRadio2" value="option2">
+                <label class="form-check-label" for="inlineRadio2">Fashion</label>
+              </div>
+              
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="itemCategory" id="inlineRadio3" value="option3">
+                <label class="form-check-label" for="inlineRadio3">Others</label>
+              </div>
+            </div>
+          </fieldset>
+            
+        <!-- Condition -->
+        <div class="row mb-3">
+          <label for="itemCondition" class="col-sm-2 col-form-label"><strong>Condition:</strong></label>
+          <div class="col-sm-10">
+            <select class="form-select" id="itemCondition">
+            <option value="" selected disabled>Select condition:</option>
+            <option value="new">Brand New</option>
+            <option value="used">Used - Like New</option>
+            <option value="good">Used - Good</option>
+            <option value="fair">Used - Fair</option>
+            </select>
+          </div>
+        </div>
+    
+        <!-- Description -->
+        <div class="mb-3">
+            <label for="itemDescription" class="form-label"><strong>Description:</strong></label>
+            <textarea class="form-control" id="itemDescription" rows="3" placeholder="Enter item description and your availability. eg. Shoes in size 39. Just some minor scruffs. Able to meet on Tuesdays, 8.30pm"></textarea>
+        </div>
+
+        <div class="row mb-3">
+          <label for="itemLocation" class="col-sm-2 col-form-label"><strong>Location: </strong></label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" placeholder="eg. 29 Smith St, S058943" id="itemLocation">
+          </div>
+        </div>
+
+        <!-- Action Buttons -->
+          <div class="mb-4">
+          <button class="btn me-2" id="clearButton">
+            <i class="bi bi-trash"></i> Clear </button>
+
+          <button class="btn" id="submitButton">
+              <i class="bi bi-send"></i> Submit </button>
+          </div>
+          
+        <!-- Policy -->
+        <p class="policy">
+          <strong>Policy:</strong> Kindly do not abuse this website. Deal with care and treat people with courtesy and respect.
+        </p>
+              
+      </div>
+    </div>
+  </div>
+</form>
+
+
+
+
+    
+    
+
+
+     
+ <!-- Footer Container -->
+      <div id="footer-container"></div>
+  <!-- Footer Management Script -->
+      <script src="script/footer.js"></script>
+
+
+    <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"
+    ></script>
+        
+
+
+  </body>
+</html>
