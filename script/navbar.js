@@ -225,6 +225,7 @@ class NavigationBar {
             );
     
             bellIcon.style.marginRight = _RIGHT_NAV_BTN;
+            bellIcon.style.color = "#fff";
             
             // User Profile Icon
             const userIcon = this.createSVGIcon(
@@ -238,6 +239,7 @@ class NavigationBar {
             
             const anchorUserProfile = document.createElement("a");
             anchorUserProfile.href = _PROFILE_URL;
+            anchorUserProfile.style.color = "#fff";
             anchorUserProfile.append(userIcon);
 
             // Logout button

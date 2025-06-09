@@ -120,8 +120,10 @@
         return;
       }
 
-      // TODO: Replace this with real authentication later
-      const loginSuccess = true;
+      // Authenticate user here
+      const formData = { email: email.value, password: password.value };      // JavaScript Object formData stores the form's input values
+            
+      const loginSuccess = await login(formData);                             // Invoke login() function, and end (return)
 
       if (loginSuccess) {
         showToast({
@@ -131,9 +133,20 @@
           msg: "Login successful! Redirecting..."
         });
 
+        const token = window.localStorage.getItem(_USERTOKEN);                          // Retrieve usertoken from local storage
+        const user = decodeUser(token);                                                 // decode the token for the role 
+
+        const adminStatus = user.roles.some(role => role.authority === 'ADMIN');        // !! Find "ADMIN" authority from token's roles
+            
         setTimeout(() => {
-          window.location.href = "index.html";
+          
+          if(adminStatus)                                                               // !! This example only look for "ADMIN" authority
+            window.location = _ADMIN_URL;                                               // Redirect the user to adminpage
+          else                                                                          // !! Other authority will be deemed as user
+            window.location = _HOME_URL;                                                // Redirect the user to homepage        
+
         }, 2000);
+
       } else {
         showToast({
           toastElement: toastMsg,

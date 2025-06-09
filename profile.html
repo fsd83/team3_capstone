@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>User Profile Sign In</title>
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+    crossorigin="anonymous"
+  />
+  <link rel="stylesheet" href="CSS/style.css"/>
+</head>
+
+<body class="main-body">
+
+  <!-- Navbar -->
+  <div id="navbar-container"></div>
+  <script src="script/navbar.js"></script>
+
+  <!-- Profile + Sign In Form -->
+  <div class="container my-5">
+    <div class="row">
+
+      <!-- Left Column: Profile Summary -->
+      <div class="col-md-4 text-center">
+        <img src="img/img-dummy.png" class="img-fluid rounded-circle mb-3" width="150" height="150" alt="User Image"/>
+        <h3 id="userNameDisplay">John Doe</h3>
+        <p class="text-muted" id="userEmailDisplay">john@example.com</p>
+        <button class="btn btn-warning mt-2" onclick="btnFunction();">Edit Profile</button>
+      </div>
+
+      <!-- Right Column: Sign In Form -->
+      <div class="col-md-8">
+        <!-- Form submission is made to fail, so that the HTML will not reload. -->
+        <form id="signInForm" method="post" action="#" onsubmit="return false"> 
+          <div class="mb-3">
+            <label for="userName" class="form-label">User Name</label>
+            <input readonly type="text" class="form-control" id="userName" placeholder="Enter your name">
+          </div>
+
+          <div class="mb-3">
+            <label for="email" class="form-label">Email address</label>
+            <input readonly type="email" class="form-control" id="email" placeholder="Enter your email">
+          </div>
+
+          <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input readonly type="password" class="form-control" id="password" placeholder="Enter your password">
+          </div>
+
+          <div class="d-flex justify-content-between">
+            <button id="sButton" type="submit" class="btn btn-primary" onclick="sBtnFunction();" disabled="true">Save</button>
+            <button id="rButton" type="reset" class="btn btn-secondary" disabled="true">Clear</button>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+
+<div class="container my-5 donation-listing">
+  <div class="d-flex justify-content-between align-items-center mb-2">
+    <h3>Your Donation Listing</h3>
+    <a href="#" class="btn btn-success btn-sm">Add Item</a>
+  </div>
+
+  <div class="border border-dark p-3 rounded mb-5">
+    <div class="row g-3">
+      <div class="col-md-3 text-center">
+        <img src="img/img-dummy.png" class="img-fluid rounded" alt="Donation 1" />
+        <button class="btn btn-primary btn-sm mt-2">Edit</button>
+      </div>
+      <div class="col-md-3 text-center">
+        <img src="img/img-dummy.png" class="img-fluid rounded" alt="Donation 2" />
+        <button class="btn btn-primary btn-sm mt-2">Edit</button>
+      </div>
+      <div class="col-md-3 text-center">
+        <img src="img/img-dummy.png" class="img-fluid rounded" alt="Donation 3" />
+        <button class="btn btn-primary btn-sm mt-2">Edit</button>
+      </div>
+      <div class="col-md-3 text-center">
+        <img src="img/img-dummy.png" class="img-fluid rounded" alt="Donation 4" />
+        <button class="btn btn-primary btn-sm mt-2" disabled>Donated</button>
+      </div>
+      <div class="col-md-3 text-center">
+        <img src="img/img-dummy.png" class="img-fluid rounded" alt="Donation 5" />
+        <button class="btn btn-primary btn-sm mt-2">Edit</button>
+      </div>
+      <div class="col-md-3 text-center">
+        <img src="img/img-dummy.png" class="img-fluid rounded" alt="Donation 6" />
+        <button class="btn btn-primary btn-sm mt-2" disabled>Donated</button>
+      </div>
+      <div class="col-md-3 text-center">
+        <img src="img/img-dummy.png" class="img-fluid rounded" alt="Donation 7" />
+        <button class="btn btn-primary btn-sm mt-2">Edit</button>
+      </div>
+      <div class="col-md-3 text-center">
+        <img src="img/img-dummy.png" class="img-fluid rounded" alt="Donation 8" />
+        <button class="btn btn-primary btn-sm mt-2">Edit</button>
+      </div>
+    </div>
+
+    <div class="mt-3 text-center">
+      <button class="btn btn-outline-primary btn-sm">Load More</button>
+    </div>
+  </div>
+</div>
+
+<!-- Your Request Listing -->
+<div class="container my-5">
+  <h3>Your Request Listing</h3>
+  <div class="border border-dark p-3 rounded">
+    <!-- Row 1 -->
+    <div class="row g-4 mb-3">
+      <div class="col-md-3 text-center">
+        <img src="img/img-dummy.png" class="img-fluid rounded" alt="Request 1" />
+        <button class="btn btn-warning btn-sm mt-2">Pending</button>
+      </div>
+      <div class="col-md-3 text-center">
+        <img src="img/img-dummy.png" class="img-fluid rounded" alt="Request 2" />
+        <button class="btn btn-secondary btn-sm mt-2" disabled>Confirmed</button>
+      </div>
+      <div class="col-md-3 text-center">
+        <img src="img/img-dummy.png" class="img-fluid rounded" alt="Request 3" />
+        <button class="btn btn-warning btn-sm mt-2">Pending</button>
+      </div>
+      <div class="col-md-3 text-center">
+        <img src="img/img-dummy.png" class="img-fluid rounded" alt="Request 4" />
+        <button class="btn btn-secondary btn-sm mt-2" disabled>Confirmed</button>
+      </div>
+    </div>
+
+    <!-- Row 2 -->
+    <div class="row g-4">
+      <div class="col-md-3 text-center">
+        <img src="img/img-dummy.png" class="img-fluid rounded" alt="Request 5" />
+        <button class="btn btn-warning btn-sm mt-2">Pending</button>
+      </div>
+      <div class="col-md-3 text-center">
+        <img src="img/img-dummy.png" class="img-fluid rounded" alt="Request 6" />
+        <button class="btn btn-secondary btn-sm mt-2" disabled>Confirmed</button>
+      </div>
+      <div class="col-md-3 text-center">
+        <img src="img/img-dummy.png" class="img-fluid rounded" alt="Request 7" />
+        <button class="btn btn-warning btn-sm mt-2">Pending</button>
+      </div>
+      <div class="col-md-3 text-center">
+        <img src="img/img-dummy.png" class="img-fluid rounded" alt="Request 8" />
+        <button class="btn btn-secondary btn-sm mt-2" disabled>Confirmed</button>
+      </div>
+    </div>
+
+    <div class="text-center mt-4">
+      <button class="btn btn-outline-secondary">Load More</button>
+    </div>
+  </div>
+</div>
+
+  <!-- Footer Container -->
+  <div id="footer-container"></div>
+
+
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous">
+  </script>
+
+  <!-- Load navbar script -->
+  <script src="script/Mock.js"></script>  <!-- TODO: to remove in production env. --> 
+  <script src="script/const.js"></script>
+  <script src="script/auth.js"></script>
+  
+  <script src="script/navbar.js"></script>
+  <script src="script/index.js"></script>
+  <script src="script/footer.js"></script>
+
+  <script>
+    
+    const token = isAuthenticated();  // !! TO INCLUDE AS LONG AS THE PAGE NEEDS AUTHENTICATON
+    
+    if(!token){                       // !! TO INCLUDE AS LONG AS THE PAGE NEEDS AUTHENTICATON
+      window.location = _HOME_URL;    // !! TO INCLUDE AS LONG AS THE PAGE NEEDS AUTHENTICATON
+    }                                 // !! TO INCLUDE AS LONG AS THE PAGE NEEDS AUTHENTICATON
+    
+  </script>
+
+</body>
+</html>

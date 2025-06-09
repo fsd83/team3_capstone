@@ -161,30 +161,25 @@
     const formData = { email: email.value, password: password.value };
 
     try {
-      const response = await fetch("https://getform.io/f/bkkywpzb", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData)
-      });
 
-      if (response.ok) {
-        showToast({
-          toastElement: toastMsgExample,
-          toastBodyElement: toastBodyExample,
-          bgColor: "success",
-          msg: "Your data has been sent. Thank you."
-        });
-        email.value = "";
-        password.value = "";
-      } else {
-        throw new Error("Submission failed");
+      const formData = {                                                      // JavaScript Object formData stores the form's input values
+        email: email.value, 
+        password: password.value,
+        role: "USER"
+      };           
+            
+      const registerSuccess = await register(formData);                      // Invoke register() function, and end (return)
+
+      if (!registerSuccess) {
+        throw new Error("Error registering. Please try again.");
       }
+      
     } catch (error) {
       showToast({
         toastElement: toastMsgExample,
         toastBodyElement: toastBodyExample,
         bgColor: "danger",
-        msg: "Error sending data. Please try again."
+        msg: error.message,
       });
     }
   }

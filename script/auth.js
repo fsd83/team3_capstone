@@ -31,10 +31,9 @@ function decodeUser(token){
     // !! Extract authenticated user's email from the token
     const arrToken = token.split(".");                              
     const decodedToken = JSON.parse(window.atob(arrToken[1]));
-    const email = decodedToken.email;
-    const username = decodedToken.username;
-    const role = decodedToken.role;
-    return {email: email, username: username, role: role};
+    const username = decodedToken.sub;
+    const roles = decodedToken.roles;
+    return {username: username, roles: roles};
 
 }
 
@@ -50,26 +49,19 @@ async function login(formData = {}){
 
     // !! Try/catch block (exception handling) to send data to login enpoint
     try {
-        // FETCH requests - send data or retrive data by calling an API endpoint            // TODO: refactor when end-point is available
-        /* 
-            const response = await fetch(_ENDPOINT_LOGIN, {                                 // Perform an async POST request to process the form data
-                method: "POST",
-                headers: {"Content-Type": "application/json"},
-                body: JSON.stringify(formData)
-            });
-        */
-
-        const response = Mock.getMockSuccess();                                            // TODO: remove when endpoint request is available (remove in production env.)  
-
-        const sleep = (delay) => new Promise((resolve) => setTimeout(resolve, delay));      // TODO: remove delay when endpoint is instated
-        await sleep(2000);
+        // FETCH requests - send data or retrive data by calling an API endpoint
+        const response = await fetch(_ENDPOINT_LOGIN, {                                 // Perform an async POST request to process the form data
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify(formData)
+        });
         
-        if(response.ok){                                                                    // If response is ok
+        if(response.ok){                                                                    // If response status == 200 (ok)
+            const result = await response.json();
+            const token = result.token;                                                   
             
-            const token = Mock.getToken(true);                                              // TODO: refactor when token is retrieved from response, (remove in production env.) 
-            window.localStorage.setItem(_USERTOKEN, token);                                 // Store the string in localStorage with the key 'usertoken'
-            window.location = _HOME_URL;                                                    // Redirect the user to homepage
-
+            window.localStorage.setItem(_USERTOKEN, token);                                 // Store the string in localStorage with the key 'usertoken' 
+            return true;
         }
         
         return;                                                                             // Else return false
@@ -85,4 +77,37 @@ async function login(formData = {}){
 function logout(){
     window.localStorage.removeItem(_USERTOKEN);                                             // Store the string in localStorage with the key 'token'
     window.location = _HOME_URL;                                                            // Redirect the user to homepage
+}
+
+
+// Function to register
+async function register(formData = {}){
+
+    if(Object.entries(formData).length == 0)
+        return;
+
+    /* We are are sending 
+        - email
+        - password
+        - role (it must be passed only by our web site)
+        - Spring Boot help us take care of CSRF Cross-site Referece Forgery
+    */
+
+    try {
+        
+        const response = await fetch(_ENDPOINT_REGISTER, {
+            method: "POST", 
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify(formData)
+        })
+
+        if(response.ok){
+            window.location = _LOGIN_URL;
+        }
+
+    } catch (error) {
+        console.log("Exception error gotten is:", error.message);
+        return;
+    }
+
 }

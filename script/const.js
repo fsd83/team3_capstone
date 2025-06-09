@@ -10,6 +10,7 @@ const _PARNERSHIP_TITLE = "Work with us";
 const _APPLIANCE_TITLE = "Appliance";
 const _FASHION_TITLE = "Fashion";
 const _OTHERS_TITLE = "Others";
+const _ADMIN_TITLE = "Admin"            // Temporary test admin title link
 
 
 // correspononding site pages' links
@@ -24,6 +25,7 @@ const _PARTNERSHIP_URL = "partnership.html";
 const _APPLIANCE_URL = "catalog.html";
 const _FASHION_URL = "catalog.html";    // Temporary 
 const _OTHERS_URL = "catalog.html";     // Temporary 
+const _ADMIN_URL = "admin.html"         // Temporary test admin route
 
 // right navbuttons' right spacing
 const _RIGHT_NAV_BTN = "1.0rem";
@@ -32,4 +34,5 @@ const _RIGHT_NAV_BTN = "1.0rem";
 const _USERTOKEN = "usertoken";
 
 // endponts
-const _ENDPOINT_LOGIN = "TBC";
+const _ENDPOINT_LOGIN = "http://localhost:8080/auth/api/signin";
+const _ENDPOINT_REGISTER = "http://localhost:8080/auth/api/signup";
