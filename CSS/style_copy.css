@@ -3,96 +3,70 @@
 
 
 
-html, body{
+/* html, body{
     box-sizing: border-box;
     font-family: "Lato", sans-serif;
     font-size: 16px;
-text-emphasis-color: #e90707;
-}
+    text-emphasis-color: #e90707;
+} */
+
 
 .btn{
- background-color: #ff9219;
- color:#fff;
- border-color: #eb9008;
- border-width: 2px;
- border-radius: 1.5rem;
+ background-color: #ee962a;
+ color: #0f0f0f;
+  
 }
 
-.btn:hover{
-    background-color: #ff7311 !important;
-    color:#ffffff; 
+
+.main-body, .card{
+    background-color: #a8c1bd;
 }
 
-.banner{
-    background-color: #30d0b5;
-}
 
-.banner, h2{
-    padding: 1rem;
-    font-style: italic;
-    text-shadow:#fbfbfa;
-}
+/* .logo{
+    display: flex;
+    width: 20%;
+    height: auto;
 
-.imgb{
-    /* box-shadow: 5px 5px; */
-    border-radius: 1.5rem;
-}
 
-.main-body{
-    background-color: #fff;
-}
+} */
+
 
 .top-nav{
-    background-color: #2ab69f !important;
+    background-color: #00606d !important; 
     color: #fff !important;
-    text-shadow: 1px 0 #fffefd;
-    top: 0;
-    width: 100%;
-    z-index: 1;   
+      
 }
 
-.navbar-brand{
-    text-shadow: 1px 0 #0a0a0a;  
-}
+/* .top-nav-text{
+   color: #ee962a !important;
+} */
 
 
-/** card holder display */
 
-.card-thumbnail{
-    width: 100%;
-    height: 400px;
-    object-fit:fill;
+/* .m1-top{
+display: inline-block;
+align-content: center;
+border: 3px solid black;
 
-}
+} */
 
-.card-bg{
-    background-color: #8be7c6 !important;
-}
-
-.card{
-    background-color: #fff;
-    border-radius: 1em; 
-    box-shadow: 10px 10px #1F7066;
-
-    
-}    
-
-.card-img-top{
-    border-top-right-radius: 1rem;
-    border-top-left-radius: 1rem;   
-   
-}
-
-/* End card holder display */
+/* .div-1 img{
+    display: block;
+    align-content: end;
+    border: 1px solid black;
+}    */
 
 
-.container h3{
-    color: #020202;
-    text-shadow: 1px 0 #fbfbfa;
-}
 
+/* .img-pic{
+width: 35%;
+margin-right: 1% ;
+padding: 2rem;
+} */
+     
 .mb{
-   
+    
     margin-bottom: 1% !important;
     padding: 1rem !important;
 }
@@ -199,33 +173,16 @@ text-emphasis-color: #e90707;
 }
 /* End - Item detail page */
 
-
-.regForm {
-    padding-bottom: 3rem;
-    margin-left: 8rem !important;
-    margin-right: 8rem !important;
+.footer{
+ display: flex;
+ padding: 1rem 1rem;
+ background-color:#beb9b5;   
+ border-top: 1px solid #02ec89;
 }
 
-.regFormInput {
-   width: 75% !important;  
-}
-.regForm {
-    padding-bottom: 3rem;
-    margin-left: 8rem !important;
-    margin-right: 8rem !important;
-}
+.footer-text{
+    font-size: x-small;
+    font-family: 'Courier New', Courier, monospace;
 
-.regFormInput {
-    width: 75% !important;
-}
-
-.btn-disabled {
-  background-color: #ccc !important;
-  border-color: #ccc !important;
-  color: #666 !important;
-}
-
-.btn:hover{
-box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19) !important;
 }
 
