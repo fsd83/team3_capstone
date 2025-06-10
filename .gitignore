@@ -16,7 +16,10 @@ buildNumber.properties
 # JDT-specific (Eclipse Java Development Tools)
 .classpath
 
+#file
+*.pptx
+
 #folder
 .vscode/
 team-file/
-archive/
+00Archive/
