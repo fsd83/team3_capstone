@@ -26,7 +26,7 @@
         <h2 class="featurette-heading fw-normal lh-1 text-start">Welcome to Kampong Share,
           <br> <span class="text-body-secondary">minimize waste, and cultivate a thriving local community for everyone.</span></h2>
            <p class="lead">Share More, Waste Less, Grow Together With...</p>
-            <button type="button" class="btn btn-outline-warning">Donate Now!</button>
+            <button id="btnDonateNow" type="button" class="btn btn-outline-warning">Donate Now!</button>
            </div>
           <div class="col-md-5">
           <img src="img/10.a-heartwarming-lifestyle.jpeg" class=" shadow-lg rounded-bottom-circle" width="300" height="auto" >
@@ -79,5 +79,20 @@
   <script src="script/index.js"></script>
   <script src="script/footer.js"></script>
   
+  <script>
+    document.getElementById("btnDonateNow").addEventListener("click", () => {
+      
+      const token = isAuthenticated();
+
+      if(token){
+        window.location.href = _ITEMLISTING_URL;
+        return;
+      }
+
+      window.location.href = _LOGIN_URL;
+
+    })
+  </script>
+
   </body>
 </html>
