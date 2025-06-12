@@ -23,3 +23,6 @@ buildNumber.properties
 .vscode/
 team-file/
 00Archive/
+
+#folder
+*.pptx

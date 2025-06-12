@@ -50,14 +50,13 @@ class NavigationBar {
 
 
        const logoImg = document.createElement("img");
-        logoImg.src ="../img/weblogo_cus.png";
+        logoImg.src ="/img/logo-version5.png";
         logoImg.alt = "Company Logo";
-        logoImg.width = "150";
+        logoImg.width = "200";
         logoImg.className = "fix-column align-text-center";     
   
 
         brandContainer.appendChild(logoImg);
-        brandContainer.appendChild(document.createTextNode("KampongShare"));
 
         return brandContainer;
     }
