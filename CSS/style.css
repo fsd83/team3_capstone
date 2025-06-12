@@ -108,8 +108,6 @@ bottom: btn-outline-warning !important;
     padding: 1rem !important;
 }
 
-
-
 /* element {
 }
 .row {
@@ -122,6 +120,92 @@ bottom: btn-outline-warning !important;
   margin-left: calc(-.5 * var(--bs-gutter-x));
 
 } */
+
+
+/* About container */
+.aboutcontainer{
+  /* background-color: #fff; */
+  /* background-image: url('./img/logo.png');
+  background-repeat: no-repeat;
+  background-position: center; */
+  --bs-gutter-x: 10.0rem;
+  --bs-gutter-y: 0;
+  width: 100%;
+  padding-right: calc(var(--bs-gutter-x) * .5);
+  padding-left: calc(var(--bs-gutter-x) * .5);
+  margin-right: auto;
+  margin-left: auto;
+
+
+/* element {
+
+}
+.row {
+  --bs-gutter-x: 1.5rem;
+  --bs-gutter-y: 0;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: calc(-1 * var(--bs-gutter-y));
+  margin-right: calc(-.5 * var(--bs-gutter-x));
+  margin-left: calc(-.5 * var(--bs-gutter-x));
+
+} */
+
+
+/* AboutUs Card  */
+.card-cover{
+  background-size: cover;
+}
+
+/* AboutUs Card Hover */
+.card-cover:hover{
+  transform: scale(1.05);
+  transition: .2s;
+}
+
+.featurette-heading {
+  letter-spacing: -.05rem;
+}
+
+.featurette-heading:hover {
+  /* transform: rotateX(180deg); */
+  transform: scale(1.05);
+}
+
+.lh-1 {
+  line-height: 1 !important;
+}
+
+.fw-normal {
+  font-weight: 400 !important;
+
+}
+
+/* Start - Item detail page */
+ .main-image {
+  height: 400px;
+  background-color: #f8f9fa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6c757d;
+  margin-bottom: 15px;
+}
+
+.thumbnail {
+  width: 100px;
+  height: 100px;
+  background-color: #f8f9fa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6c757d;
+  cursor: pointer;
+}
+
+.thumbnail:hover {
+  border: 2px solid #ee962a;
+}
 
 
 /* About container */
@@ -209,6 +293,22 @@ bottom: btn-outline-warning !important;
 }
 /* End - Item detail page */
 
+
+.item-user {
+  border-top: 1px solid #fff;
+  font-size: 1.15rem;
+  margin: 20px 0;
+  padding-top: 1.5rem;
+}
+
+.terms-conditions {
+  border-top: 1px solid #fff;
+  font-size: 0.85rem;
+  margin: 20px 0;
+  padding-top: 1.5rem;
+}
+/* End - Item detail page */
+
 .footer{
  display: flex;
  padding: 1rem 1rem;
@@ -235,31 +335,19 @@ bottom: btn-outline-warning !important;
     padding-bottom: 3rem;
     margin-left: 8rem !important;
     margin-right: 8rem !important;
-    /* border:black 2px solid; */
 }
 
 .regFormInput {
     width: 75% !important;
-    
 }
 
 .btn-disabled {
   background-color: #ccc !important;
   border-color: #ccc !important;
   color: #666 !important;
-  cursor: not-allowed;
 }
 
-.donation-listing .col-md-3 {
-  display: block !important;
-  text-align: center;
-}
 
-.donation-listing .col-md-3 img {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
 
 .donation-listing .col-md-3 button {
   margin-top: 0.5rem;

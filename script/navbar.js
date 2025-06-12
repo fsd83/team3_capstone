@@ -257,6 +257,7 @@ class NavigationBar {
 
             // Sign Up Button
             const signupButton = this.createButton(_SIGNUP_TITLE, _SIGNUP_URL);
+            // signupButton.style = btn-outline-warning;
             signupButton.style.marginRight = _RIGHT_NAV_BTN;
     
             // Login Button
