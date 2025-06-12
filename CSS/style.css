@@ -267,9 +267,6 @@ bottom: btn-outline-warning !important;
 }
 
 
-/** import font from Google CDN */
-@import url('href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700&family=Source+Sans+Pro:wght@300;400&display=swap"');
-
 /* !Page - About us */
 /* About Us header */
 #custom-cards h2{
