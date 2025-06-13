@@ -29,7 +29,6 @@ imageUpload.addEventListener('change', function(e) {
             // mainImage.innerHTML = `<img src="${e.target.result}" alt="Main Preview" class="img-fluid rounded">`;
             // uploadedImage = file;
 
-
             // Create image element with proper styling
             const img = document.createElement('img');
             img.src = e.target.result;
@@ -128,11 +127,11 @@ function validateForm() {
         isValid = false;
     }
     
-    // Validate image
-    if (!uploadedImage) {
-        showError(uploadButton, 'Please upload an image of your item');
-        isValid = false;
-    }
+    // TODO Validate image
+    // if (!uploadedImage) {
+    //     showError(uploadButton, 'Please upload an image of your item');
+    //     isValid = false;
+    // }
     
     return isValid;
 }
@@ -156,52 +155,55 @@ function showError(element, message, isFieldset = false) {
 }
 
 // Form submission
-submitButton.addEventListener('click', function(e) {
+submitButton.addEventListener('click', async function(e) {
     e.preventDefault();
     
     if (validateForm()) {
-        // Prepare form data
-        const formData = new FormData();
         
+        // Prepare form data
         // Add text fields
-        formData.append('title', document.getElementById('inputTitle').value.trim());
-        formData.append('category', document.querySelector('input[name="itemCategory"]:checked').value);
-        formData.append('condition', document.getElementById('itemCondition').value);
-        formData.append('description', document.getElementById('itemDescription').value.trim());
-        formData.append('location', document.getElementById('itemLocation').value.trim());
+        const formData = {
+            "name": document.getElementById('inputTitle').value.trim(),
+            "description" : document.getElementById('itemDescription').value.trim(),
+            "productType": document.querySelector('input[name="itemCategory"]:checked').value
+        };
         
         // Add the single image
-        formData.append('image', uploadedImage);
+        // formData.append('image', uploadedImage);
         
-        //!Trying out the backend data - this const url need to be updated!
-        const url = "http://localhost:8080/feedback/add/22";
+        // //!Trying out the backend data - this const url need to be updated!
+        const token = isAuthenticated();
+        
         try {
-            const response = fetch(url, {
+
+            const response = await fetch(_ENDPOINT_DONATE, {                        // !! DONE: API call for update profile
                 method: "POST",
-                headers: { "Content-Type": "application/json" },
+                headers: {
+                    "Authorization": `Bearer ${token}`,                             // !! Send the bearer token to allow server-side authentication
+                    "Content-Type": "application/json"
+                },
                 body: JSON.stringify(formData)
             });
+
+            if(response.ok){
+                
+                // TODO 
+                // Mock submission (replace with actual fetch/AJAX call)
+                setTimeout(() => {
+                    alert('Item submitted successfully!');
+                    clearForm(); // Use our clear function to reset everything
+                    
+                    // Redirect after submission if needed
+                    // window.location.href = 'success.html';
+                }, 1000);
+
+                return;
+            }
+        
+            return alert("Unable to submit item");
+
         }catch(e){
             alert(e);
         }
-
-        // Here you would typically send the data to your server
-        console.log('Form data prepared:', {
-            title: formData.get('title'),
-            category: formData.get('category'),
-            condition: formData.get('condition'),
-            description: formData.get('description'),
-            location: formData.get('location'),
-            hasImage: formData.has('image')
-        });
-        
-        // Mock submission (replace with actual fetch/AJAX call)
-        setTimeout(() => {
-            alert('Item submitted successfully!');
-            clearForm(); // Use our clear function to reset everything
-            
-            // Redirect after submission if needed
-            // window.location.href = 'success.html';
-        }, 1000);
     }
 });
