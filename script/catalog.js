@@ -33,7 +33,7 @@ function addItem(item) {
   const rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
   rect.setAttribute("width", "100%"); // width of the rectangle
   rect.setAttribute("height", "100%"); // height of the rectangle
-  rect.setAttribute("fill", item.color); // fill color - #55595c
+  rect.setAttribute("fill", "blue"); // fill color - #55595c
   
   colCardSvg.append(rect);
 
@@ -53,7 +53,7 @@ function addItem(item) {
 
   const cardText = document.createElement("p");
   cardText.className = "card-text";
-  cardText.textContent = item.pantone_value;//"This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.";
+  cardText.textContent = item.description;//"This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.";
   colCardBody.append(cardText);
 
   const cardDiv = document.createElement("div");
@@ -172,7 +172,83 @@ function loadColorsFromStorage() {
     });
 }
 
+async function catalogLoadData() {
+    
+    // Clear listItems first
+    listItems.innerHTML = "";
+    //indexlistDonate.innerHTML = "";
+    //indexlistRequest.innerHTML = "";
+    // indexlistItems3.innerHTML = "";
+
+    
+    // Retrive the values stored in list-items from localstorage
+    //const arrColors = window.localStorage.getItem("list-items");
+
+    // parse the values into Objects (JSON.parse())
+    //const parsedColors = JSON.parse(arrColors);
+
+    // iterate and populate the HTML page by calling addItem()
+    // listOfItemObjects1.forEach(item => {
+    //     addItem(item,0);
+    // });
+
+    // listOfItemObjects2.forEach(item => {
+    //     addItem(item,1);
+    // });
+
+    // listOfItemObjects3.forEach(item => {
+    //     addItem(item,2);
+    // });
+
+    //Update username and email
+    const token = isAuthenticated();
+    const user = decodeUser(token);
+
+    //Read from database to obtain product list
+    //getProductData(token);
+    try {
+        //const user = decodeUser(token);
+        //const decodedToken = jwt_decode(token);
+        // Assuming the ID is in a claim called 'sub', 'userId', or 'id'
+        //const userId = decodedToken.sub || decodedToken.userId || decodedToken.id;
+        //alert("UserID:" + userId);
+        //const url = _ENDPOINT_GET_PRODUCT_BY_CUSTOMER + "1";
+        const response = await fetch(_ENDPOINT_GET_ALL_PRODUCTS, {  // !! DONE: API call for update profile
+        method: "GET",
+        headers: {
+            "Authorization": `Bearer ${token}`,                             // !! Send the bearer token to allow server-side authentication
+            "Content-Type": "application/json"
+        }
+        //,body: JSON.stringify(formData)
+        })
+
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            console.log(data[0].name); // Access members from the parsed JSON data
+            console.log(data[1].name);
+            let filteredArray = data.filter(item => item.productType == "APPLIANCES");
+            console.log(filteredArray);
+            // iterate and populate the HTML page by calling addItem()
+            filteredArray.forEach(item => {
+                 addItem(item);
+             });
+            
+            })
+        .catch(error => {
+            console.error('Error fetching data:', error);
+            });
+
+        
+    }catch(e){
+        alert(e);
+    }
+
+}
+
+
 document.addEventListener("DOMContentLoaded", () => {
-    fetchColorsList();
-    loadColorsFromStorage();
+    //fetchColorsList();
+    //loadColorsFromStorage();
+    catalogLoadData();
   })
