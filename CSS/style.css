@@ -266,7 +266,6 @@ bottom: btn-outline-warning !important; /* TODO not working - ks*/
 }
 
 
-/* !Page - About us */
 /* About Us header */
 #custom-cards h2{
     color: #1F7066;
@@ -302,7 +301,7 @@ bottom: btn-outline-warning !important; /* TODO not working - ks*/
   margin-right: calc(-.5 * var(--bs-gutter-x));
   margin-left: calc(-.5 * var(--bs-gutter-x));
 } 
-/* AboutWhy container */
+/* About Why container */
 .aboutwhycontainer{
   --bs-gutter-x: 10.0rem;
   --bs-gutter-y: 0;
@@ -407,8 +406,7 @@ bottom: btn-outline-warning !important; /* TODO not working - ks*/
   color: #fff;
 }
 
-/* !Page - Item detail listing */
-/* Main Image Container */
+/* Item detail listing Container */
 .main-image {
     height: 400px;
     width: 100%;
