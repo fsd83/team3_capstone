@@ -102,18 +102,18 @@
 
   // TODO below to reverify, no work as plan.
   
-//   if (registerSuccess) {
-//         showToast({
-//           toastElement: toastMsg,
-//           toastBodyElement: toastBody,
-//           bgColor: "success",
-//           msg: "Register successful! Redirecting..."
-//         });
+  // if (registerSuccess) {
+  //       showToast({
+  //         toastElement: toastMsg,
+  //         toastBodyElement: toastBody,
+  //         bgColor: "success",
+  //         msg: "Register successful! Redirecting..."
+  //       });
 
-//          const token = window.localStorage.getItem(_USERTOKEN);                          // Retrieve usertoken from local storage
-//         const user = decodeUser(token);                                                 // decode the token for the role 
+  //        const token = window.localStorage.getItem(_USERTOKEN);                          // Retrieve usertoken from local storage
+  //       const user = decodeUser(token);                                                 // decode the token for the role 
 
-//         const adminStatus = user.roles.some(role => role.authority === 'ADMIN');  
+  //       const adminStatus = user.roles.some(role => role.authority === 'ADMIN');  
 
     
          setTimeout(() => {
@@ -129,6 +129,7 @@
     const confirmExit = confirm("Are you sure you want to cancel and leave this page?");
     if (confirmExit) {
       // Redirect to placeholder or real page
-      window.location = _Home_URL; // Replace with actual page when it's ready
+      window.location = _HOME_URL;
     }
   }
+
