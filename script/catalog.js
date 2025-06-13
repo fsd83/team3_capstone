@@ -227,7 +227,10 @@ async function catalogLoadData() {
             console.log(data);
             console.log(data[0].name); // Access members from the parsed JSON data
             console.log(data[1].name);
-            let filteredArray = data.filter(item => item.productType == "APPLIANCES");
+            const urlParams = new URLSearchParams(window.location.search);
+            const param1Value = urlParams.get('param1');
+            
+            let filteredArray = data.filter(item => item.productType == param1Value);
             console.log(filteredArray);
             // iterate and populate the HTML page by calling addItem()
             filteredArray.forEach(item => {

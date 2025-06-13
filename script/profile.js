@@ -240,6 +240,12 @@ const listOfItemObjects2 = [
 //     }
 //   }
 
+function getCookie(name) {
+       const value = `; ${document.cookie}`;
+       const parts = value.split(`; ${name}=`);
+       if (parts.length === 2) return parts.pop().split(';').shift();
+   }
+
 async function loadData() {
     
     // Clear listItems first
@@ -256,13 +262,13 @@ async function loadData() {
     //const parsedColors = JSON.parse(arrColors);
 
     // iterate and populate the HTML page by calling addItem()
-    listOfItemObjects1.forEach(item => {
-        addItem(item,0);
-    });
+    // listOfItemObjects1.forEach(item => {
+    //     addItem(item,0);
+    // });
 
-    listOfItemObjects2.forEach(item => {
-        addItem(item,1);
-    });
+    // listOfItemObjects2.forEach(item => {
+    //     addItem(item,1);
+    // });
 
     // listOfItemObjects3.forEach(item => {
     //     addItem(item,2);
@@ -287,45 +293,84 @@ async function loadData() {
     //Read from database to obtain donation list and request list
     //getProductData(token);
     try {
-            //const user = decodeUser(token);
-            //const decodedToken = jwt_decode(token);
-            // Assuming the ID is in a claim called 'sub', 'userId', or 'id'
-            //const userId = decodedToken.sub || decodedToken.userId || decodedToken.id;
-            //alert("UserID:" + userId);
-            //const url = _ENDPOINT_GET_PRODUCT_BY_CUSTOMER + "1";
-            const response = await fetch("http://localhost:8080/user/getCustomer/1", {  // !! DONE: API call for update profile
-            method: "GET",
-            headers: {
-                "Authorization": `Bearer ${token}`,                             // !! Send the bearer token to allow server-side authentication
-                "Content-Type": "application/json"
-            }
-            //,body: JSON.stringify(formData)
-        });
+          
+          //const jwtDecode = require("jwt-decode");
+          //const token = window.localStorage.getItem("token"); // eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWQiOiIxMjM0NTY3ODkiLCJpYXQiOjE1MTYyMzkwMjJ9.gHqSxzWpdOUL1nRAqUJg2CtjsEZZi8FLikD41i639zY
+          //const tokenPayload = jwtDecode(token).id;
+          
+          //const userId = localStorage.getItem('userId');
+          
 
-        if(response.ok){
-            
-            // TODO 
-            // Mock submission (replace with actual fetch/AJAX call)
-            setTimeout(() => {
-                alert('Items rectrieved successfully!');
-                //clearForm(); // Use our clear function to reset everything
-                
-                // Assuming the data is an array of objects
-                if (Array.isArray(response)) {
-                  // Process the list of objects here
-                  response.forEach(item => {
-                    console.log('Item:', item);
-                    // Access object properties, e.g., item.name, item.id, etc.
-                  });
-                } else {
-                  console.error('Data is not an array:', response);
-                }
-            }, 1000);
+          const userId = getCookie('userId');
+          const url = _ENDPOINT_GET_PRODUCT_BY_CUSTOMER + userId;
+          const response = await fetch(url, { 
+          //const response = await fetch("http://localhost:8080/user/getCustomer/1", {  // !! DONE: API call for update profile
+          method: "GET",
+          headers: {
+              "Authorization": `Bearer ${token}`,                             // !! Send the bearer token to allow server-side authentication
+              "Content-Type": "application/json"
+          }
+          
+          })
+          .then(response => response.json())
+          .then(data => {
+              console.log(data);
+              //console.log(data[0].name); // Access members from the parsed JSON data
+              //console.log(data[1].name);
+              
+              let filteredArray = data.filter(item => item.transactType == "DONATE");
+              console.log(filteredArray);
+              // iterate and populate the HTML page by calling addItem()
+              filteredArray.forEach(item => {
+                  addItem(item,0);
+              });
+              
+              })
+          .catch(error => {
+              console.error('Error fetching data:', error);
+              });
+      
+      
+          //const user = decodeUser(token);
+          //const decodedToken = jwt_decode(token);
+          // Assuming the ID is in a claim called 'sub', 'userId', or 'id'
+          //const userId = decodedToken.sub || decodedToken.userId || decodedToken.id;
+          //alert("UserID:" + userId);
+          //const url = _ENDPOINT_GET_PRODUCT_BY_CUSTOMER + "1";
+          
+          // const response = await fetch("http://localhost:8080/user/getCustomer/1", {  // !! DONE: API call for update profile
+          // method: "GET",
+          // headers: {
+          //     "Authorization": `Bearer ${token}`,                             // !! Send the bearer token to allow server-side authentication
+          //     "Content-Type": "application/json"
+          // }
+          // //,body: JSON.stringify(formData)
+          // });
 
-            return;
-        }
-    
-        return alert("Unable to retrieve item");
+          // if(response.ok){
+              
+          //     // TODO 
+          //     // Mock submission (replace with actual fetch/AJAX call)
+          //     setTimeout(() => {
+          //         alert('Items rectrieved successfully!');
+          //         //clearForm(); // Use our clear function to reset everything
+                  
+          //         // Assuming the data is an array of objects
+          //         if (Array.isArray(response)) {
+          //           // Process the list of objects here
+          //           response.forEach(item => {
+          //             console.log('Item:', item);
+          //             // Access object properties, e.g., item.name, item.id, etc.
+          //           });
+          //         } else {
+          //           console.error('Data is not an array:', response);
+          //         }
+          //     }, 1000);
+
+          //     return;
+          // }
+      
+          // return alert("Unable to retrieve item");
 
     }catch(e){
         alert(e);
