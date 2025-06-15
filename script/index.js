@@ -1,8 +1,6 @@
 // API Configuration
 const API_BASE_URL = 'http://localhost:8080'; 
 
-// ===== EXISTING CODE WITH ENHANCEMENTS =====
-
 const indexlistItems1 = document.querySelector("#list-items1");
 const indexlistItems2 = document.querySelector("#list-items2");
 const indexlistItems3 = document.querySelector("#list-items3");
@@ -259,7 +257,7 @@ async function displayProductsByCategory() {
         const fashion = products.filter(p => p.productType === 'FASHION');
         const others = products.filter(p => p.productType === 'OTHERS');
         
-        // Display using your existing addItem function
+        // Display using existing addItem function
         appliances.forEach(item => addItem(item, 0));
         fashion.forEach(item => addItem(item, 1));
         others.forEach(item => addItem(item, 2));
@@ -270,7 +268,7 @@ async function displayProductsByCategory() {
     }
 }
 
-// ===== YOUR EXISTING API FUNCTIONS (KEPT AS IS) =====
+// ===== EXISTING API FUNCTIONS  =====
 
 // Fetch all products from backend
 async function fetchProducts() {
@@ -312,9 +310,9 @@ async function viewProductDetails(productId) {
     }
 }
 
-// ===== EXAMPLE USAGE FUNCTIONS =====
+// ===== USAGE FUNCTIONS =====
 
-// Example: Add a new product (you can call this from a form)
+// Add a new product (Call this from a form)
 function exampleAddProduct() {
     const newProduct = {
         name: "Test Product",
@@ -326,7 +324,7 @@ function exampleAddProduct() {
     addNewProduct(newProduct);
 }
 
-// Example: Search functionality (you can attach this to a search form)
+// Search functionality (Can attach this to a search form)
 function handleSearch() {
     const searchInput = document.getElementById('searchInput'); // Assuming you have a search input
     if (searchInput && searchInput.value.trim()) {
@@ -334,7 +332,7 @@ function handleSearch() {
     }
 }
 
-// ===== SAMPLE DATA (YOUR ORIGINAL DATA) =====
+// ===== SAMPLE DATA =====
 
 const listOfItemObjects1 = [
   {
@@ -381,7 +379,7 @@ const listOfItemObjects3 = [
   }
 ];
 
-// Load sample data (your original loadData function)
+// Load sample data (original loadData function)
 function loadSampleData() {
     console.log('Loading sample data...');
     
@@ -421,7 +419,7 @@ function loadBackendData() {
     displayProductsByCategory();
 }
 
-// ===== YOUR EXISTING FUNCTIONS (KEPT FOR REFERENCE) =====
+// ===== EXISTING FUNCTIONS =====
 
 function btnFunction() {
     document.getElementById("sButton").disabled = false;
