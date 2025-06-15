@@ -32,20 +32,20 @@ function addItem(item) {
 }
 
 // Sample product data
-const listOfItemObjects1 = [
-  {
-    imgSrc: "img_products/Appliances/cornell_wet_dry.jpg",
-    desc: "Moving house, letting go of this 2 years portable wet and dry vacuum in working condition"
-  },
-  {
-    imgSrc: "img_products/Appliances/miele_vacuum.jpg",
-    desc: "Just bought a new robotic vacuum, any taker for this vacuum. Low usage and still under warranty."
-  },
-  {
-    imgSrc: "img_products/Appliances/Fan two.jpg",
-    desc: "Bladeless fan, still in working condition 30/100. Ping me if interested."    
-  }
-];
+// const listOfItemObjects1 = [
+//   {
+//     imgSrc: "img_products/Appliances/cornell_wet_dry.jpg",
+//     desc: "Moving house, letting go of this 2 years portable wet and dry vacuum in working condition"
+//   },
+//   {
+//     imgSrc: "img_products/Appliances/miele_vacuum.jpg",
+//     desc: "Just bought a new robotic vacuum, any taker for this vacuum. Low usage and still under warranty."
+//   },
+//   {
+//     imgSrc: "img_products/Appliances/Fan two.jpg",
+//     desc: "Bladeless fan, still in working condition 30/100. Ping me if interested."    
+//   }
+// ];
 
 function loadData() {
   // Clear existing items first
@@ -66,7 +66,7 @@ function loadData() {
 // Colors API functions (if needed later)
 async function fetchColorsList() {
   try {
-    const response = await fetch('https://reqres.in/api/unknown');
+    const response = await fetch('https://localhost8080/api/unknown');
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
