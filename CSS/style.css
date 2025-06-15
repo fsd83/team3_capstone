@@ -11,6 +11,13 @@ text-emphasis-color: #e90707;
 }
 
 
+  /* Navbar - Add margin below search form */
+  .navbar .navbar-collapse form {
+    padding: 1rem;
+  }  
+
+
+
 /* Target all <a> elements */
 a {
   text-decoration: none;
@@ -72,7 +79,6 @@ bottom: btn-outline-warning !important; /* TODO not working - ks*/
     width: 100%;
     height: 400px;
     object-fit:fill;
-
 }
 
 .card-bg{
@@ -221,6 +227,7 @@ bottom: btn-outline-warning !important; /* TODO not working - ks*/
     font-family: 'Courier New', Courier, monospace;
 }
 
+/* Registeratio  Form */
 .regForm {
     padding-bottom: 3rem;
     margin-left: 8rem !important;
@@ -234,13 +241,14 @@ bottom: btn-outline-warning !important; /* TODO not working - ks*/
     padding-bottom: 3rem;
     margin-left: 8rem !important;
     margin-right: 8rem !important;
-    /* border:black 2px solid; */
 }
 
 .regFormInput {
     width: 75% !important;
     
 }
+
+
 
 .btn-disabled {
   background-color: #ccc !important;
@@ -266,7 +274,6 @@ bottom: btn-outline-warning !important; /* TODO not working - ks*/
 }
 
 
-/* !Page - About us */
 /* About Us header */
 #custom-cards h2{
     color: #1F7066;
@@ -302,7 +309,7 @@ bottom: btn-outline-warning !important; /* TODO not working - ks*/
   margin-right: calc(-.5 * var(--bs-gutter-x));
   margin-left: calc(-.5 * var(--bs-gutter-x));
 } 
-/* AboutWhy container */
+/* About Why container */
 .aboutwhycontainer{
   --bs-gutter-x: 10.0rem;
   --bs-gutter-y: 0;
@@ -407,8 +414,7 @@ bottom: btn-outline-warning !important; /* TODO not working - ks*/
   color: #fff;
 }
 
-/* !Page - Item detail listing */
-/* Main Image Container */
+/* Item detail listing Container */
 .main-image {
     height: 400px;
     width: 100%;
@@ -476,4 +482,20 @@ bottom: btn-outline-warning !important; /* TODO not working - ks*/
 #itemDisplayCard {
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
     border: none;
+}
+
+
+@media (max-width: 800px) { /* Adjust breakpoint as needed */
+  /* Add margin below search form */
+  .navbar .navbar-collapse form {
+    margin-bottom: 15px;
+  }
+
+
+
+
+
+
+
+  
 }

@@ -12,7 +12,6 @@
     <link rel="stylesheet" href="css/style.css">
   </head>
 
-</head>
   <body class="main-body">
 
   <!--* Top Nav bar section -->
@@ -37,12 +36,12 @@
        <div class="mb-3">
       <label for="inputEmail3" class="form-label">Email</label>
         <input type="email" class="form-control regFormInput" id="inputEmail3" placeholder="* name@email.com" required>
-       <!-- <div id="msg-toast" class="toast text-white" role="alert"> -->
-        <!-- <div id="toast-body" class="toast-body"></div> -->
+       <div id="msg-toast" class="toast text-white" role="alert">
+        <div id="toast-body" class="toast-body"></div>
       </div>
        
       <!-- Password input -->
-      <div class="mb-4">
+      <div class="mb-3">
         <label for="inputPassword3" class="form-label">Password</label>
            <input type="password" class="form-control regFormInput" id="inputPassword3" placeholder="*" required>
        </div>
@@ -74,126 +73,14 @@
   </script>
 
   <!-- Load navbar script -->
-  <script src="script/Mock.js"></script>  <!-- TODO: to remove in production env. --> 
   <script src="script/const.js"></script>
   <script src="script/auth.js"></script>
-  
+  <script src="script/reg.js"></script>
   <script src="script/navbar.js"></script>
   <script src="script/footer.js"></script>
-        
     
-    <!-- Import custom scripts -->
-    <!-- <script src="./scripts/contact_util.js"></script> -->
-
-<script>
-  function showToast({ toastElement, toastBodyElement, bgColor, msg }) {
-    toastBodyElement.textContent = msg;
-    toastElement.className = `toast align-items-center text-white bg-${bgColor} border-0 show`;
-    const toast = new bootstrap.Toast(toastElement);
-    toast.show();
-  }
-
-  async function submitForm(event) {
-    event.preventDefault();
-
-    const toastMsgExample = document.getElementById('msg-toast');
-    const toastBodyExample = document.getElementById('toast-body');
+    
    
-    const email = document.getElementById("inputEmail3");
-    const password = document.getElementById("inputPassword3");
-
-    if (email.value.trim() === "") {
-      showToast({
-        toastElement: toastMsgExample,
-        toastBodyElement: toastBodyExample,
-        bgColor: "danger",
-        msg: "Please enter your email."
-      });
-      return;
-    }
-
-    if (password.value.trim() === "") {
-      showToast({
-        toastElement: toastMsgExample,
-        toastBodyElement: toastBodyExample,
-        bgColor: "danger",
-        msg: "Please enter your new passwords."
-      });
-      return;
-    }
-
-
-    /*
-      A valid username should start with an alphabet so, [A-Za-z]. 
-      All other characters can be alphabets, numbers or an underscore 
-      so, [A-Za-z0-9_]. Since length constraint was given as 8-30 and 
-      we had already fixed the first character, so we give {7,29}..
-    
-    const userNameRegex = /^[A-Za-z][A-Za-z0-9_]{7,29}$/;
-    */
-       
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email.value)) {
-      showToast({
-        toastElement: toastMsgExample,
-        toastBodyElement: toastBodyExample,
-        bgColor: "danger",
-        msg: "Email is not valid."
-      });
-      return;
-    }
-
-    /*
-      the password consists of only alphanumeric characters and 
-      is between eight and sixteen characters in length.
-    */
-    const pwdRegex = /^[a-zA-Z0-9]{8,16}$/;
-    if (!pwdRegex.test(password.value)) {
-      showToast({
-        toastElement: toastMsgExample,
-        toastBodyElement: toastBodyExample,
-        bgColor: "danger",
-        msg: "Invalid Password - Please enter alphanumeric 8-16"
-      });
-      return;
-    }
-
-    const formData = { email: email.value, password: password.value };
-
-    try {
-
-      const formData = {                                                      // JavaScript Object formData stores the form's input values
-        email: email.value, 
-        password: password.value,
-        role: "USER"
-      };           
-            
-      const registerSuccess = await register(formData);                      // Invoke register() function, and end (return)
-
-      if (!registerSuccess) {
-        throw new Error("Error registering. Please try again.");
-      }
-      
-    } catch (error) {
-      showToast({
-        toastElement: toastMsgExample,
-        toastBodyElement: toastBodyExample,
-        bgColor: "danger",
-        msg: error.message,
-      });
-    }
-  }
-</script>
-
-<script>
-  function confirmCancel() {
-    const confirmExit = confirm("Are you sure you want to cancel and leave this page?");
-    if (confirmExit) {
-      // Redirect to placeholder or real page
-      window.location.href = "index.html"; // Replace with actual page when it's ready
-    }
-  }
-</script>
 
   </body>
 </html>

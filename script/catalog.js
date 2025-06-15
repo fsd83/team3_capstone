@@ -1,3 +1,4 @@
+// Fix: Use the correct ID that matches your HTML
 const listItems = document.querySelector("#list-items");
 
 function addItem(item) {
@@ -6,10 +7,9 @@ function addItem(item) {
   listItems.append(colDiv);
 
   const colCard = document.createElement("div");
-  colCard.className = "card shadow-sm";
+  colCard.className = "card";
   colDiv.append(colCard);
 
-  
   const colCardSvg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
   
   colCardSvg.setAttribute('preserveAspectRatio', 'xMidYMid slice');
@@ -47,130 +47,178 @@ function addItem(item) {
   textElement.appendChild(textNode); // Append text node to text element
   colCardSvg.appendChild(textElement); // Append text element to SVG
   
+  // Create img tag
+  const img = document.createElement('img');
+  img.src = item.imgSrc;
+  // Fix: Add classes separately
+  img.classList.add("card-img-top");
+  img.classList.add("card-thumbnail");
+  img.height = 300;
+  img.alt = "Product image";
+
+  colCard.append(img);  
+
   const colCardBody = document.createElement("div");
   colCardBody.className = "card-body";
   colCard.append(colCardBody);
 
   const cardText = document.createElement("p");
   cardText.className = "card-text";
+
   cardText.textContent = item.description;//"This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.";
+
+  cardText.textContent = item.desc;
+
   colCardBody.append(cardText);
-
-  const cardDiv = document.createElement("div");
-  cardText.className = "d-flex justify-content-between align-items-center";
-  colCardBody.append(cardDiv);
-
-  const cardSmall = document.createElement("small");
-  cardSmall.className = "text-body-secondary";
-  cardSmall.textContent = "9 mins"
-  cardDiv.append(cardSmall);
-  
 }
 
-// 1. Implement the function fetchColorsList() using the browser Fetch API to download the full color list from the following endpoint:
-// https://reqres.in/api/unknown
+// Sample product data
+const listOfItemObjects1 = [
+  {
+    imgSrc: "img_products/Appliances/cornell_wet_dry.jpg",
+    desc: "Moving house, letting go of this 2 years portable wet and dry vacuum in working condition"
+  },
+  {
+    imgSrc: "img_products/Appliances/miele_vacuum.jpg",
+    desc: "Just bought a new robotic vacuum, any taker for this vacuum. Low usage and still under warranty."
+  },
+  {
+    imgSrc: "img_products/Appliances/Fan two.jpg",
+    desc: "Bladeless fan, still in working condition 30/100. Ping me if interested."    
+  }
+];
 
+function loadData() {
+  // Clear existing items first
+  if (listItems) {
+    listItems.innerHTML = "";
+    
+    // Load and display items
+    listOfItemObjects1.forEach(item => {
+      addItem(item);
+    });
+    
+    console.log("Catalog items loaded successfully!");
+  } else {
+    console.error("Could not find #list-items container");
+  }
+} // Fix: Added missing closing brace
+
+// Colors API functions (if needed later)
 async function fetchColorsList() {
-
-    // method A: using a fetch request (with methods to address promises, e.g. resolve or reject)
-    // ---------------------------------------------------------------------------------------------
-    
-    let resp = null;
-
-    fetch('https://reqres.in/api/unknown')
-    .then(response => {
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        return response.json();
-    })
-    .then(response => {                             // promise.resolve returned
-            console.log(response);                  // log all the response's results
-            resp = response;
-    })
-    .catch(error => {
-        console.error('Error:', error)
-        return;     
-    }); // catch a promise.reject
-    // -------------------------------------------------------------------------------------
-
-    // method B: Using a fetch request (WITHOUT addressing promises returned from the api)
-    // --------------------------------------------------------------------------------------
-
-    // Using fetch, call for the 1st page of Data from the given url
-    // const response = await fetch("https://reqres.in/api/unknown");
-    // resp = await response.json();
-    // console.log(resp);   // check the data that is returned
-    // -----------------------------------------------------------------------------------
-
-    let allColors = resp.data;
-    let page = resp.page + 1;
-    let totalPages = resp.total_pages;
-
-    // Fetch the subsequent page(s) of Data (using a For Loop)
-    
-    for (let currentPage = page; currentPage <= totalPages; currentPage++) {
-        /* --------method A  -------------*/
-        //const response = await fetch("https://reqres.in/api/unknown?page=" + currentPage);
-        //const resp = await response.json();        
-        /* ------------------------------*/
-
-        /* --------method B  -------------*/
-        fetch('https://reqres.in/api/unknown' + currentPage)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            return response.json();
-        })
-        .then(response => {                             // promise.resolve returned
-                console.log(response);                  // log all the response's results
-                resp = response;
-        })
-        .catch(error => {
-            console.error('Error:', error)
-            return;     
-        }); // catch a promise.reject
-        /* ------------------------------*/
-
-        allColors = [...allColors, ...resp.data];
-        console.log(allColors);
-
+  try {
+    const response = await fetch('https://reqres.in/api/unknown');
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
     }
     
-    // Clear listItems first
-    listItems.innerHTML = "";
+    const resp = await response.json();
+    console.log(resp);
+    
+    let allColors = resp.data;
+    const totalPages = resp.total_pages;
 
-    // Create an array to store the color list to localStorage
-    const arrColors = new Array();
+    // Fetch subsequent pages
+    for (let currentPage = 2; currentPage <= totalPages; currentPage++) {
+      const pageResponse = await fetch(`https://reqres.in/api/unknown?page=${currentPage}`);
+      if (!pageResponse.ok) {
+        throw new Error(`HTTP error! status: ${pageResponse.status}`);
+      }
+      
+      const pageData = await pageResponse.json();
+      allColors = [...allColors, ...pageData.data];
+    }
+    
+    // Clear existing items
+    if (listItems) {
+      listItems.innerHTML = "";
+    }
 
-    // Loop through each array index to be passed to addItem(item) function for display
-    // Also, convert each JSON object item into a string for storage into arrColors
+    // Transform and display colors as items
     allColors.forEach(item => {
-        addItem(item);
-        arrColors.push(item);
+      const colorItem = {
+        imgSrc: `https://via.placeholder.com/300x200/${item.color.substring(1)}/ffffff?text=${item.name}`,
+        desc: `${item.name} - ${item.color} (Pantone ${item.pantone_value})`
+      };
+      addItem(colorItem);
     });
 
-    // Store the array data arrColors into the browser window's localStorage 
-    window.localStorage.setItem("list-items", JSON.stringify(arrColors));
+    // Store in localStorage (Note: not supported in all environments)
+    try {
+      window.localStorage.setItem("list-items", JSON.stringify(allColors));
+    } catch (e) {
+      console.log("localStorage not available");
+    }
+    
+  } catch (error) {
+    console.error('Error fetching colors:', error);
+  }
 }
-
-// 2.  Implement the loadColorsFromStorage() function so the colour values are loaded from the local storage. 
-//     Open the developer tools and verify that the data is stored in the local storage.
 
 function loadColorsFromStorage() {
-    
-    // Retrive the values stored in list-items from localstorage
+  try {
     const arrColors = window.localStorage.getItem("list-items");
-
-    // parse the values into Objects (JSON.parse())
-    const parsedColors = JSON.parse(arrColors);
-
-    // iterate and populate the HTML page by calling addItem()
-    parsedColors.forEach(item => {
-        addItem(item);
-    });
+    if (arrColors) {
+      const parsedColors = JSON.parse(arrColors);
+      
+      // Clear existing items
+      if (listItems) {
+        listItems.innerHTML = "";
+      }
+      
+      // Display stored colors
+      parsedColors.forEach(item => {
+        const colorItem = {
+          imgSrc: `https://via.placeholder.com/300x200/${item.color.substring(1)}/ffffff?text=${item.name}`,
+          desc: `${item.name} - ${item.color} (Pantone ${item.pantone_value})`
+        };
+        addItem(colorItem);
+      });
+    } else {
+      console.log("No items found in localStorage");
+    }
+  } catch (error) {
+    console.error('Error loading from storage:', error);
+  }
 }
+
+// Profile editing functions
+function btnFunction() {
+  // Enable buttons
+  const sButton = document.getElementById("sButton");
+  const rButton = document.getElementById("rButton");
+  
+  if (sButton) sButton.disabled = false;
+  if (rButton) rButton.disabled = false;
+
+  // Enable input fields
+  const inputElement = document.getElementById('userName');
+  const inputElement1 = document.getElementById('email');
+  const inputElement2 = document.getElementById('password');
+  
+  if (inputElement) inputElement.removeAttribute('readonly');
+  if (inputElement1) inputElement1.removeAttribute('readonly');
+  if (inputElement2) inputElement2.removeAttribute('readonly');
+}
+
+function sBtnFunction() {
+  // Get input field values
+  const inputElement = document.getElementById('userName');
+  const inputElement1 = document.getElementById('email');
+  
+  if (inputElement && inputElement1) {
+    const userNameValue = inputElement.value;
+    const emailValue = inputElement1.value;
+
+    // Update display elements
+    const userNameDisplay = document.getElementById("userNameDisplay");
+    const userEmailDisplay = document.getElementById("userEmailDisplay");
+    
+    if (userNameDisplay) userNameDisplay.textContent = userNameValue;
+    if (userEmailDisplay) userEmailDisplay.textContent = emailValue;
+  }
+}
+
 
 async function catalogLoadData() {
     
@@ -255,3 +303,14 @@ document.addEventListener("DOMContentLoaded", () => {
     //loadColorsFromStorage();
     catalogLoadData();
   })
+
+// Fix: Move event listener outside of any function
+document.addEventListener("DOMContentLoaded", () => {
+  console.log("DOM loaded, initializing catalog...");
+  
+  // Choose which function to run:
+  loadData();              // For local product data
+  // fetchColorsList();    // For API color data
+  // loadColorsFromStorage(); // For stored color data
+});
+
