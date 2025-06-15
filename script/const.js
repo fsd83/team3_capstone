@@ -23,9 +23,9 @@ const _LOGIN_URL = "login.html";
 const _LOGOUT_URL = "#";
 const _PROFILE_URL = "profile.html";
 const _PARTNERSHIP_URL = "partnership.html";
-const _APPLIANCE_URL = "catalog.html";
-const _FASHION_URL = "catalog.html";            // Temporary 
-const _OTHERS_URL = "catalog.html";             // Temporary 
+const _APPLIANCE_URL = "catalog.html?param1=APPLIANCES";
+const _FASHION_URL = "catalog.html?param1=FASHION";            // Temporary 
+const _OTHERS_URL = "catalog.html?param1=OTHERS";             // Temporary 
 const _ADMIN_URL = "admin.html";                // Temporary test admin route
 const _ITEMLISTING_URL = "itemlisting.html";
 
@@ -38,4 +38,8 @@ const _USERTOKEN = "usertoken";
 // endponts
 const _ENDPOINT_LOGIN = "http://localhost:8080/auth/api/signin";
 const _ENDPOINT_REGISTER = "http://localhost:8080/auth/api/signup";
+const _ENDPOINT_DONATE = "http://localhost:8080/user/product/add";
+const _ENDPOINT_GET_PRODUCT_BY_CUSTOMER = "http://localhost:8080/getCustomer/";
+const _ENDPOINT_GET_ALL_PRODUCTS = "http://localhost:8080/user/product/all";
 const _ENDPOINT_DONATE = "http://localhost:8080/user/product/addwithimage";
+
