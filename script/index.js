@@ -1,7 +1,11 @@
+// API Configuration
+const API_BASE_URL = 'http://localhost:8080'; 
+
+// ===== EXISTING CODE WITH ENHANCEMENTS =====
+
 const indexlistItems1 = document.querySelector("#list-items1");
 const indexlistItems2 = document.querySelector("#list-items2");
 const indexlistItems3 = document.querySelector("#list-items3");
-
 
 function addItem(item, row) {
   const colDiv = document.createElement("div");
@@ -20,9 +24,8 @@ function addItem(item, row) {
 
   // Create img tag
   const img = document.createElement('img');
-    img.src = item.imgSrc;
+    img.src = item.imgSrc || item.imagePath; // Support both formats
     img.classList.add("card-img-top,card-thumbnail");
-    //img.width = 500;
     img.height = 300;
 
   colCard.append(img);  
@@ -33,121 +36,306 @@ function addItem(item, row) {
 
   const cardText = document.createElement("p");
   cardText.className = "card-text";
-  cardText.textContent = item.desc;//"This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.";
+  cardText.textContent = item.desc || item.description; // Support both formats
   colCardBody.append(cardText);
-  
 }
 
-// 1. Implement the function fetchColorsList() using the browser Fetch API to download the full color list from the following endpoint:
-// https://reqres.in/api/unknown
+// ===== NEW API CALLS YOU CAN ADD =====
 
-async function fetchColorsList() {
-
-    // method A: using a fetch request (with methods to address promises, e.g. resolve or reject)
-    // ---------------------------------------------------------------------------------------------
-    
-    let resp = null;
-
-    fetch('https://reqres.in/api/unknown')
-    .then(response => {
+// 1. Add a new product
+async function addNewProduct(productData) {
+    try {
+        const response = await fetch(`${API_BASE_URL}/product/add`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(productData)
+        });
+        
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
-        return response.json();
-    })
-    .then(response => {                             // promise.resolve returned
-            console.log(response);                  // log all the response's results
-            resp = response;
-    })
-    .catch(error => {
-        console.error('Error:', error)
-        return;     
-    }); // catch a promise.reject
-    // -------------------------------------------------------------------------------------
-
-    // method B: Using a fetch request (WITHOUT addressing promises returned from the api)
-    // --------------------------------------------------------------------------------------
-
-    // Using fetch, call for the 1st page of Data from the given url
-    // const response = await fetch("https://reqres.in/api/unknown");
-    // resp = await response.json();
-    // console.log(resp);   // check the data that is returned
-    // -----------------------------------------------------------------------------------
-
-    let allColors = resp.data;
-    let page = resp.page + 1;
-    let totalPages = resp.total_pages;
-
-    // Fetch the subsequent page(s) of Data (using a For Loop)
-    
-    for (let currentPage = page; currentPage <= totalPages; currentPage++) {
-        /* --------method A  -------------*/
-        //const response = await fetch("https://reqres.in/api/unknown?page=" + currentPage);
-        //const resp = await response.json();        
-        /* ------------------------------*/
-
-        /* --------method B  -------------*/
-        fetch('https://reqres.in/api/unknown' + currentPage)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            return response.json();
-        })
-        .then(response => {                             // promise.resolve returned
-                console.log(response);                  // log all the response's results
-                resp = response;
-        })
-        .catch(error => {
-            console.error('Error:', error)
-            return;     
-        }); // catch a promise.reject
-        /* ------------------------------*/
-
-        allColors = [...allColors, ...resp.data];
-        console.log(allColors);
-
+        
+        const result = await response.json();
+        console.log('Product added successfully:', result);
+        
+        // Refresh the display after adding
+        displayProductsByCategory();
+        
+        return result;
+    } catch (error) {
+        console.error('Error adding product:', error);
+        alert('Failed to add product');
+        return null;
     }
-    
-    // Clear listItems first
-    //listItems.innerHTML = "";
-    indexlistItems1.innerHTML = "";
-    indexlistItems2.innerHTML = "";
-    indexlistItems3.innerHTML = "";
-
-    // Create an array to store the color list to localStorage
-    const arrColors = new Array();
-
-    // Loop through each array index to be passed to addItem(item) function for display
-    // Also, convert each JSON object item into a string for storage into arrColors
-    allColors.forEach(item => {
-        addItem(item);
-        arrColors.push(item);
-    });
-
-    // Store the array data arrColors into the browser window's localStorage 
-    window.localStorage.setItem("list-items", JSON.stringify(arrColors));
 }
 
-// 2.  Implement the loadColorsFromStorage() function so the colour values are loaded from the local storage. 
-//     Open the developer tools and verify that the data is stored in the local storage.
-
-function loadColorsFromStorage() {
-    
-    // Retrive the values stored in list-items from localstorage
-    const arrColors = window.localStorage.getItem("list-items");
-
-    // parse the values into Objects (JSON.parse())
-    const parsedColors = JSON.parse(arrColors);
-
-    // iterate and populate the HTML page by calling addItem()
-    parsedColors.forEach(item => {
-        addItem(item);
-    });
+// 2. Update an existing product
+async function updateProduct(productId, productData) {
+    try {
+        const response = await fetch(`${API_BASE_URL}/product/update/${productId}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(productData)
+        });
+        
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
+        const result = await response.json();
+        console.log('Product updated successfully:', result);
+        
+        // Refresh the display after updating
+        displayProductsByCategory();
+        
+        return result;
+    } catch (error) {
+        console.error('Error updating product:', error);
+        alert('Failed to update product');
+        return null;
+    }
 }
 
+// 3. Delete a product
+async function deleteProduct(productId) {
+    try {
+        const response = await fetch(`${API_BASE_URL}/product/delete/${productId}`, {
+            method: 'DELETE'
+        });
+        
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
+        console.log('Product deleted successfully');
+        
+        // Refresh the display after deleting
+        displayProductsByCategory();
+        
+        return true;
+    } catch (error) {
+        console.error('Error deleting product:', error);
+        alert('Failed to delete product');
+        return false;
+    }
+}
 
-//Temp declare list of item objects 
+// 4. Search products by name or description
+async function searchProducts(searchTerm) {
+    try {
+        const response = await fetch(`${API_BASE_URL}/product/search?q=${encodeURIComponent(searchTerm)}`);
+        
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
+        const searchResults = await response.json();
+        console.log('Search results:', searchResults);
+        
+        // Display search results
+        displaySearchResults(searchResults);
+        
+        return searchResults;
+    } catch (error) {
+        console.error('Error searching products:', error);
+        return [];
+    }
+}
+
+// 5. Get products by category
+async function getProductsByCategory(category) {
+    try {
+        const response = await fetch(`${API_BASE_URL}/product/category/${category}`);
+        
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
+        const products = await response.json();
+        console.log(`${category} products:`, products);
+        return products;
+    } catch (error) {
+        console.error(`Error fetching ${category} products:`, error);
+        return [];
+    }
+}
+
+// ===== USER PROFILE API CALLS =====
+
+// 6. Update user profile
+async function updateUserProfile(userId, profileData) {
+    try {
+        const response = await fetch(`${API_BASE_URL}/user/update/${userId}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(profileData)
+        });
+        
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
+        const result = await response.json();
+        console.log('Profile updated successfully:', result);
+        return result;
+    } catch (error) {
+        console.error('Error updating profile:', error);
+        alert('Failed to update profile');
+        return null;
+    }
+}
+
+// 7. Get user profile
+async function getUserProfile(userId) {
+    try {
+        const response = await fetch(`${API_BASE_URL}/user/${userId}`);
+        
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
+        const userProfile = await response.json();
+        console.log('User profile:', userProfile);
+        return userProfile;
+    } catch (error) {
+        console.error('Error fetching user profile:', error);
+        return null;
+    }
+}
+
+// ===== ENHANCED EXISTING FUNCTIONS =====
+
+// Enhanced profile save function with API call
+async function sBtnFunction() {
+    // Get text in input fields
+    const inputElement = document.getElementById('userName');
+    const inputElement1 = document.getElementById('email');
+    
+    const userNameValue = inputElement.value;
+    const emailValue = inputElement1.value;
+
+    // Update display immediately
+    document.getElementById("userNameDisplay").textContent = userNameValue;
+    document.getElementById("userEmailDisplay").textContent = emailValue;
+    
+    // Send to backend (assuming user ID 1 for demo)
+    const profileData = {
+        userName: userNameValue,
+        email: emailValue
+    };
+    
+    await updateUserProfile(1, profileData);
+}
+
+// Enhanced display function with fallback to sample data
+async function displayProductsByCategory() {
+    try {
+        // Clear containers first
+        indexlistItems1.innerHTML = '<div class="col"><p class="text-center">Loading...</p></div>';
+        indexlistItems2.innerHTML = '<div class="col"><p class="text-center">Loading...</p></div>';
+        indexlistItems3.innerHTML = '<div class="col"><p class="text-center">Loading...</p></div>';
+        
+        const products = await fetchProducts();
+        
+        if (products.length === 0) {
+            console.log('No products from backend, loading sample data...');
+            loadSampleData();
+            return;
+        }
+        
+        // Clear containers
+        indexlistItems1.innerHTML = "";
+        indexlistItems2.innerHTML = "";
+        indexlistItems3.innerHTML = "";
+        
+        // Filter and display products
+        const appliances = products.filter(p => p.productType === 'APPLIANCES');
+        const fashion = products.filter(p => p.productType === 'FASHION');
+        const others = products.filter(p => p.productType === 'OTHERS');
+        
+        // Display using your existing addItem function
+        appliances.forEach(item => addItem(item, 0));
+        fashion.forEach(item => addItem(item, 1));
+        others.forEach(item => addItem(item, 2));
+        
+    } catch (error) {
+        console.error('Backend not available, loading sample data...', error);
+        loadSampleData();
+    }
+}
+
+// ===== YOUR EXISTING API FUNCTIONS (KEPT AS IS) =====
+
+// Fetch all products from backend
+async function fetchProducts() {
+    try {
+        const response = await fetch(`${API_BASE_URL}/product/all`);
+        
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
+        const products = await response.json();
+        console.log('Products fetched:', products);
+        return products;
+    } catch (error) {
+        console.error('Error fetching products:', error);
+        return [];
+    }
+}
+
+// Get single product details
+async function getProductById(productId) {
+    try {
+        const response = await fetch(`${API_BASE_URL}/product/getInfo/${productId}`);
+        if (!response.ok) throw new Error('Product not found');
+        return await response.json();
+    } catch (error) {
+        console.error('Error fetching product:', error);
+        return null;
+    }
+}
+
+// Handle "View Details" button clicks
+async function viewProductDetails(productId) {
+    const product = await getProductById(productId);
+    if (product) {
+        alert(`Product Details:\n\nName: ${product.name}\nDescription: ${product.description}\nCategory: ${product.productType}`);
+    } else {
+        alert('Product details not available');
+    }
+}
+
+// ===== EXAMPLE USAGE FUNCTIONS =====
+
+// Example: Add a new product (you can call this from a form)
+function exampleAddProduct() {
+    const newProduct = {
+        name: "Test Product",
+        description: "This is a test product",
+        productType: "APPLIANCES",
+        imagePath: "path/to/image.jpg"
+    };
+    
+    addNewProduct(newProduct);
+}
+
+// Example: Search functionality (you can attach this to a search form)
+function handleSearch() {
+    const searchInput = document.getElementById('searchInput'); // Assuming you have a search input
+    if (searchInput && searchInput.value.trim()) {
+        searchProducts(searchInput.value.trim());
+    }
+}
+
+// ===== SAMPLE DATA (YOUR ORIGINAL DATA) =====
+
 const listOfItemObjects1 = [
   {
     imgSrc: "img_products/Appliances//cornell_wet_dry.jpg",
@@ -193,71 +381,57 @@ const listOfItemObjects3 = [
   }
 ];
 
-function loadData() {
+// Load sample data (your original loadData function)
+function loadSampleData() {
+    console.log('Loading sample data...');
     
     // Clear listItems first
-    //listItems.innerHTML = "";
     indexlistItems1.innerHTML = "";
     indexlistItems2.innerHTML = "";
     indexlistItems3.innerHTML = "";
 
-    
-    // Retrive the values stored in list-items from localstorage
-    //const arrColors = window.localStorage.getItem("list-items");
-
-    // parse the values into Objects (JSON.parse())
-    //const parsedColors = JSON.parse(arrColors);
-
-    // iterate and populate the HTML page by calling addItem()
+    // Load your original sample data
     listOfItemObjects1.forEach(item => {
-        addItem(item,0);
+        addItem(item, 0);
     });
 
     listOfItemObjects2.forEach(item => {
-        addItem(item,1);
+        addItem(item, 1);
     });
 
     listOfItemObjects3.forEach(item => {
-        addItem(item,2);
+        addItem(item, 2);
     });
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-    //fetchColorsList();
-    //loadColorsFromStorage();
-    loadData();
-  })
+// ===== INITIALIZATION =====
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('Loading products from backend...');
+    displayProductsByCategory();
+    
+    // Load user profile if needed
+    // getUserProfile(1); // Assuming user ID 1
+});
 
-//-----------------------------------------------
-//Function to activate profile editing
-function btnFunction() {
-  //Enable buttons
-  document.getElementById("sButton").disabled = false;
-  document.getElementById("rButton").disabled = false;
+// ===== MANUAL TOGGLE FUNCTIONS =====
 
-  //Enable input fields
-  const inputElement = document.getElementById('userName');
-  const inputElement1 = document.getElementById('email');
-  const inputElement2 = document.getElementById('password');
-  // Remove the readonly attribute
-  inputElement.removeAttribute('readonly'); 
-  inputElement1.removeAttribute('readonly'); 
-  inputElement2.removeAttribute('readonly'); 
-
+// Function to manually load backend data
+function loadBackendData() {
+    console.log('Manually loading backend data...');
+    displayProductsByCategory();
 }
 
-//Function to modify displayed profile
-function sBtnFunction() {
-  
-  //Get text in input fields
-  const inputElement = document.getElementById('userName');
-  const inputElement1 = document.getElementById('email');
-  
-  // Get form input text content
-  const userNameValue = inputElement.value;
-  const emailValue = inputElement1.value;
+// ===== YOUR EXISTING FUNCTIONS (KEPT FOR REFERENCE) =====
 
-  document.getElementById("userNameDisplay").textContent = userNameValue;
-  document.getElementById("userEmailDisplay").textContent = emailValue;
-  
+function btnFunction() {
+    document.getElementById("sButton").disabled = false;
+    document.getElementById("rButton").disabled = false;
+    
+    const inputElement = document.getElementById('userName');
+    const inputElement1 = document.getElementById('email');
+    const inputElement2 = document.getElementById('password');
+    
+    inputElement.removeAttribute('readonly'); 
+    inputElement1.removeAttribute('readonly'); 
+    inputElement2.removeAttribute('readonly'); 
 }
