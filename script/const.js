@@ -24,8 +24,8 @@ const _LOGOUT_URL = "#";
 const _PROFILE_URL = "profile.html";
 const _PARTNERSHIP_URL = "partnership.html";
 const _APPLIANCE_URL = "catalog.html";
-const _FASHION_URL = "catalog.html";            // Temporary 
-const _OTHERS_URL = "catalog.html";             // Temporary 
+const _FASHION_URL = "catalog_f.html";            // Temporary 
+const _OTHERS_URL = "catalog_o.html";             // Temporary 
 const _ADMIN_URL = "admin.html";                // Temporary test admin route
 const _ITEMLISTING_URL = "itemlisting.html";
 
