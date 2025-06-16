@@ -26,8 +26,8 @@ imageUpload.addEventListener('change', function(e) {
         
         reader.onload = function(e) {
             // Display the main image
-            // mainImage.innerHTML = `<img src="${e.target.result}" alt="Main Preview" class="img-fluid rounded">`;
-            // uploadedImage = file;
+            mainImage.innerHTML = `<img src="${e.target.result}" alt="Main Preview" class="img-fluid rounded">`;
+            uploadedImage = file;
 
             // Create image element with proper styling
             const img = document.createElement('img');
@@ -103,14 +103,6 @@ function validateForm() {
         isValid = false;
     }
     
-    // Validate condition
-    const conditionSelect = document.getElementById('itemCondition');
-    const condition = conditionSelect.value;
-    if (!condition) {
-        showError(conditionSelect, 'Please select the item condition');
-        isValid = false;
-    }
-    
     // Validate description
     const descriptionInput = document.getElementById('itemDescription');
     const description = descriptionInput.value.trim();
@@ -119,19 +111,11 @@ function validateForm() {
         isValid = false;
     }
     
-    // Validate location
-    const locationInput = document.getElementById('itemLocation');
-    const location = locationInput.value.trim();
-    if (location === '') {
-        showError(locationInput, 'Please enter a location');
+    // TODO Validate image
+    if (!uploadedImage) {
+        showError(uploadButton, 'Please upload an image of your item');
         isValid = false;
     }
-    
-    // TODO Validate image
-    // if (!uploadedImage) {
-    //     showError(uploadButton, 'Please upload an image of your item');
-    //     isValid = false;
-    // }
     
     return isValid;
 }
@@ -162,14 +146,25 @@ submitButton.addEventListener('click', async function(e) {
         
         // Prepare form data
         // Add text fields
-        const formData = {
+        let formData = new FormData();
+
+        const postData = {
             "name": document.getElementById('inputTitle').value.trim(),
             "description" : document.getElementById('itemDescription').value.trim(),
-            "productType": document.querySelector('input[name="itemCategory"]:checked').value
+            "productType": document.querySelector('input[name="itemCategory"]:checked').value.trim()
         };
-        
-        // Add the single image
-        // formData.append('image', uploadedImage);
+
+        formData.append("product", JSON.stringify(postData));
+
+        // Correctly append the uploaded image file
+        if (uploadedImage) { // Ensure uploadedImage is not null
+            formData.append("image", uploadedImage);
+        } else {
+            // Handle the case where no image is uploaded (though your validation should catch this)
+            console.error("No image uploaded.");
+            return; // Or throw an error
+        }
+
         
         // //!Trying out the backend data - this const url need to be updated!
         const token = isAuthenticated();
@@ -180,9 +175,8 @@ submitButton.addEventListener('click', async function(e) {
                 method: "POST",
                 headers: {
                     "Authorization": `Bearer ${token}`,                             // !! Send the bearer token to allow server-side authentication
-                    "Content-Type": "application/json"
                 },
-                body: JSON.stringify(formData)
+                body: formData
             });
 
             if(response.ok){
@@ -203,7 +197,7 @@ submitButton.addEventListener('click', async function(e) {
             return alert("Unable to submit item");
 
         }catch(e){
-            alert(e);
+            alert(e.message);
         }
     }
 });
