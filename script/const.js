@@ -26,9 +26,9 @@ const _PARTNERSHIP_URL = "partnership.html";
 const _APPLIANCE_URL = "catalog.html";
 const _FASHION_URL = "catalog_f.html";            // Temporary 
 const _OTHERS_URL = "catalog_o.html";             // Temporary 
-const _APPLIANCE_URL = "catalog.html?param1=APPLIANCES";
-const _FASHION_URL = "catalog.html?param1=FASHION";            // Temporary 
-const _OTHERS_URL = "catalog.html?param1=OTHERS";             // Temporary 
+//const _APPLIANCE_URL = "catalog.html?param1=APPLIANCES";
+//const _FASHION_URL = "catalog.html?param1=FASHION";            // Temporary 
+//const _OTHERS_URL = "catalog.html?param1=OTHERS";             // Temporary 
 const _ADMIN_URL = "admin.html";                // Temporary test admin route
 const _ITEMLISTING_URL = "itemlisting.html";
 
