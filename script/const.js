@@ -38,7 +38,7 @@ const _USERTOKEN = "usertoken";
 // endponts
 const _ENDPOINT_LOGIN = "http://localhost:8080/auth/api/signin";
 const _ENDPOINT_REGISTER = "http://localhost:8080/auth/api/signup";
-const _ENDPOINT_DONATE = "http://localhost:8080/user/product/add";
+// const _ENDPOINT_DONATE = "http://localhost:8080/user/product/add";
 const _ENDPOINT_GET_PRODUCT_BY_CUSTOMER = "http://localhost:8080/getCustomer/";
 const _ENDPOINT_GET_ALL_PRODUCTS = "http://localhost:8080/user/product/all";
 const _ENDPOINT_DONATE = "http://localhost:8080/user/product/addwithimage";
