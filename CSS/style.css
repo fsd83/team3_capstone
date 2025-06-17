@@ -23,12 +23,6 @@ a {
   text-decoration: none;
 }
 
-/* All buttons: hover effect */
-.btn:hover{
-box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19) !important;
-bottom: btn-outline-warning !important; /* TODO not working - ks*/
-}
-
 .btn{
  background-color: #ff9219;
  color:#fff;
@@ -46,11 +40,11 @@ bottom: btn-outline-warning !important; /* TODO not working - ks*/
     background-color: #30d0b5;
 }
 
-.banner, h2{
+/* .banner, h2{
     padding: 1rem;
     font-style: italic;
     text-shadow:#fbfbfa;
-}
+} */
 
 .imgb{
     border-radius: 1.5rem;
@@ -273,7 +267,6 @@ bottom: btn-outline-warning !important; /* TODO not working - ks*/
   display: inline-block;
 }
 
-
 /* About Us header */
 #custom-cards h2{
     color: #1F7066;
@@ -485,12 +478,39 @@ bottom: btn-outline-warning !important; /* TODO not working - ks*/
 }
 
 
-@media (max-width: 800px) { /* Adjust breakpoint as needed */
-  /* Add margin below search form */
-  .navbar .navbar-collapse form {
-    margin-bottom: 15px;
+/* !Mediaquery */
+/* Teams container */
+@media (min-width: 768px) {
+  .order-md-2 {
+    order: 2 !important;
+  }
+  .col-md-8 {
+    flex: 0 0 auto;
+    width: 66.66666667%;
   }
 
+  .aboutfeaturette-image {
+    max-width: 80%;
+  }
+
+  .featurette {
+    padding: 2rem 0;
+  }
+  
+  .aboutfeaturette-divider {
+    margin: 3rem 0;
+  }
+}
+
+@media (max-width: 768px) {
+    .display-image-container {
+        min-height: 250px;
+    }
+    
+    #itemDisplayCard .col-md-6 {
+        width: 100%;
+    }
+}
 
 
 

@@ -12,6 +12,7 @@ const _FASHION_TITLE = "Fashion";
 const _OTHERS_TITLE = "Others";
 const _ADMIN_TITLE = "Admin";            // Temporary test admin title link
 const _ITEMLISTING = "Item Listing";
+const _ITEMDETAIL = "Item Detail";
 
 
 // correspononding site pages' links
@@ -31,6 +32,7 @@ const _OTHERS_URL = "catalog_o.html";             // Temporary
 //const _OTHERS_URL = "catalog.html?param1=OTHERS";             // Temporary 
 const _ADMIN_URL = "admin.html";                // Temporary test admin route
 const _ITEMLISTING_URL = "itemlisting.html";
+const _ITEMDETAIL_URL = "itemdetail.html";
 
 // right navbuttons' right spacing
 const _RIGHT_NAV_BTN = "1.0rem";
