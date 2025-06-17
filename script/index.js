@@ -4,6 +4,7 @@ const indexlistItems3 = document.querySelector("#list-items3");
 
 
 function addItem(item, row) {
+
   const colDiv = document.createElement("div");
   colDiv.className = "col";
   if(row==0) {
@@ -195,7 +196,15 @@ const listOfItemObjects3 = [
 
 function loadData() {
     
-    // Clear listItems first
+    //Add for a-link
+    const aItems1 = document.getElementById("a-item1");
+    const aItems2 = document.getElementById("a-item2");
+    const aItems3 = document.getElementById("a-item3");
+    aItems1.href = _APPLIANCE_URL;
+    aItems2.href = _FASHION_URL;
+    aItems3.href = _OTHERS_URL;  
+  
+  // Clear listItems first
     //listItems.innerHTML = "";
     indexlistItems1.innerHTML = "";
     indexlistItems2.innerHTML = "";
