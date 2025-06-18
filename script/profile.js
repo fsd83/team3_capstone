@@ -19,34 +19,19 @@ async function handleClickDonate(item){
     
     const transactionId = item.id;
     const url = _ENDPOINT_UPDATE_TRANSACTION_BY_ID + transactionId;
-    const formData = { email: email.value, message: message.value };
+    const formData = {transactType: item.transactType, status: item.status };
     const response = await fetch(url, { 
     method: "PUT",
     headers: {
         "Authorization": `Bearer ${token}`,  // !! Send the bearer token to allow server-side authentication
         "Content-Type": "application/json"
-    }
+    },
     body: JSON.stringify(formData)
     
     })
     .then(response => response.json())
     .then(data => {
         console.log(data);
-         
-        
-        console.log(donateArray);
-        // iterate and populate the HTML page by calling addItem()
-        donateArray.forEach(item => {
-            addItem(item,0);
-        });
-
-        let requestArray = data.filter(item => item.transactType == "ACQUIRE");
-        console.log(requestArray);
-        // iterate and populate the HTML page by calling addItem()
-        requestArray.forEach(item => {
-            addItem(item,1);
-        });
-        
     })
     .catch(error => {
         console.error('Error fetching data:', error);
@@ -57,10 +42,40 @@ async function handleClickDonate(item){
   }
 }
 
-function handleClickRequest(){
+async function handleClickRequest(item){
   //console.log('Button clicked!');
 
   if (confirm("Confirm delete request?") == true) {
+    //Update username and email
+    item.status = "ABORTED";
+    const token = isAuthenticated();
+    const user = decodeUser(token);
+
+    try {
+      
+      const transactionId = item.id;
+      const url = _ENDPOINT_UPDATE_TRANSACTION_BY_ID + transactionId;
+      const formData = {transactType: item.transactType, status: item.status };
+      const response = await fetch(url, { 
+      method: "PUT",
+      headers: {
+          "Authorization": `Bearer ${token}`,  // !! Send the bearer token to allow server-side authentication
+          "Content-Type": "application/json"
+      },
+      body: JSON.stringify(formData)
+      
+      })
+      .then(response => response.json())
+      .then(data => {
+          console.log(data);
+      })
+      .catch(error => {
+          console.error('Error fetching data:', error);
+      });
+
+    }catch(e){
+        alert(e);
+    }
     
   } 
  
@@ -99,13 +114,20 @@ function addItem(item, row) {
 
   // Create button tag
   const btn = document.createElement('button');
-    btn.textContent = 'Edit';
-    btn.classList.add("btn,btn-primary,btn-sm,mt-2");
-    if(row==0) {
+    
+  btn.classList.add("btn,btn-primary,btn-sm,mt-2");
+  if(row==0) {
+    if(item.status === "AVAILABLE" || item.status === "IN_PROGRESS") {
+      btn.textContent = 'Edit';
       btn.addEventListener('click', ()=>handleClickDonate(item));
     } else {
-      btn.addEventListener('click', ()=>handleClickRequest(item));
+      btn.textContent = item.status;
+      btn.disabled = true;
     }
+  } else {
+    btn.textContent = 'Edit';
+    btn.addEventListener('click', ()=>handleClickRequest(item));
+  }
     
   colCard.append(btn);  
 
