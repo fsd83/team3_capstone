@@ -12,7 +12,6 @@ const _FASHION_TITLE = "Fashion";
 const _OTHERS_TITLE = "Others";
 const _ADMIN_TITLE = "Admin";            // Temporary test admin title link
 const _ITEMLISTING = "Item Listing";
-const _ITEMDETAIL = "Item Detail";
 
 
 // correspononding site pages' links
@@ -24,15 +23,12 @@ const _LOGIN_URL = "login.html";
 const _LOGOUT_URL = "#";
 const _PROFILE_URL = "profile.html";
 const _PARTNERSHIP_URL = "partnership.html";
-const _APPLIANCE_URL = "catalog.html";
-const _FASHION_URL = "catalog_f.html";            // Temporary 
-const _OTHERS_URL = "catalog_o.html";             // Temporary 
-//const _APPLIANCE_URL = "catalog.html?param1=APPLIANCES";
-//const _FASHION_URL = "catalog.html?param1=FASHION";            // Temporary 
-//const _OTHERS_URL = "catalog.html?param1=OTHERS";             // Temporary 
+const _APPLIANCE_URL = "catalog.html?param1=APPLIANCES";
+const _FASHION_URL = "catalog.html?param1=FASHION";            
+const _OTHERS_URL = "catalog.html?param1=OTHERS";              
 const _ADMIN_URL = "admin.html";                // Temporary test admin route
 const _ITEMLISTING_URL = "itemlisting.html";
-const _ITEMDETAIL_URL = "itemdetail.html";
+const _CATALOG_URL = "catalog.html";
 
 // right navbuttons' right spacing
 const _RIGHT_NAV_BTN = "1.0rem";
@@ -44,7 +40,14 @@ const _USERTOKEN = "usertoken";
 const _ENDPOINT_LOGIN = "http://localhost:8080/auth/api/signin";
 const _ENDPOINT_REGISTER = "http://localhost:8080/auth/api/signup";
 // const _ENDPOINT_DONATE = "http://localhost:8080/user/product/add";
-const _ENDPOINT_GET_PRODUCT_BY_CUSTOMER = "http://localhost:8080/getCustomer/";
+const _ENDPOINT_GET_ALL_TRANSACTIONS_BY_CUSTOMER = "http://localhost:8080/user/getCustomer/";
 const _ENDPOINT_GET_ALL_PRODUCTS = "http://localhost:8080/user/product/all";
 const _ENDPOINT_DONATE = "http://localhost:8080/user/product/addwithimage";
+const _ENDPOINT_GET_CUSTOMERID_BY_EMAIL = "http://localhost:8080/restricted?email=";
+const _ENDPOINT_UPDATE_TRANSACTION_BY_ID = "http://localhost:8080/transaction/";
+const _ENDPOINT_ROOT = "http://localhost:8080";
+
+const _ENDPOINT_PRODUCTDETAIL = "http://localhost:8080/user/product/getinfo/";
+const _ENDPOINT_PRODUCTREQUEST = "http://localhost:8080/user/transaction/request/";
+
 

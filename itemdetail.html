@@ -23,59 +23,55 @@
  
    <!-- Main Content -->
     <div class="container my-4">
-      <a href="catalog.html">
-        <button class="btn btn-outline-secondary mb-3">
+      
+        <button class="btn btn-outline-secondary mb-3" onclick="history.back()">
             <i class="bi bi-arrow-left"></i> Back
         </button>
-      </a>
+
         
     <div class="row">
       <!-- Images Section (Right side) -->
       <div class="col-lg-6">
-        <div class="main-image rounded">
-          <span class="fs-3">Main Image</span>
-        </div>
+            <img src="" alt="" id="productDetailImage" class="rounded-4 border mx-auto d-block img-thumbnail" />
     </div>
             
     <!-- Item Details (Left side)-->
     <div class="col-lg-6 mt-4 mt-lg-0">
-        <h2 class="mb-4">Vacuum Cleaner (Item title)</h2>
+        <h2 class="mb-4 ps-0" id="productDetailTitle">
+          <!-- [productDetailTitle]  -->
+        </h2>
 
-        <p class="itemUser">
-            <strong>Listed by:</strong> <i class="bi bi-person-circle"></i>  <a href="http://127.0.0.1:5500/index.html">MeAndI (username)</a>
-            
-            4.9 <i class="bi bi-star-fill fs-6"></i>
+        <!-- Conditional situation - only reveal user if item is requested -->
+
+        <p class="itemUser" id="showHideDonor">
+            <strong>Contact Donor:</strong>   
+              <a href="" id="productDetailDonorEmailLink" class="bg-success text-white p-2 m-2 rounded-4">
+                <i class="bi bi-person-circle"></i>  
+                <span id="productDetailDonorEmail">[productDetailUserDonor]</span>
+              </a>
+              4.9 <i class="bi bi-star-fill fs-6"></i>
         </p>
 
         <p class="itemCategory">
-            <strong>Category:</strong> <a href="http://127.0.0.1:5500/index.html">Appliance (1 of the categories selected)</a>
-        </p>
-        
-        <p class="itemTime">
-                <strong>When:</strong> 10 hours ago
-            (input time function)
-        </p>
-
-        <p class="itemCondition">
-            <strong>Condition:</strong> Used - Like New
+            <strong>Category:</strong>
+            <a href="" id="productDetailCategoryType">
+              <!-- [productDetailCategoryType] -->
+            </a>
         </p>
 
         <p class="itemDescription">
             <strong>Description:</strong>
-            Used Vacuum Cleaner.
-            Working well. Just some minor scruffs. (Details.Words-minmax )
+            <div class="ps-2 pt-1" id="productDetailDescription">
+              <!-- [productDetailDescription] -->
+            </div>
         </p>
 
-        <p class="itemLocation">
-        <strong>Location:</strong> Simei st 13 itemLocation</p>
-        
-        <button class="btn">
-            <i class="bi bi-cart-plus"  ></i> Request Item
+        <button class="btn" id="productDetailRequest">
+            <i class="bi bi-cart-plus"  ></i> Request for Item
         </button>
 
-        <p class="policy">
+        <p class="policy pt-4">
             <strong>Policy:</strong> Kindly do not abuse this website. Deal with care and treat people with courtesy and respect.
-         
         </p>
                 
             </div>
@@ -100,6 +96,7 @@
     <script src="script/footer.js"></script>
     <script src="script/itemlisting_3.js"></script>
     <script src="script/sec_script.js"></script>
+    <script src="script/itemdetail.js"></script>
 
   </body>
 </html>
