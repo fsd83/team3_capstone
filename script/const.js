@@ -39,7 +39,11 @@ const _USERTOKEN = "usertoken";
 const _ENDPOINT_LOGIN = "http://localhost:8080/auth/api/signin";
 const _ENDPOINT_REGISTER = "http://localhost:8080/auth/api/signup";
 // const _ENDPOINT_DONATE = "http://localhost:8080/user/product/add";
-const _ENDPOINT_GET_PRODUCT_BY_CUSTOMER = "http://localhost:8080/getCustomer/";
+const _ENDPOINT_GET_ALL_TRANSACTIONS_BY_CUSTOMER = "http://localhost:8080/user/getCustomer/";
 const _ENDPOINT_GET_ALL_PRODUCTS = "http://localhost:8080/user/product/all";
 const _ENDPOINT_DONATE = "http://localhost:8080/user/product/addwithimage";
+const _ENDPOINT_GET_CUSTOMERID_BY_EMAIL = "http://localhost:8080/restricted?email=";
+const _ENDPOINT_UPDATE_TRANSACTION_BY_ID = "http://localhost:8080/transaction/";
+const _ENDPOINT_ROOT = "http://localhost:8080";
+
 
