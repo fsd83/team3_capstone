@@ -28,6 +28,7 @@ const _FASHION_URL = "catalog.html?param1=FASHION";
 const _OTHERS_URL = "catalog.html?param1=OTHERS";              
 const _ADMIN_URL = "admin.html";                // Temporary test admin route
 const _ITEMLISTING_URL = "itemlisting.html";
+const _CATALOG_URL = "catalog.html";
 
 // right navbuttons' right spacing
 const _RIGHT_NAV_BTN = "1.0rem";
@@ -45,5 +46,8 @@ const _ENDPOINT_DONATE = "http://localhost:8080/user/product/addwithimage";
 const _ENDPOINT_GET_CUSTOMERID_BY_EMAIL = "http://localhost:8080/restricted?email=";
 const _ENDPOINT_UPDATE_TRANSACTION_BY_ID = "http://localhost:8080/transaction/";
 const _ENDPOINT_ROOT = "http://localhost:8080";
+
+const _ENDPOINT_PRODUCTDETAIL = "http://localhost:8080/user/product/getinfo/";
+const _ENDPOINT_PRODUCTREQUEST = "http://localhost:8080/user/transaction/request/";
 
 

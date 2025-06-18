@@ -49,14 +49,19 @@ function addItem(item) {
   
   // Create img tag
   const img = document.createElement('img');
-  img.src = item.imagePath;
+  img.src = _ENDPOINT_ROOT.concat(item.imagePath);
   // Fix: Add classes separately
   img.classList.add("card-img-top");
   img.classList.add("card-thumbnail");
   img.height = 300;
   img.alt = "Product image";
 
-  colCard.append(img);  
+  colCard.append(img);
+  
+  img.style.cursor = 'pointer';
+  img.addEventListener("click", () => {
+    window.location.href = `itemdetail.html?id=${item.id}`;
+  });
 
   const colCardBody = document.createElement("div");
   colCardBody.className = "card-body";
@@ -66,6 +71,15 @@ function addItem(item) {
   cardText.className = "card-text";
 
   cardText.textContent = item.description;//"This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.";
+
+  const cardButton = document.createElement("button");
+  cardButton.classList.add("btn", "btn-primary", "m-4");
+  cardButton.textContent = "See Details";
+  colCard.append(cardButton);
+
+  cardButton.addEventListener("click", () => {
+    window.location.href = `itemdetail.html?id=${item.id}`;
+  });
 
   colCardBody.append(cardText);
 }
