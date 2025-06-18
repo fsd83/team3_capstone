@@ -1,0 +1,7 @@
+#file
+*.pptx
+
+#folder
+.vscode/
+team-file/
+Archive/
