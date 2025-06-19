@@ -12,16 +12,6 @@ function addItem(item) {
 
   // const colCardSvg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
   
-  colCardSvg.setAttribute('preserveAspectRatio', 'xMidYMid slice');
-  colCardSvg.ariaLabel = "Placeholder: Thumbnail";
-  colCardSvg.classList.add("bd-placeholder-img", "card-img-top");
-  colCardSvg.style.height = "125px";
-  colCardSvg.role = "img";
-  colCardSvg.style.width = "100%";
-   
-  const titleElement = document.createElementNS('http://www.w3.org/2000/svg', 'title');
-  titleElement.textContent = "Placeholder";
-  colCardSvg.insertBefore(titleElement, colCardSvg.firstChild);
   // colCardSvg.setAttribute('preserveAspectRatio', 'xMidYMid slice');
   // colCardSvg.ariaLabel = "Placeholder: Thumbnail";
   // colCardSvg.classList.add("bd-placeholder-img", "card-img-top");
@@ -61,7 +51,7 @@ function addItem(item) {
   const img = document.createElement('img');
   img.src = _ENDPOINT_ROOT.concat(item.imagePath);
   // Fix: Add classes separately
-  // img.classList.add("card-img-top");
+  img.classList.add("card-img-top");
   img.classList.add("card-thumbnail");
   img.height = 300;
   img.alt = "Product image";
@@ -95,28 +85,20 @@ function addItem(item) {
 }
 
 // Sample product data
-const listOfItemObjects1 = [
-  
-  {
-    imgSrc: "img_products/Appliances/cornell_wet_dry.jpg",
-    desc: "Moving house, letting go of this 2 years portable wet and dry vacuum in working condition"
-     
-  },
-
-  {
-    imgSrc: "img_products/Appliances/miele_vacuum.jpg",
-    desc: "Just bought a new robotic vacuum, any taker for this vacuum. Low usage and still under warranty.",
-    url:_ITEMDETAIL_URL 
-  },
-  
-  {
-    imgSrc: "img_products/Appliances/Fan two.jpg",
-    desc: "Bladeless fan, still in working condition 30/100. Ping me if interested."    
-  }
-
-];
-
-
+// const listOfItemObjects1 = [
+//   {
+//     imgSrc: "img_products/Appliances/cornell_wet_dry.jpg",
+//     desc: "Moving house, letting go of this 2 years portable wet and dry vacuum in working condition"
+//   },
+//   {
+//     imgSrc: "img_products/Appliances/miele_vacuum.jpg",
+//     desc: "Just bought a new robotic vacuum, any taker for this vacuum. Low usage and still under warranty."
+//   },
+//   {
+//     imgSrc: "img_products/Appliances/Fan two.jpg",
+//     desc: "Bladeless fan, still in working condition 30/100. Ping me if interested."    
+//   }
+// ];
 
 // function loadData() {
 //   // Clear existing items first
@@ -355,4 +337,3 @@ document.addEventListener("DOMContentLoaded", () => {
 //   // fetchColorsList();    // For API color data
 //   // loadColorsFromStorage(); // For stored color data
 // });
-

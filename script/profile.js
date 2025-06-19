@@ -2,6 +2,7 @@ const indexlistDonate = document.querySelector("#donationList");
 const indexlistRequest = document.querySelector("#requestList");
 
 
+
 async function handleClickDonate(item){
   //console.log('Button clicked!');
 
@@ -10,7 +11,10 @@ async function handleClickDonate(item){
     item.status = "ABORTED";
   } else if(action === "Complete") {
     item.status = "COMPLETED";
-  }       
+   }  else {        ///////
+    return;        ///////
+  }                ///////  
+
   //Update username and email
   const token = isAuthenticated();
   const user = decodeUser(token);
