@@ -10,7 +10,7 @@ function addItem(item) {
   colCard.className = "card";
   colDiv.append(colCard);
 
-  const colCardSvg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+  // const colCardSvg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
   
   colCardSvg.setAttribute('preserveAspectRatio', 'xMidYMid slice');
   colCardSvg.ariaLabel = "Placeholder: Thumbnail";
@@ -22,34 +22,56 @@ function addItem(item) {
   const titleElement = document.createElementNS('http://www.w3.org/2000/svg', 'title');
   titleElement.textContent = "Placeholder";
   colCardSvg.insertBefore(titleElement, colCardSvg.firstChild);
+  // colCardSvg.setAttribute('preserveAspectRatio', 'xMidYMid slice');
+  // colCardSvg.ariaLabel = "Placeholder: Thumbnail";
+  // colCardSvg.classList.add("bd-placeholder-img", "card-img-top");
+  // colCardSvg.style.height = "125px";
+  // colCardSvg.role = "img";
+  // colCardSvg.style.width = "100%";
   
-  const rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
-  rect.setAttribute("width", "100%"); // width of the rectangle
-  rect.setAttribute("height", "100%"); // height of the rectangle
-  rect.setAttribute("fill", "blue"); // fill color - #55595c
+  //const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+  //svg.setAttributeNS("http://www.w3.org/2000/xmlns/", "xmlns", "http://www.w3.org/2000/svg");
+  //colCardSvg.append(svg);
   
-  colCardSvg.append(rect);
+  // colCardSvg.setAttributeNS("http://www.w3.org/2000/xmlns/", "xmlns", "http://www.w3.org/2000/svg");
+  // colCard.append(colCardSvg);
+ 
+  // const titleElement = document.createElementNS('http://www.w3.org/2000/svg', 'title');
+  // titleElement.textContent = "Placeholder";
+  // colCardSvg.insertBefore(titleElement, colCardSvg.firstChild);
+  
+  // const rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+  // rect.setAttribute("width", "100%"); // width of the rectangle
+  // rect.setAttribute("height", "100%"); // height of the rectangle
+  // rect.setAttribute("fill", "blue"); // fill color - #55595c
+  
+  // colCardSvg.append(rect);
 
-  const svgNS = "http://www.w3.org/2000/svg"; // Define SVG namespace
-  const textElement = document.createElementNS(svgNS, "text"); // Create text element
-  textElement.setAttribute("x", "50%"); // Set x coordinate
-  textElement.setAttribute("y", "50%"); // Set y coordinate
-  textElement.setAttribute("dy", ".3em"); // Set font size (optional)
-  textElement.setAttribute("fill", "#eceeef");
-  const textNode = document.createTextNode(item.name); // Create text node - "Thumbnail"
-  textElement.appendChild(textNode); // Append text node to text element
-  colCardSvg.appendChild(textElement); // Append text element to SVG
+  // const svgNS = "http://www.w3.org/2000/svg"; // Define SVG namespace
+  // const textElement = document.createElementNS(svgNS, "text"); // Create text element
+  // textElement.setAttribute("x", "50%"); // Set x coordinate
+  // textElement.setAttribute("y", "50%"); // Set y coordinate
+  // textElement.setAttribute("dy", ".3em"); // Set font size (optional)
+  // textElement.setAttribute("fill", "#eceeef");
+  // const textNode = document.createTextNode(item.name); // Create text node - "Thumbnail"
+  // textElement.appendChild(textNode); // Append text node to text element
+  // colCardSvg.appendChild(textElement); // Append text element to SVG
   
   // Create img tag
   const img = document.createElement('img');
-  img.src = item.imgSrc;
+  img.src = _ENDPOINT_ROOT.concat(item.imagePath);
   // Fix: Add classes separately
   // img.classList.add("card-img-top");
   img.classList.add("card-thumbnail");
   img.height = 300;
   img.alt = "Product image";
 
-  colCard.append(img);  
+  colCard.append(img);
+  
+  img.style.cursor = 'pointer';
+  img.addEventListener("click", () => {
+    window.location.href = `itemdetail.html?id=${item.id}`;
+  });
 
   const colCardBody = document.createElement("div");
   colCardBody.className = "card-body";
@@ -60,7 +82,14 @@ function addItem(item) {
 
   cardText.textContent = item.description;//"This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.";
 
-  cardText.textContent = item.desc;
+  const cardButton = document.createElement("button");
+  cardButton.classList.add("btn", "btn-primary", "m-4");
+  cardButton.textContent = "See Details";
+  colCard.append(cardButton);
+
+  cardButton.addEventListener("click", () => {
+    window.location.href = `itemdetail.html?id=${item.id}`;
+  });
 
   colCardBody.append(cardText);
 }
@@ -89,141 +118,155 @@ const listOfItemObjects1 = [
 
 
 
-function loadData() {
-  // Clear existing items first
-  if (listItems) {
-    listItems.innerHTML = "";
+// function loadData() {
+//   // Clear existing items first
+//   if (listItems) {
+//     listItems.innerHTML = "";
     
-    // Load and display items
-    listOfItemObjects1.forEach(item => {
-      addItem(item);
-    });
+//     // Load and display items
+//     listOfItemObjects1.forEach(item => {
+//       addItem(item);
+//     });
     
-    console.log("Catalog items loaded successfully!");
-  } else {
-    console.error("Could not find #list-items container");
-  }
-} // Fix: Added missing closing brace
+//     console.log("Catalog items loaded successfully!");
+//   } else {
+//     console.error("Could not find #list-items container");
+//   }
+// } // Fix: Added missing closing brace
 
 // Colors API functions (if needed later)
-async function fetchColorsList() {
-  try {
-    const response = await fetch('https://localhost8080/api/unknown');
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
+// async function fetchColorsList() {
+//   try {
+//     const response = await fetch('https://localhost8080/api/unknown');
+//     if (!response.ok) {
+//       throw new Error(`HTTP error! status: ${response.status}`);
+//     }
     
-    const resp = await response.json();
-    console.log(resp);
+//     const resp = await response.json();
+//     console.log(resp);
     
-    let allColors = resp.data;
-    const totalPages = resp.total_pages;
+//     let allColors = resp.data;
+//     const totalPages = resp.total_pages;
 
-    // Fetch subsequent pages
-    for (let currentPage = 2; currentPage <= totalPages; currentPage++) {
-      const pageResponse = await fetch(`https://reqres.in/api/unknown?page=${currentPage}`);
-      if (!pageResponse.ok) {
-        throw new Error(`HTTP error! status: ${pageResponse.status}`);
-      }
+//     // Fetch subsequent pages
+//     for (let currentPage = 2; currentPage <= totalPages; currentPage++) {
+//       const pageResponse = await fetch(`https://reqres.in/api/unknown?page=${currentPage}`);
+//       if (!pageResponse.ok) {
+//         throw new Error(`HTTP error! status: ${pageResponse.status}`);
+//       }
       
-      const pageData = await pageResponse.json();
-      allColors = [...allColors, ...pageData.data];
-    }
+//       const pageData = await pageResponse.json();
+//       allColors = [...allColors, ...pageData.data];
+//     }
     
-    // Clear existing items
-    if (listItems) {
-      listItems.innerHTML = "";
-    }
+//     // Clear existing items
+//     if (listItems) {
+//       listItems.innerHTML = "";
+//     }
 
-    // Transform and display colors as items
-    allColors.forEach(item => {
-      const colorItem = {
-        imgSrc: `https://via.placeholder.com/300x200/${item.color.substring(1)}/ffffff?text=${item.name}`,
-        desc: `${item.name} - ${item.color} (Pantone ${item.pantone_value})`
-      };
-      addItem(colorItem);
-    });
+//     // Transform and display colors as items
+//     allColors.forEach(item => {
+//       const colorItem = {
+//         imgSrc: `https://via.placeholder.com/300x200/${item.color.substring(1)}/ffffff?text=${item.name}`,
+//         desc: `${item.name} - ${item.color} (Pantone ${item.pantone_value})`
+//       };
+//       addItem(colorItem);
+//     });
 
-    // Store in localStorage (Note: not supported in all environments)
-    try {
-      window.localStorage.setItem("list-items", JSON.stringify(allColors));
-    } catch (e) {
-      console.log("localStorage not available");
-    }
+//     // Store in localStorage (Note: not supported in all environments)
+//     try {
+//       window.localStorage.setItem("list-items", JSON.stringify(allColors));
+//     } catch (e) {
+//       console.log("localStorage not available");
+//     }
     
-  } catch (error) {
-    console.error('Error fetching colors:', error);
-  }
-}
+//   } catch (error) {
+//     console.error('Error fetching colors:', error);
+//   }
+// }
 
-function loadColorsFromStorage() {
-  try {
-    const arrColors = window.localStorage.getItem("list-items");
-    if (arrColors) {
-      const parsedColors = JSON.parse(arrColors);
+// function loadColorsFromStorage() {
+//   try {
+//     const arrColors = window.localStorage.getItem("list-items");
+//     if (arrColors) {
+//       const parsedColors = JSON.parse(arrColors);
       
-      // Clear existing items
-      if (listItems) {
-        listItems.innerHTML = "";
-      }
+//       // Clear existing items
+//       if (listItems) {
+//         listItems.innerHTML = "";
+//       }
       
-      // Display stored colors
-      parsedColors.forEach(item => {
-        const colorItem = {
-          imgSrc: `https://via.placeholder.com/300x200/${item.color.substring(1)}/ffffff?text=${item.name}`,
-          desc: `${item.name} - ${item.color} (Pantone ${item.pantone_value})`
-        };
-        addItem(colorItem);
-      });
-    } else {
-      console.log("No items found in localStorage");
-    }
-  } catch (error) {
-    console.error('Error loading from storage:', error);
-  }
-}
+//       // Display stored colors
+//       parsedColors.forEach(item => {
+//         const colorItem = {
+//           imgSrc: `https://via.placeholder.com/300x200/${item.color.substring(1)}/ffffff?text=${item.name}`,
+//           desc: `${item.name} - ${item.color} (Pantone ${item.pantone_value})`
+//         };
+//         addItem(colorItem);
+//       });
+//     } else {
+//       console.log("No items found in localStorage");
+//     }
+//   } catch (error) {
+//     console.error('Error loading from storage:', error);
+//   }
+// }
 
 // Profile editing functions
-function btnFunction() {
-  // Enable buttons
-  const sButton = document.getElementById("sButton");
-  const rButton = document.getElementById("rButton");
+// function btnFunction() {
+//   // Enable buttons
+//   const sButton = document.getElementById("sButton");
+//   const rButton = document.getElementById("rButton");
   
-  if (sButton) sButton.disabled = false;
-  if (rButton) rButton.disabled = false;
+//   if (sButton) sButton.disabled = false;
+//   if (rButton) rButton.disabled = false;
 
-  // Enable input fields
-  const inputElement = document.getElementById('userName');
-  const inputElement1 = document.getElementById('email');
-  const inputElement2 = document.getElementById('password');
+//   // Enable input fields
+//   const inputElement = document.getElementById('userName');
+//   const inputElement1 = document.getElementById('email');
+//   const inputElement2 = document.getElementById('password');
   
-  if (inputElement) inputElement.removeAttribute('readonly');
-  if (inputElement1) inputElement1.removeAttribute('readonly');
-  if (inputElement2) inputElement2.removeAttribute('readonly');
-}
+//   if (inputElement) inputElement.removeAttribute('readonly');
+//   if (inputElement1) inputElement1.removeAttribute('readonly');
+//   if (inputElement2) inputElement2.removeAttribute('readonly');
+// }
 
-function sBtnFunction() {
-  // Get input field values
-  const inputElement = document.getElementById('userName');
-  const inputElement1 = document.getElementById('email');
+// function sBtnFunction() {
+//   // Get input field values
+//   const inputElement = document.getElementById('userName');
+//   const inputElement1 = document.getElementById('email');
   
-  if (inputElement && inputElement1) {
-    const userNameValue = inputElement.value;
-    const emailValue = inputElement1.value;
+//   if (inputElement && inputElement1) {
+//     const userNameValue = inputElement.value;
+//     const emailValue = inputElement1.value;
 
-    // Update display elements
-    const userNameDisplay = document.getElementById("userNameDisplay");
-    const userEmailDisplay = document.getElementById("userEmailDisplay");
+//     // Update display elements
+//     const userNameDisplay = document.getElementById("userNameDisplay");
+//     const userEmailDisplay = document.getElementById("userEmailDisplay");
     
-    if (userNameDisplay) userNameDisplay.textContent = userNameValue;
-    if (userEmailDisplay) userEmailDisplay.textContent = emailValue;
-  }
-}
+//     if (userNameDisplay) userNameDisplay.textContent = userNameValue;
+//     if (userEmailDisplay) userEmailDisplay.textContent = emailValue;
+//   }
+// }
 
 
 async function catalogLoadData() {
     
-    // Clear listItems first
+  const urlParams = new URLSearchParams(window.location.search);
+  const param1Value = urlParams.get('param1');
+            
+  //Add for h1 text
+    const h1Text = document.getElementById("h1-catalog");
+    if(param1Value === "APPLIANCES") {
+      h1Text.textContent = "Appliance";  
+    }
+    else if(param1Value === "FASHION") {
+      h1Text.textContent = "Fashion";  
+    } 
+    else {
+      h1Text.textContent = "Others";  
+    }
+  // Clear listItems first
     listItems.innerHTML = "";
     //indexlistDonate.innerHTML = "";
     //indexlistRequest.innerHTML = "";
@@ -276,8 +319,6 @@ async function catalogLoadData() {
             console.log(data);
             console.log(data[0].name); // Access members from the parsed JSON data
             console.log(data[1].name);
-            const urlParams = new URLSearchParams(window.location.search);
-            const param1Value = urlParams.get('param1');
             
             let filteredArray = data.filter(item => item.productType == param1Value);
             console.log(filteredArray);
@@ -306,12 +347,12 @@ document.addEventListener("DOMContentLoaded", () => {
   })
 
 // Fix: Move event listener outside of any function
-document.addEventListener("DOMContentLoaded", () => {
-  console.log("DOM loaded, initializing catalog...");
+// document.addEventListener("DOMContentLoaded", () => {
+//   console.log("DOM loaded, initializing catalog...");
   
-  // Choose which function to run:
-  loadData();              // For local product data
-  // fetchColorsList();    // For API color data
-  // loadColorsFromStorage(); // For stored color data
-});
+//   // Choose which function to run:
+//   loadData();              // For local product data
+//   // fetchColorsList();    // For API color data
+//   // loadColorsFromStorage(); // For stored color data
+// });
 

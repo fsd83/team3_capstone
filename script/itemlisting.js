@@ -180,7 +180,7 @@ submitButton.addEventListener('click', async function(e) {
             });
 
             if(response.ok){
-                
+                console.log(await response.json());
                 // TODO 
                 // Mock submission (replace with actual fetch/AJAX call)
                 setTimeout(() => {
@@ -201,3 +201,18 @@ submitButton.addEventListener('click', async function(e) {
         }
     }
 });
+
+// returned data from donation:
+
+/**
+ * customer: {firstName: null, lastName: null, email: 'testuser1@gmail.com', password: '$2a$10$5YwW6i7MqRGQNI53TOgkk.tVAOiKKzg/dmSv.1aUR7ttyJ87nAwSe', role: 'USER', …}
+
+id : 5
+
+product: {name: 'Brand new cupboard', description: '5-year old cupboard.', imagePath: '/uploads/images/1750228265312_cupboard.png', productType: 'OTHERS', id: 5}
+
+status: "AVAILABLE"
+
+transactType: "DONATE"
+
+ */
