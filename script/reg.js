@@ -86,7 +86,7 @@
        
 
 
-      if (!registerSuccess) {
+      if (registerSuccess) {
         throw new Error("Error registering. Please try again.");
       }
       
