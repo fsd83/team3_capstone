@@ -11,9 +11,9 @@ async function handleClickDonate(item){
     item.status = "ABORTED";
   } else if(action === "Complete") {
     item.status = "COMPLETED";
-   }  else {        ///////
-    return;        ///////
-  }                ///////  
+   }  else {       
+    return;        
+  }                
 
   //Update username and email
   const token = isAuthenticated();
